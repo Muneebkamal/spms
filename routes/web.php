@@ -6,7 +6,7 @@ use App\Http\Controllers\AdminController;
 
 
 Auth::routes();
-Route::middleware(['auth'])->group(function () {    
+Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
@@ -14,4 +14,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/changePassword', [AdminController::class, 'changePassword'])->name('changePassword');
 
     Route::get('/register', [HomeController::class, 'register'])->middleware('auth')->name('register');
+    // Route::get('/register', [HomeController::class, 'register'])->middleware('auth')->name('register');
+
 });
