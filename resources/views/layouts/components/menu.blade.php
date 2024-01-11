@@ -78,6 +78,12 @@
                 <div>Create Agent</div>
             </a>
         </li>
+        <li class="menu-item">
+            <a href="{{ route('register') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <div>Create Agent</div>
+            </a>
+        </li>
     </ul>
 
 </aside>
