@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
+@section('script')
+    @include('content.users.Js.user-list-js')
+@endsection
+
 @section('content')
-@include('content.users.Js.user-list-js')
 <div class="card">
     <div class="card-datatable table-responsive pt-0">
       <table class="table user-list-table">
@@ -36,10 +39,10 @@
                 <td><input type="checkbox"></td>
                 <td><i class="ti ti-trash"></i><i class="ti ti-eye"></i></td>
             </tr>
-            
+
         </tbody>
       </table>
     </div>
   </div>
- 
+
 @endsection
