@@ -10,9 +10,6 @@
     <title>@yield('title')</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-
-
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon"
         href="https://demos.pixinvent.com/vuexy-html-admin-template/assets/img/favicon/favicon.ico" />
@@ -40,7 +37,8 @@
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/toastr/toastr.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css')}}">
+    <link rel="stylesheet"
+        href="{{asset('assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css')}}">
 
     <!-- Row Group CSS -->
@@ -79,7 +77,6 @@
                         @yield('content')
                     </div>
                     <!-- / Content -->
-
                     @include('layouts.components.footer')
                     <div class="content-backdrop fade"></div>
                 </div>
@@ -102,7 +99,7 @@
 
 
     <div class="buy-now">
-        <a href="https://1.envato.market/vuexy_admin" target="_blank" class="btn btn-danger btn-buy-now">Buy Now</a>
+        <a href="https://1.envato.market/vuexy_admin" target="_blank" cPlass="btn btn-danger btn-buy-now">Buy Now</a>
     </div>
 
 
@@ -112,7 +109,9 @@
     <!-- build:js assets/vendor/js/core.js -->
 
     <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
     <script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/node-waves/node-waves.js') }}"></script>
@@ -127,7 +126,6 @@
 
     <!-- Page JS -->
     <script src="{{asset('assets/js/ui-toasts.js')}}"></script>
-    <script src="{{asset('assets/js/tables-datatables-basic.js')}}"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
