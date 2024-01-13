@@ -3,7 +3,8 @@
     <div class="app-brand demo ">
         <a href="{{ route('home') }}" class="app-brand-link">
             <span class="app-brand-logo demo">
-                <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
+                <img src="{{asset('assets/img/default-imgs/logo.png')}}" width="50" alt="Logo">
+                {{-- <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M0.00172773 0V6.85398C0.00172773 6.85398 -0.133178 9.01207 1.98092 10.8388L13.6912 21.9964L19.7809 21.9181L18.8042 9.88248L16.4951 7.17289L9.23799 0H0.00172773Z"
@@ -17,9 +18,9 @@
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z"
                         fill="#7367F0" />
-                </svg>
+                </svg> --}}
             </span>
-            <span class="app-brand-text demo menu-text fw-bold">Vuexy</span>
+            <span class="app-brand-text demo menu-text fw-bold">SPMS</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
@@ -74,19 +75,19 @@
         </li>
         <li class="menu-item">
             <a href="{{url('access-records')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <i class="menu-icon tf-icons ti ti-brand-whatsapp"></i>
                 <div>Access records</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="{{url('share-list')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <i class="menu-icon tf-icons ti ti-share"></i></i>
                 <div>Share list</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons ti ti-smart-home"></i>
+              <i class="menu-icon tf-icons ti ti-building-warehouse"></i>
               <div data-i18n="Properties">Properties</div>
             </a>
             <ul class="menu-sub">
@@ -105,7 +106,7 @@
         </ul>
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <i class="menu-icon tf-icons ti ti-users-group"></i>
                 <div data-i18n="Users">Users</div>
                 </a>
                 <ul class="menu-sub">
@@ -123,32 +124,38 @@
             </li>
         <li class="menu-item">
             <a href="{{url('all-views')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <i class="menu-icon tf-icons ti ti-view-360"></i>
                 <div>All Views</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="{{url('admin-search')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <i class="menu-icon tf-icons ti ti-user-search"></i>
                 <div>Admin Search</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="{{url('terms-of-use')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <i class="menu-icon tf-icons ti ti-file-invoice"></i>
                 <div>Terms of Use</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="{{url('online-form')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <i class="menu-icon tf-icons ti ti-forms"></i>
                 <div>Online form</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="{{url('common-words')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <i class="menu-icon tf-icons ti ti-creative-commons-nd"></i>
                 <div>Common words</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-logout"></i>
+                <div>Sign Out</div>
             </a>
         </li>
     </ul>
