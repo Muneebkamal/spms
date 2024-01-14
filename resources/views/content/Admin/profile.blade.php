@@ -176,14 +176,14 @@
 
 @section('script')
 <script>
-    
+
 $('#formChangePassword').submit(function (e) {
     e.preventDefault();
     var newPassword = $('#newPassword').val();
     var confirmPassword = $('#confirmPassword').val();
 
     if (confirmPassword !== newPassword) {
-        $('#passwordNotMatch').show(); 
+        $('#passwordNotMatch').show();
         return;
     }
 

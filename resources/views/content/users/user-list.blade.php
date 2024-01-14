@@ -4,6 +4,44 @@
 
 @section('script')
     @include('content.users.Js.user-list-js')
+    <script>
+        $('.contactPermission').on('click', function() {
+            let check = ($(this).is(':checked') ? 1 : 0 )
+            let userId = $(this).data('user-id')
+            formData = { 'check': check , 'id': userId }
+            $.ajax({
+                'url': '{{ route("contact-permission") }}',
+                'data': formData,
+                success: function(data) {
+                    if (data == "`success") {
+                        toastr.success('Contact Permission has been Changed Successfully.', 'Permission Changed!');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Ajax request error:', status, error);
+                }
+            })
+        });
+
+        $('.photoPermission').on('click', function() {
+            let check = ($(this).is(':checked') ? 1 : 0 )
+            let userId = $(this).data('user-id')
+            formData = { 'check': check , 'id': userId }
+            $.ajax({
+                'url': '{{ route("photo-permission") }}',
+                'data': formData,
+                success: function(data) {
+                    if (data == "`success") {
+                        toastr.success('Photo Permission has been Changed Successfully.', 'Permission Changed!');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Ajax request error:', status, error);
+                }
+            })
+        });
+
+    </script>
 @endsection
 
 @section('content')
@@ -25,6 +63,7 @@
             </tr>
             </thead>
             <tbody>
+            @foreach($users as $user)
                 <tr class="odd">
                     <td class="sorting_1">
                         <div class="d-flex justify-content-start align-items-center user-name">
@@ -35,83 +74,27 @@
                             </div>
                             <div class="d-flex flex-column">
                                 <a href="app-user-view-account.html" class="text-body text-truncate">
-                                    <span class="fw-medium">Zsazsa McCleverty</span>
+                                    <span class="fw-medium">{{ $user->name }}</span>
                                 </a>
-                                <small class="text-muted">zmcclevertye@soundcloud.com</small>
+                                <small class="text-muted">{{ $user->email }}</small>
                             </div>
                         </div>
                     </td>
                     <td>
-                        <input class="form-check-input" type="checkbox">
+                        <input class="form-check-input contactPermission" {{ $user->contact_permission ? 'checked' : '' }} data-user-id="{{ $user->id }}"  type="checkbox">
                     </td>
                     <td>
-                        <input class="form-check-input" type="checkbox">
+                        <input class="form-check-input photoPermission" {{ $user->photo_permission ? 'checked' : '' }} data-user-id="{{ $user->id }}" type="checkbox">
                     </td>
                     <td>
-                        <span class="text-truncate d-flex align-items-center">
-                            <span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
-                                <i class="ti ti-chart-pie-2 ti-sm"></i>
-                            </span>Maintainer
-                        </span>
+                        {{ $user->created_at }}
                     </td>
                     <td>
                         <i class="ti ti-trash"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti ti-eye"></i>
                     </td>
                 </tr>
-                <tr>
-                    <td class="sorting_1">
-                        <div class="d-flex justify-content-start align-items-center user-name">
-                            <div class="avatar-wrapper">
-                                <div class="avatar me-3">
-                                    <img src="../../assets/img/avatars/2.png" alt="Avatar" class="rounded-circle">
-                                </div>
-                            </div>
-                            <div class="d-flex flex-column">
-                                <a href="app-user-view-account.html" class="text-body text-truncate">
-                                    <span class="fw-medium">Zsazsa McCleverty</span>
-                                </a>
-                                <small class="text-muted">zmcclevertye@soundcloud.com</small>
-                            </div>
-                        </div>
-                    </td>
-                    <td><input class="form-check-input" type="checkbox"></td>
-                    <td><input class="form-check-input" type="checkbox"></td>
-                    <td>
-                        <span class="text-truncate d-flex align-items-center">
-                            <span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
-                                <i class="ti ti-chart-pie-2 ti-sm"></i>
-                            </span>Time
-                        </span>
-                    </td>
-                    <td><i class="ti ti-trash"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti ti-eye"></i></td>
-                </tr>
-                <tr>
-                    <td class="sorting_1">
-                        <div class="d-flex justify-content-start align-items-center user-name">
-                            <div class="avatar-wrapper">
-                                <div class="avatar me-3">
-                                    <img src="../../assets/img/avatars/2.png" alt="Avatar" class="rounded-circle">
-                                </div>
-                            </div>
-                            <div class="d-flex flex-column">
-                                <a href="app-user-view-account.html" class="text-body text-truncate">
-                                    <span class="fw-medium">Zsazsa McCleverty</span>
-                                </a>
-                                <small class="text-muted">zmcclevertye@soundcloud.com</small>
-                            </div>
-                        </div>
-                    </td>
-                    <td><input class="form-check-input" type="checkbox"></td>
-                    <td><input class="form-check-input" type="checkbox"></td>
-                    <td>
-                        <span class="text-truncate d-flex align-items-center">
-                            <span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
-                                <i class="ti ti-chart-pie-2 ti-sm"></i>
-                            </span>Time
-                        </span>
-                    </td>
-                    <td><i class="ti ti-trash"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti ti-eye"></i></td>
-                </tr>
+            @endforeach
+
             </tbody>
         </table>
         </div>
