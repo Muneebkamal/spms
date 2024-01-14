@@ -4,13 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function index()
+    public function profile()
     {
-        return view('content.Admin.profile');
+        $user = \auth()->user();
+        if(\auth()->user()->role == 'admin') {
+            return view('content.Admin.profile', compact('user'));
+        }else{
+            return view('content.users.profile', compact('user'));
+        }
     }
+
+    public function viewAgent($id) {
+        $user = User::where('id',$id)->first();
+        return view('content.users.profileView', compact('user'));
+    }
+    public function deleteAgent($id) {
+        $user = User::where('id',$id)->first();
+        $user->delete();
+        return response(['success' => true]);
+    }
+
     public function changePassword(Request $request) {
         $newPassword = $request->input('newPassword');
         $user = auth()->user();
@@ -21,6 +39,7 @@ class UserController extends Controller
 
         return response(['success' => true]);
     }
+
     public function register()
     {
         return view('content.dashboard.dashboard');
@@ -49,7 +68,7 @@ class UserController extends Controller
         $user->photo_permission = $check;
         $user->save();
 
-        return response('success');
+        return response()->json(['success' => true]);
     }
 
     public function toggleContactPermission(Request $request)
@@ -62,7 +81,28 @@ class UserController extends Controller
         $user->contact_permission = $check;
         $user->save();
 
-        return response('success');
+        return response()->json(['success' => true]);
     }
 
+    public function uploadUserImage(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // Get the authenticated user
+        $user = Auth::user();
+        if ($user->image) {
+            Storage::delete('public/' . $user->image);
+        }
+
+        $image = $request->file('image');
+        $filename = uniqid() . '.' . $image->getClientOriginalExtension();
+        $path = $image->storeAs('public/user_images', $filename);
+        $user->image = $filename;
+        $user->save();
+
+        return response()->json(['success' => true, 'path' => asset('storage/user_images/' . $filename)]);
+    }
 }

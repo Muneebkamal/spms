@@ -2,6 +2,8 @@
 
 @section('title', 'User List')
 
+@section('styles')
+@endsection
 @section('script')
     @include('content.users.Js.user-list-js')
 @endsection
@@ -26,16 +28,20 @@
             </thead>
             <tbody>
             @foreach($users as $user)
-                <tr class="odd">
+                <tr class="odd" data-user="{{ $user->id }}">
                     <td class="sorting_1">
                         <div class="d-flex justify-content-start align-items-center user-name">
                             <div class="avatar-wrapper">
                                 <div class="avatar me-3">
-                                    <img src="../../assets/img/avatars/2.png" alt="Avatar" class="rounded-circle">
+                                    @if($user->image)
+                                        <img src="{{ asset('storage/user_images/' . $user->image) }}" alt="Avatar" class="rounded-circle">
+                                    @else
+                                        <img src="{{ asset('assets/img/avatars/user.jpg') }}" class="rounded-circle">
+                                    @endif
                                 </div>
                             </div>
                             <div class="d-flex flex-column">
-                                <a href="app-user-view-account.html" class="text-body text-truncate">
+                                <a href="{{ route('viewAgent', ['id' => $user->id]) }}" class="text-body text-truncate">
                                     <span class="fw-medium">{{ $user->name }}</span>
                                 </a>
                                 <small class="text-muted">{{ $user->email }}</small>
@@ -52,7 +58,8 @@
                         {{ $user->created_at }}
                     </td>
                     <td>
-                        <i class="ti ti-trash"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti ti-eye"></i>
+                        <i data-id="{{$user->id}}" class="ti ti-trash delete"></i>
+                        <i onclick="window.location.href = `{{ route('viewAgent', ['id' => $user->id]) }}`" class="ti ti-eye"></i>
                     </td>
                 </tr>
             @endforeach

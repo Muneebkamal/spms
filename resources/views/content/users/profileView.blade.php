@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'Profile')
-
 @section('content')
 <!-- Hour chart  -->
 <h4 class="py-3 mb-4">
@@ -15,23 +13,20 @@
             <div class="card-body">
                 <div class="user-avatar-section">
                     <div class=" d-flex align-items-center flex-column">
-                        <div id="upload">
-                            @if($user->image)
-                                <img id="user_img" class="img-fluid rounded mb-3 pt-1 mt-4"src="{{ asset('storage/user_images/' . $user->image) }}" height="100"
-                                    width="100"alt="User avatar" />
-                            @else
-                                <img id="user_img" class="img-fluid rounded mb-3 pt-1 mt-4" src="{{ asset('assets/img/avatars/user.jpg') }}" height="100"
-                                    width="100" alt="User avatar" />
-                            @endif
-                            <button class="btn btn-sm btn-primary" id="uploadImg">Upload</button>
-                            <input type="file" name="imagFile" class="d-none" id="imagFile">
-                        </div>
+                        @if($user->image)
+                            <img id="user_img" class="img-fluid rounded mb-3 pt-1 mt-4"src="{{ asset('storage/user_images/' . $user->image) }}" height="100"
+                                width="100"alt="User avatar" />
+                        @else
+                            <img id="user_img" class="img-fluid rounded mb-3 pt-1 mt-4" src="{{ asset('assets/img/avatars/user.jpg') }}" height="100"
+                                width="100" alt="User avatar" />
+                        @endif
                         <div class="user-info text-center">
                             <h4 class="mb-2">{{ $user->name }}</h4>
                             <span class="badge bg-label-secondary mt-1">{{ $user->role }}</span>
                         </div>
                     </div>
                 </div>
+
                 <p class="mt-4 small text-uppercase text-muted">Details</p>
                 <div class="info-container">
                     <ul class="list-unstyled">
@@ -57,6 +52,38 @@
             </div>
         </div>
         <!-- /User Card -->
+        <!-- Plan Card -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <span class="badge bg-label-primary">Standard</span>
+                    <div class="d-flex justify-content-center">
+                        <sup class="h6 pricing-currency mt-3 mb-0 me-1 text-primary fw-normal">$</sup>
+                        <h1 class="mb-0 text-primary">99</h1>
+                        <sub class="h6 pricing-duration mt-auto mb-2 text-muted fw-normal">/month</sub>
+                    </div>
+                </div>
+                <ul class="ps-3 g-2 my-3">
+                    <li class="mb-2">10 Users</li>
+                    <li class="mb-2">Up to 10 GB storage</li>
+                    <li>Basic Support</li>
+                </ul>
+                <div class="d-flex justify-content-between align-items-center mb-1 fw-medium text-heading">
+                    <span>Days</span>
+                    <span>65% Completed</span>
+                </div>
+                <div class="progress mb-1" style="height: 8px;">
+                    <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <span>4 days remaining</span>
+                <div class="d-grid w-100 mt-4">
+                    <button class="btn btn-primary" data-bs-target="#upgradePlanModal" data-bs-toggle="modal">Upgrade
+                        Plan</button>
+                </div>
+            </div>
+        </div>
+        <!-- /Plan Card -->
     </div>
     <!--/ User Sidebar -->
 
@@ -78,7 +105,7 @@
         </ul>
         <!--/ User Pills -->
 
-        <div class="card mb-4">
+        {{-- <div class="card mb-4">
             <h5 class="card-header">Change Password</h5>
             <div class="card-body">
                 <form id="formChangePassword" method="GET" onsubmit="return false">
@@ -110,27 +137,10 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> --}}
     </div>
     <!--/ User Content -->
 
 </div>
-<style>
-#upload > button{
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 4rem);
-    display: none
-}
-#upload:hover > button{
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 4rem);
-    display: inline-flex !important
-}
-</style>
 @endsection
 
-@section('script')
-@include('content.Admin.js.profileJs')
-@endsection
