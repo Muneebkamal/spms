@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact " dir="ltr"
-    data-theme="theme-default" data-assets-path="../../assets/" data-template="vertical-menu-template">
-
+<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact " dir="ltr">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport"
@@ -12,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon"
-        href="{{URL::asset('assets/img/default-imgs/logo.png')}}" />
+        href="{{ asset('assets/img/default-imgs/logo.png')}}" />
     {{-- <img src="{{URL::asset('assets/img/default-imgs/logo.png')}}" alt="image/x-icon" width="32">     --}}
 
     <!-- Fonts -->

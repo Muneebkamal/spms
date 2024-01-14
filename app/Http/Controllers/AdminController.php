@@ -14,8 +14,6 @@ class AdminController extends Controller
         return view('content.Admin.profile');
     }
 
-
-    
     public function changePassword(Request $request) {
         $newPassword = $request->input('newPassword');
         $user = auth()->user();
@@ -27,7 +25,5 @@ class AdminController extends Controller
         return response(['success' => true]);
 
     }
-    
-
 
 }

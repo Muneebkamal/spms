@@ -34,14 +34,17 @@ Route::middleware(['auth', 'checkRole:admin,agent'])->group(function () {
 });
 Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     Route::get('/register', [UserController::class, 'register'])->middleware('auth')->name('register');
-
     // Route property List
     Route::get('/property-list', [PropertyController::class, 'index']);
     // Route Create Agents
-    Route::get('/create-agent', [UserController::class, 'index']);
+    Route::get('/create-agent', [UserController::class, 'createAgent']);
     // Route User List
-    Route::get('/user-list', [UserController::class, 'index']);
+    Route::get('/user-list', [UserController::class, 'agentsList']);
+    // Route Toggle Photo Premission
+    Route::get('/user-photo-permission', [UserController::class, 'togglePhotoPermission'])->name('photo-permission');
+    // Route Toggle Contact Premission
+    Route::get('/user-contact-permission', [UserController::class, 'toggleContactPermission'])->name('contact-permission');
     // Route All views
-    Route::get('/all-views', [UserController::class, 'index']);
+    Route::get('/all-views', [UserController::class, 'allViews']);
 
 });
