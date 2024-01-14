@@ -91,19 +91,25 @@
               <div data-i18n="Properties">Properties</div>
             </a>
             <ul class="menu-sub">
-        <li class="menu-item">
-            <a href="{{url('add-property')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                <div>Add Property</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{url('property-list')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                <div>Property List</div>
-            </a>
-        </li>
-        </ul>
+                <li class="menu-item">
+                    <a href="{{url('add-property')}}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                        <div>Add Property</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{url('property-list')}}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                        <div>Property List</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{url('admin-search')}}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-user-search"></i>
+                        <div>Admin Search</div>
+                    </a>
+                </li>
+            </ul>
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-users-group"></i>
@@ -126,12 +132,6 @@
             <a href="{{url('all-views')}}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-view-360"></i>
                 <div>All Views</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{url('admin-search')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-user-search"></i>
-                <div>Admin Search</div>
             </a>
         </li>
         <li class="menu-item">

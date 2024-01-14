@@ -47,13 +47,37 @@
 
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DDHKGP" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
-    <div class="container-xxl">
+    {{-- <div class="container-xxl">
         <div class="authentication-wrapper authentication-basic container-p-y">
             <div class="authentication-inner py-4">
                 @yield('content')
             </div>
         </div>
+    </div> --}}
+    
+    <div class="authentication-wrapper authentication-cover authentication-bg">
+  <div class="authentication-inner row">
+    <!-- /Left Text -->
+    <div class="d-none d-lg-flex col-lg-7 p-0">
+      <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
+        <img src="{{asset('assets/img/illustrations/auth-login-illustration-light.png')}}" alt="auth-login-cover" class="img-fluid my-5 auth-illustration" data-app-light-img="illustrations/auth-login-illustration-light.png" data-app-dark-img="illustrations/auth-login-illustration-dark.html">
+
+        <img src="{{asset('assets/img/illustrations/bg-shape-image-light.png')}}" alt="auth-login-cover" class="platform-bg" data-app-light-img="illustrations/bg-shape-image-light.png" data-app-dark-img="illustrations/bg-shape-image-dark.html">
+      </div>
     </div>
+    <!-- /Left Text -->
+
+    <!-- Login -->
+    <div class="d-flex col-12 col-lg-5 align-items-center p-sm-5 p-4">
+        @yield('content')
+    </div>
+    <!-- /Login -->
+  </div>
+</div>
+
+<!-- / Content -->
+
+    
     <!-- Core JS -->
     <!-- build:js asset/vendor/js/core.js -->
 
