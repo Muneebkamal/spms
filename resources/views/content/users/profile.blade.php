@@ -13,7 +13,8 @@
             <div class="card-body">
                 <div class="user-avatar-section">
                     <div class=" d-flex align-items-center flex-column">
-                        <div id="upload">
+
+                       <div id="upload">
                             @if($user->image)
                                 <img id="user_img" class="img-fluid rounded mb-3 pt-1 mt-4"src="{{ asset('storage/user_images/' . $user->image) }}" height="100"
                                     width="100"alt="User avatar" />
@@ -55,6 +56,7 @@
             </div>
         </div>
         <!-- /User Card -->
+
     </div>
     <!--/ User Sidebar -->
 
@@ -130,5 +132,5 @@
 @endsection
 
 @section('script')
-@include('content.Admin.js.profileJs')
+@include('content.users.js.profileJs')
 @endsection

@@ -1,4 +1,4 @@
-`<?php
+<?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -9,10 +9,9 @@ use App\Http\Controllers\PropertyController;
 
 Auth::routes();
 Route::middleware(['auth', 'checkRole:admin,agent'])->group(function () {
-    Route::get('/my-profile', [UserController::class, 'index'])->name('profile');
+    Route::get('/my-profile', [UserController::class, 'profile'])->name('profile');
     Route::post('/changePassword', [UserController::class, 'changePassword'])->name('changePassword');
-
-
+    Route::post('/upload-user-image', [UserController::class, 'uploadUserImage'])->name('upload-user-image');
 
     Route::get('/', [GenralController::class, 'index'])->name('home');
     // Route Access records
@@ -38,13 +37,13 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     Route::get('/property-list', [PropertyController::class, 'index']);
     // Route Create Agents
     Route::get('/create-agent', [UserController::class, 'createAgent']);
-    // Route User List
+    // Route User
     Route::get('/user-list', [UserController::class, 'agentsList']);
-    // Route Toggle Photo Premission
+    Route::get('/view-agent/{id}', [UserController::class, 'viewAgent'])->name('viewAgent');
+    Route::delete('/delete-agent/{id}', [UserController::class, 'deleteAgent'])->name('deleteAgent');
+    // Route Premission
     Route::get('/user-photo-permission', [UserController::class, 'togglePhotoPermission'])->name('photo-permission');
-    // Route Toggle Contact Premission
     Route::get('/user-contact-permission', [UserController::class, 'toggleContactPermission'])->name('contact-permission');
     // Route All views
     Route::get('/all-views', [UserController::class, 'allViews']);
-
 });
