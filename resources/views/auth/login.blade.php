@@ -3,10 +3,9 @@
 @section('title', 'Home Page')
 
 @section('content')
-<div class="card">
-    <div class="card-body">
+<div class="w-px-400 mx-auto">
         <!-- Login -->
-        <div class="app-brand justify-content-center mb-4 mt-2">
+        {{-- <div class="app-brand justify-content-center mb-4 mt-2">
             <a href="index-2.html" class="app-brand-link gap-2">
                 <span class="app-brand-logo demo">
                     <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,8 +23,8 @@
                 </span>
                 <span class="app-brand-text demo text-body fw-bold ms-1">Vuexy</span>
             </a>
-        </div>
-        <h4 class="mb-1 pt-2">Welcome to Vuexy! 👋</h4>
+        </div> --}}
+        <h3 class="mb-1 pt-2">Welcome to SPMS! 👋</h3>
         <p class="mb-4">Please sign-in to your account and start the adventure</p>
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -76,6 +75,5 @@
                 <span>Create an account</span>
             </a>
         </p>
-    </div>
 </div>
 @endsection

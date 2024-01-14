@@ -5,44 +5,109 @@
 @endsection
 
 @section('content')
-<div class="card">
-    <div class="card-datatable table-responsive pt-0">
-      <table class="table user-list-table">
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Created at</th>
-            <th>Contact Permission</th>
-            <th>Photo Permission</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div class="card">
+        <div class="card-datatable table-responsive pt-0">
+        <table class="table user-list-table">
+            <thead>
             <tr>
-                <td>Hamza</td>
-                <td>time</td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><i class="ti ti-trash"></i><i class="ti ti-eye"></i></td>
+                <th>{{__('Username')}}</th>
+                <th>{{__('Contact Permission')}}</th>
+                <th>{{__('Photo Permission')}}</th>
+                <th>{{__('Created at')}}</th>
+                <th>{{__('Action')}}</th>
             </tr>
-            <tr>
-                <td>Hammad</td>
-                <td>time</td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><i class="ti ti-trash"></i><i class="ti ti-eye"></i></td>
-            </tr>
-            <tr>
-                <td>Muneeb</td>
-                <td>time</td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><i class="ti ti-trash"></i><i class="ti ti-eye"></i></td>
-            </tr>
-
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+                <tr class="odd">
+                    <td class="sorting_1">
+                        <div class="d-flex justify-content-start align-items-center user-name">
+                            <div class="avatar-wrapper">
+                                <div class="avatar me-3">
+                                    <img src="../../assets/img/avatars/2.png" alt="Avatar" class="rounded-circle">
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <a href="app-user-view-account.html" class="text-body text-truncate">
+                                    <span class="fw-medium">Zsazsa McCleverty</span>
+                                </a>
+                                <small class="text-muted">zmcclevertye@soundcloud.com</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>
+                        <span class="text-truncate d-flex align-items-center">
+                            <span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
+                                <i class="ti ti-chart-pie-2 ti-sm"></i>
+                            </span>Maintainer
+                        </span>
+                    </td>
+                    <td>
+                        <i class="ti ti-trash"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti ti-eye"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="sorting_1">
+                        <div class="d-flex justify-content-start align-items-center user-name">
+                            <div class="avatar-wrapper">
+                                <div class="avatar me-3">
+                                    <img src="../../assets/img/avatars/2.png" alt="Avatar" class="rounded-circle">
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <a href="app-user-view-account.html" class="text-body text-truncate">
+                                    <span class="fw-medium">Zsazsa McCleverty</span>
+                                </a>
+                                <small class="text-muted">zmcclevertye@soundcloud.com</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td>
+                        <span class="text-truncate d-flex align-items-center">
+                            <span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
+                                <i class="ti ti-chart-pie-2 ti-sm"></i>
+                            </span>Time
+                        </span>
+                    </td>
+                    <td><i class="ti ti-trash"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti ti-eye"></i></td>
+                </tr>
+                <tr>
+                    <td class="sorting_1">
+                        <div class="d-flex justify-content-start align-items-center user-name">
+                            <div class="avatar-wrapper">
+                                <div class="avatar me-3">
+                                    <img src="../../assets/img/avatars/2.png" alt="Avatar" class="rounded-circle">
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <a href="app-user-view-account.html" class="text-body text-truncate">
+                                    <span class="fw-medium">Zsazsa McCleverty</span>
+                                </a>
+                                <small class="text-muted">zmcclevertye@soundcloud.com</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td>
+                        <span class="text-truncate d-flex align-items-center">
+                            <span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
+                                <i class="ti ti-chart-pie-2 ti-sm"></i>
+                            </span>Time
+                        </span>
+                    </td>
+                    <td><i class="ti ti-trash"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti ti-eye"></i></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
     </div>
-  </div>
 
 @endsection

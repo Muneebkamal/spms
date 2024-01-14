@@ -45,7 +45,7 @@ Route::middleware(['auth'])->group(function () {
     });
      // Route Admin Search
      Route::get('/admin-search', function(){
-        return view('content.admin-search.admin-search');
+        return view('content.properties.admin-search.admin-search');
     });
      // Route Terms of Use 
      Route::get('/terms-of-use', function(){
