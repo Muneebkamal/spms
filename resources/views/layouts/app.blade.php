@@ -26,8 +26,17 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/flag-icons.css') }}" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default.css') }}" />
+    @php
+        $user = \auth()->user()
+    @endphp
+    @if($user->theme == 'dark')
+        <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core-dark.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default-dark.css') }}" />
+    @endif
+    @if($user->theme == 'light')
+        <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default.css') }}" />
+    @endif
     <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
 
     <!-- Vendors CSS -->
@@ -97,15 +106,6 @@
 
     </div>
     <!-- / Layout wrapper -->
-
-
-    <div class="buy-now">
-        <a href="https://1.envato.market/vuexy_admin" target="_blank" cPlass="btn btn-danger btn-buy-now">Buy Now</a>
-    </div>
-
-
-
-
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
 

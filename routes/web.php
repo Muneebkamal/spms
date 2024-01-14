@@ -8,6 +8,7 @@ use App\Http\Controllers\PropertyController;
 
 
 Auth::routes();
+
 Route::middleware(['auth', 'checkRole:admin,agent'])->group(function () {
     Route::get('/my-profile', [UserController::class, 'profile'])->name('profile');
     Route::post('/changePassword', [UserController::class, 'changePassword'])->name('changePassword');
@@ -46,4 +47,7 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     Route::get('/user-contact-permission', [UserController::class, 'toggleContactPermission'])->name('contact-permission');
     // Route All views
     Route::get('/all-views', [UserController::class, 'allViews']);
+
+    Route::put('/toggle-theme/{theme}', [GenralController::class, 'toggleTheme'])->name('toggleTheme');
+
 });

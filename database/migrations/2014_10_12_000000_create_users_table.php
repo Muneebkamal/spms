@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('contact_permission')->default(false);
             $table->boolean('photo_permission')->default(false);
             $table->string('image')->nullable();
+            $table->enum('theme', ['light','dark'])->default('light');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
