@@ -25,13 +25,13 @@
     <!-- Core CSS -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default.css') }}" />
-    
+
     <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }} " />
-    
+
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/node-waves/node-waves.css') }} " />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }} " />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }} " /> 
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }} " />
     <!-- Vendor -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/%40form-validation/umd/styles/index.min.css') }} " />
 
@@ -54,16 +54,16 @@
             </div>
         </div>
     </div> --}}
-    
+
     <div class="authentication-wrapper authentication-cover authentication-bg">
   <div class="authentication-inner row">
     <!-- /Left Text -->
     <div class="d-none d-lg-flex col-lg-7 p-0">
-      <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
-        <img src="{{asset('assets/img/illustrations/auth-login-illustration-light.png')}}" alt="auth-login-cover" class="img-fluid my-5 auth-illustration" data-app-light-img="illustrations/auth-login-illustration-light.png" data-app-dark-img="illustrations/auth-login-illustration-dark.html">
+        <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
+            <img src="{{asset('assets/img/illustrations/auth-login-illustration-light.png')}}" alt="auth-login-cover" class="img-fluid my-5 auth-illustration">
 
-        <img src="{{asset('assets/img/illustrations/bg-shape-image-light.png')}}" alt="auth-login-cover" class="platform-bg" data-app-light-img="illustrations/bg-shape-image-light.png" data-app-dark-img="illustrations/bg-shape-image-dark.html">
-      </div>
+            <img src="{{asset('assets/img/illustrations/bg-shape-image-light.png')}}" alt="auth-login-cover" class="platform-bg">
+        </div>
     </div>
     <!-- /Left Text -->
 
@@ -77,7 +77,7 @@
 
 <!-- / Content -->
 
-    
+
     <!-- Core JS -->
     <!-- build:js asset/vendor/js/core.js -->
 
@@ -100,10 +100,10 @@
 
     <!-- Main JS -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
-  
+
 
     <!-- Page JS -->
     {{-- <script src="{{ asset('assets/js/pages-auth.js') }}"></script> --}}
-  
+
 </body>
 </html>
