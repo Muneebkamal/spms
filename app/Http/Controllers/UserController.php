@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -45,9 +46,30 @@ class UserController extends Controller
         return view('content.dashboard.dashboard');
     }
 
-    public function createAgent(){
+
+    public function createAgentView(){
         return view('content.users.create-agent');
     }
+
+    public function createAgent(Request $request){
+        $oldUser = User::where('email',$request->input('email'))->first();
+        if($oldUser) {
+            return response()->json(['success' => false, 'error' => 'Email Exists']);
+        }
+
+        $user = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'contact_permission' => ($request->input('contact_permission') ? 1 : 0),
+            'photo_permission' => ($request->input('photo_permission') ? 1 : 0),
+            'role' => 'agent'
+        ]);
+
+        // Return a response or redirect
+        return response()->json(['success' => true, 'user' => $user]);
+    }
+
 
     public function agentsList(){
         $users = User::where('role','agent')->get();

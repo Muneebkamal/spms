@@ -1,5 +1,8 @@
+@php
+    $user = \auth()->user()
+@endphp
 <!DOCTYPE html>
-<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact " dir="ltr">
+<html lang="en" class="{{ $user->theme == 'light' ? 'light-style' : 'dark-style' }} layout-navbar-fixed layout-menu-fixed layout-compact " dir="ltr">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport"
@@ -26,9 +29,6 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/flag-icons.css') }}" />
 
     <!-- Core CSS -->
-    @php
-        $user = \auth()->user()
-    @endphp
     @if($user->theme == 'dark')
         <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core-dark.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default-dark.css') }}" />

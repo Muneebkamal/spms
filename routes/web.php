@@ -37,9 +37,10 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     // Route property List
     Route::get('/property-list', [PropertyController::class, 'index']);
     // Route Create Agents
-    Route::get('/create-agent', [UserController::class, 'createAgent']);
+    Route::get('/create-agent', [UserController::class, 'createAgentView'])->name('createAgentView');
+    Route::post('/form-agent', [UserController::class, 'createAgent'])->name('createAgent');
     // Route User
-    Route::get('/user-list', [UserController::class, 'agentsList']);
+    Route::get('/user-list', [UserController::class, 'agentsList'])->name('agentList');
     Route::get('/view-agent/{id}', [UserController::class, 'viewAgent'])->name('viewAgent');
     Route::delete('/delete-agent/{id}', [UserController::class, 'deleteAgent'])->name('deleteAgent');
     // Route Premission
