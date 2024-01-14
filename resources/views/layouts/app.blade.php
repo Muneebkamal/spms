@@ -12,7 +12,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon"
-        href="https://demos.pixinvent.com/vuexy-html-admin-template/assets/img/favicon/favicon.ico" />
+        href="{{URL::asset('assets/img/default-imgs/logo.png')}}" />
+    {{-- <img src="{{URL::asset('assets/img/default-imgs/logo.png')}}" alt="image/x-icon" width="32">     --}}
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">

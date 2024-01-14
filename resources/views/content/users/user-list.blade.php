@@ -1,11 +1,18 @@
 @extends('layouts.app')
 
+@section('title', 'User List')
+
 @section('script')
     @include('content.users.Js.user-list-js')
 @endsection
 
 @section('content')
     <div class="card">
+        <div class="d-flex justify-content-between">
+            <h3 class="mx-3 mb-0 mt-3">{{__('Agents List')}}</h3>
+            <button type="button" class="btn btn-primary waves-effect waves-light mx-3 mb-0 mt-3">Add Agent</button>
+        </div>
+        <hr>
         <div class="card-datatable table-responsive pt-0">
         <table class="table user-list-table">
             <thead>
@@ -35,10 +42,10 @@
                         </div>
                     </td>
                     <td>
-                        <input type="checkbox">
+                        <input class="form-check-input" type="checkbox">
                     </td>
                     <td>
-                        <input type="checkbox">
+                        <input class="form-check-input" type="checkbox">
                     </td>
                     <td>
                         <span class="text-truncate d-flex align-items-center">
@@ -67,8 +74,8 @@
                             </div>
                         </div>
                     </td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
+                    <td><input class="form-check-input" type="checkbox"></td>
+                    <td><input class="form-check-input" type="checkbox"></td>
                     <td>
                         <span class="text-truncate d-flex align-items-center">
                             <span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
@@ -94,8 +101,8 @@
                             </div>
                         </div>
                     </td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
+                    <td><input class="form-check-input" type="checkbox"></td>
+                    <td><input class="form-check-input" type="checkbox"></td>
                     <td>
                         <span class="text-truncate d-flex align-items-center">
                             <span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
