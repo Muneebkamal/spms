@@ -32,133 +32,206 @@
     <div class="menu-inner-shadow"></div>
 
 
-
-    <ul class="menu-inner py-1">
-        <!-- Dashboard -->
-        <li class="menu-item {{ request()->is('/') ? 'active' : '' }}
-        {{-- active open --}}
-        ">
-            <a href="{{ route('home') }}" class="menu-link 
-            {{-- menu-toggle --}}
+    @if(auth()->user()->role == 'admin')
+        <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item {{ request()->is('/') ? 'active' : '' }}
+            {{-- active open --}}
             ">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                <div data-i18n="Dashboard">Dashboard</div>
-                {{-- <div class="badge bg-primary rounded-pill ms-auto">5</div> --}}
-            </a>
-            {{-- <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="index-2.html" class="menu-link">
-                        <div data-i18n="Analytics">Analytics</div>
-                    </a>
-                </li>
-                <li class="menu-item active">
-                    <a href="dashboards-crm.html" class="menu-link">
-                        <div data-i18n="CRM">CRM</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="app-ecommerce-dashboard.html" class="menu-link">
-                        <div data-i18n="eCommerce">eCommerce</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="app-logistics-dashboard.html" class="menu-link">
-                        <div data-i18n="Logistics">Logistics</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="app-academy-dashboard.html" class="menu-link">
-                        <div data-i18n="Academy">Academy</div>
-                    </a>
-                </li>
-            </ul> --}}
-        </li>
-        <li class="menu-item">
-            <a href="{{url('access-records')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-brand-whatsapp"></i>
-                <div>Access records</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{url('share-list')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-share"></i></i>
-                <div>Share list</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons ti ti-building-warehouse"></i>
-              <div data-i18n="Properties">Properties</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{url('add-property')}}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                        <div>Add Property</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{url('property-list')}}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                        <div>Property List</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{url('admin-search')}}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-user-search"></i>
-                        <div>Admin Search</div>
-                    </a>
-                </li>
-            </ul>
+                <a href="{{ route('home') }}" class="menu-link
+                {{-- menu-toggle --}}
+                ">
+                    <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                    <div data-i18n="Dashboard">Dashboard</div>
+                    {{-- <div class="badge bg-primary rounded-pill ms-auto">5</div> --}}
+                </a>
+                {{-- <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="index-2.html" class="menu-link">
+                            <div data-i18n="Analytics">Analytics</div>
+                        </a>
+                    </li>
+                    <li class="menu-item active">
+                        <a href="dashboards-crm.html" class="menu-link">
+                            <div data-i18n="CRM">CRM</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="app-ecommerce-dashboard.html" class="menu-link">
+                            <div data-i18n="eCommerce">eCommerce</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="app-logistics-dashboard.html" class="menu-link">
+                            <div data-i18n="Logistics">Logistics</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="app-academy-dashboard.html" class="menu-link">
+                            <div data-i18n="Academy">Academy</div>
+                        </a>
+                    </li>
+                </ul> --}}
+            </li>
+            <li class="menu-item">
+                <a href="{{url('access-records')}}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-brand-whatsapp"></i>
+                    <div>Access records</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{url('share-list')}}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-share"></i></i>
+                    <div>Share list</div>
+                </a>
+            </li>
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-users-group"></i>
-                <div data-i18n="Users">Users</div>
+                    <i class="menu-icon tf-icons ti ti-building-warehouse"></i>
+                    <div data-i18n="Properties">Properties</div>
                 </a>
                 <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{url('create-agent')}}" class="menu-link">
-                    <div data-i18n="Create Agent">Create Agent</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{url('user-list')}}" class="menu-link">
-                    <div data-i18n="User list">User list</div>
-                    </a>
-                </li>
+                    <li class="menu-item">
+                        <a href="{{url('add-property')}}" class="menu-link">
+                            <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                            <div>Add Property</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{url('property-list')}}" class="menu-link">
+                            <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                            <div>Property List</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{url('admin-search')}}" class="menu-link">
+                            <i class="menu-icon tf-icons ti ti-user-search"></i>
+                            <div>Admin Search</div>
+                        </a>
+                    </li>
+                </ul>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons ti ti-users-group"></i>
+                    <div data-i18n="Users">Users</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{url('create-agent')}}" class="menu-link">
+                            <div data-i18n="Create Agent">Create Agent</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{url('user-list')}}" class="menu-link">
+                            <div data-i18n="User list">User list</div>
+                        </a>
+                    </li>
                 </ul>
             </li>
-        <li class="menu-item">
-            <a href="{{url('all-views')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-view-360"></i>
-                <div>All Views</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{url('terms-of-use')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-file-invoice"></i>
-                <div>Terms of Use</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{url('online-form')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-forms"></i>
-                <div>Online form</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{url('common-words')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-creative-commons-nd"></i>
-                <div>Common words</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-logout"></i>
-                <div>Sign Out</div>
-            </a>
-        </li>
-    </ul>
+            <li class="menu-item">
+                <a href="{{url('all-views')}}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-view-360"></i>
+                    <div>All Views</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{url('terms-of-use')}}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-file-invoice"></i>
+                    <div>Terms of Use</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{url('online-form')}}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-forms"></i>
+                    <div>Online form</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{url('common-words')}}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-creative-commons-nd"></i>
+                    <div>Common words</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-logout"></i>
+                    <div>Sign Out</div>
+                </a>
+            </li>
+        </ul>
+    @endif
+    @if(auth()->user()->role == 'agent')
+        <ul class="menu-inner py-1">
+            <li class="menu-item {{ request()->is('/') ? 'active' : '' }}">
+                <a href="{{ route('home') }}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                    <div data-i18n="Dashboard">Dashboard</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{url('access-records')}}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-brand-whatsapp"></i>
+                    <div>Access records</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{url('share-list')}}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-share"></i></i>
+                    <div>Share list</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons ti ti-building-warehouse"></i>
+                    <div data-i18n="Properties">Properties</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{url('add-property')}}" class="menu-link">
+                            <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                            <div>Add Property</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{url('admin-search')}}" class="menu-link">
+                            <i class="menu-icon tf-icons ti ti-user-search"></i>
+                            <div>Advanced Search</div>
+                        </a>
+                    </li>
+                </ul>
 
+
+            <li class="menu-item">
+                <a href="{{url('all-views')}}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-view-360"></i>
+                    <div>All Views</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{url('terms-of-use')}}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-file-invoice"></i>
+                    <div>Terms of Use</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{url('online-form')}}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-forms"></i>
+                    <div>Online form</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{url('common-words')}}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-creative-commons-nd"></i>
+                    <div>Common words</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-logout"></i>
+                    <div>Sign Out</div>
+                </a>
+            </li>
+        </ul>
+    @endif
 </aside>
 <!-- / Menu -->
