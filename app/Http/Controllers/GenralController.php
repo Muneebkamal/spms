@@ -23,4 +23,12 @@ class GenralController extends Controller
         return view('content.share-list.share-list');
     }
 
+    public function toggleTheme($theme) {
+        $user = \auth()->user();
+        $user->theme = $theme;
+        $user->save();
+
+        return redirect()->back();
+    }
+
 }

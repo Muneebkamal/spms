@@ -44,12 +44,33 @@
             </li>
             <!--/ Language -->
             <!-- Style Switcher -->
-            {{-- <li class="nav-item dropdown-style-switcher dropdown me-2 me-xl-0">
-                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
-                    data-bs-toggle="dropdown">
-                    <i class='ti ti-md'></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
+            @php
+                $user = \auth()->user()
+            @endphp
+            <li class="nav-item dropdown-style-switcher dropdown me-2 me-xl-0">
+                @if($user->theme == 'dark')
+                    <form method="POST" action="{{ route('toggleTheme', ['theme' => 'light']) }}">
+                        @csrf
+                        @method('PUT')
+                        <button class="bg-transparent border-0 bg-navbar-theme" type="submit">
+                            <i class='ti ti-md ti-moon'></i>
+                        </button>
+                    </form>
+                @endif
+
+                @if($user->theme == 'light')
+                    <form method="POST" action="{{ route('toggleTheme', ['theme' => 'dark']) }}">
+                        @csrf
+                        @method('PUT')
+                        <button class="bg-transparent border-0 bg-navbar-theme" type="submit">
+                            <i class='ti ti-md ti-sun'></i>
+                        </button>
+                    </form>
+                @endif
+
+
+
+                {{-- <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
                     <li>
                         <a class="dropdown-item" href="javascript:void(0);" data-theme="light">
                             <span class="align-middle"><i class='ti ti-sun me-2'></i>Light</span>
@@ -66,8 +87,8 @@
                                     class="ti ti-device-desktop me-2"></i>System</span>
                         </a>
                     </li>
-                </ul>
-            </li> --}}
+                </ul> --}}
+            </li>
             <!-- / Style Switcher-->
 
             <!-- Quick links  -->
