@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Dashboard')
+
 @section('content')
 <!-- Hour chart  -->
 <div class="card bg-transparent shadow-none my-4 border-0">

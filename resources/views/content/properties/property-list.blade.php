@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Property List')
+
 @section('script')
     @include('content.properties.js.property-list-js')
 @endsection
