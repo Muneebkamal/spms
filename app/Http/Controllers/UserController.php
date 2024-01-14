@@ -99,7 +99,8 @@ class UserController extends Controller
 
         $image = $request->file('image');
         $filename = uniqid() . '.' . $image->getClientOriginalExtension();
-        $path = $image->storeAs('public/user_images', $filename);
+        $image->move('storage/user_images/', $filename);
+        // $path = $image->storeAs('storage/user_images/', $filename);
         $user->image = $filename;
         $user->save();
 

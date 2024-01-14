@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Profile')
+
 @section('content')
 <!-- Hour chart  -->
 <h4 class="py-3 mb-4">
