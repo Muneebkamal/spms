@@ -9,6 +9,16 @@
 @section('content')
 <div class="property-list">
     <div class="row">
+        <div class="col-md-12 d-flex justify-content-end my-3 px-4">
+            <span class="">
+                <i class="ti ti-list mx-2 fs-2"></i>
+            </span>
+            <span class="">    
+                <i class="ti ti-border-all fs-2"></i>
+            </span>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md">
             <div class="card mb-3">
             <div class="row g-0">
