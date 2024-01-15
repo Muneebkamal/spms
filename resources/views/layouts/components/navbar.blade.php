@@ -110,17 +110,33 @@
                         <div class="row row-bordered overflow-visible g-0">
                             <div class="dropdown-shortcuts-item col">
                                 <span class="dropdown-shortcuts-icon rounded-circle mb-2">
-                                    <i class="ti ti-calendar fs-4"></i>
+                                    <i class="ti ti-user-circle fs-4"></i>
                                 </span>
-                                <a href="app-calendar.html" class="stretched-link">Calendar</a>
-                                <small class="text-muted mb-0">Appointments</small>
+                                <a href="app-calendar.html" class="stretched-link">Create Agent</a>
+                                {{-- <small class="text-muted mb-0">Appointments</small> --}}
                             </div>
                             <div class="dropdown-shortcuts-item col">
                                 <span class="dropdown-shortcuts-icon rounded-circle mb-2">
-                                    <i class="ti ti-file-invoice fs-4"></i>
+                                    <i class="ti ti-plus fs-4"></i>
                                 </span>
-                                <a href="app-invoice-list.html" class="stretched-link">Invoice App</a>
-                                <small class="text-muted mb-0">Manage Accounts</small>
+                                <a href="app-invoice-list.html" class="stretched-link">Add Property</a>
+                                {{-- <small class="text-muted mb-0">Manage Accounts</small> --}}
+                            </div>
+                        </div>
+                        <div class="row row-bordered overflow-visible g-0">
+                            <div class="dropdown-shortcuts-item col">
+                              <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                <i class="ti ti-home-search fs-4"></i>
+                              </span>
+                              <a href="app-user-list.html" class="stretched-link">Search Property</a>
+                              {{-- <small class="text-muted mb-0">Manage Users</small> --}}
+                            </div>
+                            <div class="dropdown-shortcuts-item col">
+                              <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                <i class="ti ti-home-share fs-4"></i>
+                              </span>
+                              <a href="app-access-roles.html" class="stretched-link">Share Property</a>
+                              {{-- <small class="text-muted mb-0">Permission</small> --}}
                             </div>
                         </div>
                     </div>
@@ -192,10 +208,10 @@
                     <div class="avatar avatar-online">
                         @if($user->image)
                             <img src="{{ asset('storage/user_images/' . $user->image) }}" alt
-                                class="h-auto rounded-circle">
+                                class="rounded-circle">
                         @else
                             <img src="{{ asset('assets/img/avatars/user.jpg') }}" alt
-                                class="h-auto rounded-circle">
+                                class="rounded-circle">
                         @endif
                      </div>
                 </a>
@@ -207,10 +223,10 @@
                                     <div class="avatar avatar-online">
                                         @if($user->image)
                                             <img src="{{ asset('storage/user_images/' . $user->image) }}" alt
-                                                class="h-auto rounded-circle">
+                                                class="rounded-circle">
                                         @else
                                             <img src="{{ asset('assets/img/avatars/user.jpg') }}" alt
-                                                class="h-auto rounded-circle">
+                                                class="rounded-circle">
                                         @endif
 
                                     </div>

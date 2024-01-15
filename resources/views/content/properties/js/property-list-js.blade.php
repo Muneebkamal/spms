@@ -1,3 +1,14 @@
 <script>
+    $('#property-table').hide();
+    $(document).ready(function(){
+        $('#list').click(function(){
+            $('#property-table').hide();
+            $('#property-list').show();
+        });
+        $('#table').click(function(){
+            $('#property-list').hide();
+            $('#property-table').show();
+        })
+    })
     $('.user-list-table').dataTable();
 </script>
