@@ -12,7 +12,7 @@
     <div class="card">
         <div class="d-flex justify-content-between">
             <h3 class="mx-3 mb-0 mt-3">{{__('Agents List')}}</h3>
-            <a href="{{ route('createAgentView') }}" type="button" class="btn btn-primary waves-effect waves-light mx-3 mb-0 mt-3">Add Agent</a>
+            <a href="{{ route('createAgentView') }}" type="button" class="btn btn-primary waves-effect waves-light mx-3 mb-0 mt-3"><i class="ti ti-plus"></i>Add Agent</a>
         </div>
         <hr>
         <div class="card-datatable table-responsive pt-0">

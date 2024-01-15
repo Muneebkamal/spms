@@ -7,17 +7,17 @@
 @endsection
 
 @section('content')
-<div class="property-list">
-    <div class="row">
-        <div class="col-md-12 d-flex justify-content-end my-3 px-4">
-            <span class="">
-                <i class="ti ti-list mx-2 fs-2"></i>
-            </span>
-            <span class="">    
-                <i class="ti ti-border-all fs-2"></i>
-            </span>
-        </div>
+<div class="row">
+    <div class="col-md-12 d-flex justify-content-end my-3 px-4">
+        <span class="" id="list" title="List">
+            <i class="ti ti-list mx-2 fs-2"></i>
+        </span>
+        <span class="" id="table" title="Table">    
+            <i class="ti ti-border-all fs-2"></i>
+        </span>
     </div>
+</div>
+<div class="property-list" id="property-list">
     <div class="row">
         <div class="col-md">
             <div class="card mb-3">
@@ -127,7 +127,7 @@
 <!--/ Horizontal -->
 
 <!--Table-->
-<div class="card">
+<div class="card" id="property-table">
     <div class="card-datatable table-responsive pt-0">
     <table class="table user-list-table">
         <thead>
