@@ -8,22 +8,26 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-12 d-flex justify-content-end my-3 px-4">
-        <span class="" id="list" title="List">
-            <i class="ti ti-list mx-2 fs-2"></i>
+    <div class="col-md-6">
+        <h4 class="m-3 property-list">Property List</h4>
+        <h4 class="m-3 property-table">Property Table</h4>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end my-3 px-4">
+        <span class="bg-primary text-white" id="list" title="List">
+            <i class="ti ti-list m-1 fs-2"></i>
         </span>
-        <span class="" id="table" title="Table">    
-            <i class="ti ti-border-all fs-2"></i>
+        <span id="table" title="Table">    
+            <i class="ti ti-border-all m-1 fs-2"></i>
         </span>
     </div>
 </div>
-<div class="property-list" id="property-list">
+<div class="property-list">
     <div class="row">
         <div class="col-md">
             <div class="card mb-3">
             <div class="row g-0">
                 <div class="col-md-2">
-                <img class="card-img card-img-left" src="{{asset('assets/img/elements/9.jpg')}}" alt="Card image" />
+                <img class="card-img card-img-left" src="{{asset('assets/img/elements/9.jpg')}}" height="155" alt="Card image" />
                 </div>
                 <div class="col-md-10">
                 <div class="card-body px-4 py-2">
@@ -41,12 +45,12 @@
                         <div class="col-md-6 pt-1"><h6 class="mb-0">Street: </h6></div>
                         <div class="col-md-6 pt-1"><h6 class="mb-0">Bulding: </h6></div>
                     </div>
-                    <hr/>
-                    <div class="card-footer d-flex justify-content-between p-0">
+                </div>
+                <hr class="my-2 mx-0"/>
+                <div class="card-footer d-flex justify-content-between px-4 py-0">
                         <small>Hamza Aziz</small>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
-                </div>
                 </div>
             </div>
             </div>
@@ -58,7 +62,7 @@
             <div class="card mb-3">
             <div class="row g-0">
                 <div class="col-md-2">
-                <img class="card-img card-img-left" src="{{asset('assets/img/elements/8.jpg')}}" alt="Card image" />
+                <img class="card-img card-img-left" src="{{asset('assets/img/elements/10.jpg')}}" height="155" alt="Card image" />
                 </div>
                 <div class="col-md-10">
                 <div class="card-body px-4 py-2">
@@ -76,12 +80,12 @@
                         <div class="col-md-6 pt-1"><h6 class="mb-0">Street: </h6></div>
                         <div class="col-md-6 pt-1"><h6 class="mb-0">Bulding: </h6></div>
                     </div>
-                    <hr/>
-                    <div class="card-footer d-flex justify-content-between p-0">
+                </div>
+                <hr class="my-2 mx-0"/>
+                <div class="card-footer d-flex justify-content-between px-4 py-0">
                         <small>Hamza Aziz</small>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
-                </div>
                 </div>
             </div>
             </div>
@@ -93,7 +97,7 @@
             <div class="card mb-3">
             <div class="row g-0">
                 <div class="col-md-2">
-                <img class="card-img card-img-left" src="{{asset('assets/img/elements/10.jpg')}}" alt="Card image" />
+                <img class="card-img card-img-left" src="{{asset('assets/img/elements/12.jpg')}}" height="155" alt="Card image" />
                 </div>
                 <div class="col-md-10">
                 <div class="card-body px-4 py-2">
@@ -111,12 +115,12 @@
                         <div class="col-md-6 pt-1"><h6 class="mb-0">Street: </h6></div>
                         <div class="col-md-6 pt-1"><h6 class="mb-0">Bulding: </h6></div>
                     </div>
-                    <hr/>
-                    <div class="card-footer d-flex justify-content-between p-0">
+                </div>
+                <hr class="my-2 mx-0"/>
+                <div class="card-footer d-flex justify-content-between px-4 py-0">
                         <small>Hamza Aziz</small>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
-                </div>
                 </div>
             </div>
             </div>
@@ -127,7 +131,7 @@
 <!--/ Horizontal -->
 
 <!--Table-->
-<div class="card" id="property-table">
+<div class="card property-table">
     <div class="card-datatable table-responsive pt-0">
     <table class="table user-list-table">
         <thead>
