@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GenralController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\LanguageController;
 
 
 Auth::routes();
@@ -52,3 +53,4 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     Route::put('/toggle-theme/{theme}', [GenralController::class, 'toggleTheme'])->name('toggleTheme');
 
 });
+Route::get('/{language?}', [LanguageController::class, 'switchLanguage'])->name('switch.language');
