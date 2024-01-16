@@ -11,19 +11,19 @@
 @section('content')
     <div class="card">
         <div class="d-flex justify-content-between">
-            <h3 class="mx-3 mb-0 mt-3">{{__('Agents List')}}</h3>
-            <a href="{{ route('createAgentView') }}" type="button" class="btn btn-primary waves-effect waves-light mx-3 mb-0 mt-3"><i class="ti ti-plus"></i>Add Agent</a>
+            <h3 class="mx-3 mb-0 mt-3">{{__('agent-list.agents_list')}}</h3>
+            <a href="{{ route('createAgentView') }}" type="button" class="btn btn-primary waves-effect waves-light mx-3 mb-0 mt-3"><i class="ti ti-plus"></i>{{__('agent-list.add_agent')}}</a>
         </div>
         <hr>
         <div class="card-datatable table-responsive pt-0">
         <table class="table user-list-table">
             <thead>
             <tr>
-                <th>{{__('Username')}}</th>
-                <th>{{__('Contact Permission')}}</th>
-                <th>{{__('Photo Permission')}}</th>
-                <th>{{__('Created at')}}</th>
-                <th>{{__('Action')}}</th>
+                <th>{{__('agent-list.username')}}</th>
+                <th>{{__('agent-list.contact_permission')}}</th>
+                <th>{{__('agent-list.photo_permission')}}</th>
+                <th>{{__('agent-list.created_at')}}</th>
+                <th>{{__('agent-list.action')}}</th>
             </tr>
             </thead>
             <tbody>

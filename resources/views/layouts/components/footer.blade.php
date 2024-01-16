@@ -7,22 +7,22 @@
                 © <script>
                     document.write(new Date().getFullYear())
 
-                </script>, made with ❤️ by <a href="https://pixinvent.com/" target="_blank"
+                </script>, {{__('footer.made_with_❤️_by')}} <a href="https://pixinvent.com/" target="_blank"
                     class="fw-medium">Pixinvent</a>
             </div>
             <div class="d-none d-lg-inline-block">
 
                 <a href="https://themeforest.net/licenses/standard" class="footer-link me-4"
-                    target="_blank">License</a>
+                    target="_blank">{{__('footer.license')}}</a>
                 <a href="https://1.envato.market/pixinvent_portfolio" target="_blank"
-                    class="footer-link me-4">More Themes</a>
+                    class="footer-link me-4">{{__('footer.more_themes')}}</a>
 
                 <a href="https://demos.pixinvent.com/vuexy-html-admin-template/documentation/"
-                    target="_blank" class="footer-link me-4">Documentation</a>
+                    target="_blank" class="footer-link me-4">{{__('footer.documentation')}}</a>
 
 
                 <a href="https://pixinvent.ticksy.com/" target="_blank"
-                    class="footer-link d-none d-sm-inline-block">Support</a>
+                    class="footer-link d-none d-sm-inline-block">{{__('footer.support')}}</a>
 
             </div>
         </div>
