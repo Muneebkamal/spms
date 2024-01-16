@@ -140,31 +140,31 @@
             <li class="menu-item">
                 <a href="{{url('access-records')}}" class="menu-link">
                     <i class="menu-icon tf-icons ti ti-brand-whatsapp"></i>
-                    <div>Access records</div>
+                    <div>{{ __('menu.access_records') }}</div>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="{{url('share-list')}}" class="menu-link">
                     <i class="menu-icon tf-icons ti ti-share"></i></i>
-                    <div>Share list</div>
+                    <div>{{ __('menu.share_list') }}</div>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons ti ti-building-warehouse"></i>
-                    <div data-i18n="Properties">Properties</div>
+                    <div data-i18n="Properties">{{ __('menu.properties') }}</div>
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item">
                         <a href="{{url('add-property')}}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                            <div>Add Property</div>
+                            <div>{{ __('menu.add_property') }}</div>
                         </a>
                     </li>
                     <li class="menu-item">
                         <a href="{{url('admin-search')}}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-user-search"></i>
-                            <div>Advanced Search</div>
+                            <div>{{ __('menu.admin_search') }}</div>
                         </a>
                     </li>
                 </ul>
@@ -173,31 +173,31 @@
             <li class="menu-item">
                 <a href="{{url('all-views')}}" class="menu-link">
                     <i class="menu-icon tf-icons ti ti-view-360"></i>
-                    <div>All Views</div>
+                    <div>{{ __('menu.all_views') }}</div>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="{{url('terms-of-use')}}" class="menu-link">
                     <i class="menu-icon tf-icons ti ti-file-invoice"></i>
-                    <div>Terms of Use</div>
+                    <div>{{ __('menu.terms_of_use') }}</div>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="{{url('online-form')}}" class="menu-link">
                     <i class="menu-icon tf-icons ti ti-forms"></i>
-                    <div>Online form</div>
+                    <div>{{ __('menu.online_form') }}</div>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="{{url('common-words')}}" class="menu-link">
                     <i class="menu-icon tf-icons ti ti-creative-commons-nd"></i>
-                    <div>Common words</div>
+                    <div>{{ __('menu.common_words') }}</div>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="#" class="menu-link">
                     <i class="menu-icon tf-icons ti ti-logout"></i>
-                    <div>Sign Out</div>
+                    <div>{{ __('menu.sign_out') }}</div>
                 </a>
             </li>
         </ul>

@@ -23,7 +23,7 @@
                     </li>
                     <li>
                         <a class="dropdown-item"  href="{{ route('switch.language', ['language' => 'de']) }}">
-                            <span class="align-middle">Chenses</span>
+                            <span class="align-middle">{{__('navbar.chinese')}}</span>
                         </a>
                     </li>
                 </ul>
@@ -86,7 +86,7 @@
                 <div class="dropdown-menu dropdown-menu-end py-0">
                     <div class="dropdown-menu-header border-bottom">
                         <div class="dropdown-header d-flex align-items-center py-3">
-                            <h5 class="text-body mb-0 me-auto">Shortcuts</h5>
+                            <h5 class="text-body mb-0 me-auto">{{__('navbar.shortcuts')}}</h5>
                             <a href="javascript:void(0)" class="dropdown-shortcuts-add text-body"
                                 data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="Add shortcuts"><i class="ti ti-sm ti-apps"></i></a>
@@ -98,15 +98,13 @@
                                 <span class="dropdown-shortcuts-icon rounded-circle mb-2">
                                     <i class="ti ti-user-circle fs-4"></i>
                                 </span>
-                                <a href="app-calendar.html" class="stretched-link">Create Agent</a>
-                                {{-- <small class="text-muted mb-0">Appointments</small> --}}
+                                <a href="app-calendar.html" class="stretched-link">{{__('navbar.create_agent')}}</a>
                             </div>
                             <div class="dropdown-shortcuts-item col">
                                 <span class="dropdown-shortcuts-icon rounded-circle mb-2">
                                     <i class="ti ti-plus fs-4"></i>
                                 </span>
-                                <a href="app-invoice-list.html" class="stretched-link">Add Property</a>
-                                {{-- <small class="text-muted mb-0">Manage Accounts</small> --}}
+                                <a href="app-invoice-list.html" class="stretched-link">{{__('navbar.add_property')}}</a>
                             </div>
                         </div>
                         <div class="row row-bordered overflow-visible g-0">
@@ -114,15 +112,13 @@
                               <span class="dropdown-shortcuts-icon rounded-circle mb-2">
                                 <i class="ti ti-home-search fs-4"></i>
                               </span>
-                              <a href="app-user-list.html" class="stretched-link">Search Property</a>
-                              {{-- <small class="text-muted mb-0">Manage Users</small> --}}
+                              <a href="app-user-list.html" class="stretched-link">{{__('navbar.search_property')}}</a>
                             </div>
                             <div class="dropdown-shortcuts-item col">
                               <span class="dropdown-shortcuts-icon rounded-circle mb-2">
                                 <i class="ti ti-home-share fs-4"></i>
                               </span>
-                              <a href="app-access-roles.html" class="stretched-link">Share Property</a>
-                              {{-- <small class="text-muted mb-0">Permission</small> --}}
+                              <a href="app-access-roles.html" class="stretched-link">{{__('navbar.share_property')}}</a>
                             </div>
                         </div>
                     </div>
@@ -140,7 +136,7 @@
                 <ul class="dropdown-menu dropdown-menu-end py-0">
                     <li class="dropdown-menu-header border-bottom">
                         <div class="dropdown-header d-flex align-items-center py-3">
-                            <h5 class="text-body mb-0 me-auto">Notification</h5>
+                            <h5 class="text-body mb-0 me-auto">{{__('navbar.notification')}}</h5>
                             <a href="javascript:void(0)" class="dropdown-notifications-all text-body"
                                 data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="Mark all as read"><i class="ti ti-mail-opened fs-4"></i></a>
@@ -177,7 +173,7 @@
                     <li class="dropdown-menu-footer border-top">
                         <a href="javascript:void(0);"
                             class="dropdown-item d-flex justify-content-center text-primary p-2 h-px-40 mb-1 align-items-center">
-                            View all notifications
+                            {{__('navbar.view_all_notifications')}}
                         </a>
                     </li>
                 </ul>
@@ -230,7 +226,7 @@
                     <li>
                         <a class="dropdown-item" href="{{ route('profile') }}">
                             <i class="ti ti-user-check me-2 ti-sm"></i>
-                            <span class="align-middle">My Profile</span>
+                            <span class="align-middle">{{__('navbar.my-profile')}}</span>
                         </a>
                     </li>
                     <li>
@@ -241,7 +237,7 @@
                             @csrf
                             <button type="submit" class="dropdown-item">
                                 <i class="ti ti-logout me-2 ti-sm"></i>
-                                <span class="align-middle">Log Out</span>
+                                <span class="align-middle">{{__('navbar.log_out')}}</span>
                             </button>
                         </form>
                     </li>
