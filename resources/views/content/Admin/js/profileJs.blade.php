@@ -53,6 +53,8 @@ $('#imagFile').on('change', function() {
             success: function(data) {
                 console.log('Upload successful:', data);
                 $('#user_img').attr('src', data.path)
+                $('#user_img_nav').attr('src', data.path)
+                $('#user_img_nav_menu').attr('src', data.path)
             },
             error: function(error) {
                 console.error('Upload failed:', error);

@@ -41,12 +41,6 @@ class UserController extends Controller
         return response(['success' => true]);
     }
 
-    public function register()
-    {
-        return view('content.dashboard.dashboard');
-    }
-
-
     public function createAgentView(){
         return view('content.users.create-agent');
     }

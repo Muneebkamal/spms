@@ -122,10 +122,13 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a href="#" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-logout"></i>
-                    <div>{{ __('menu.sign_out') }}</div>
-                </a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="menu-link bg-transparent border-0">
+                        <i class="menu-icon tf-icons ti ti-logout"></i>
+                        <div>{{ __('menu.sign_out') }}</div>
+                    </button>
+                </form>
             </li>
         </ul>
     @endif
@@ -195,10 +198,13 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a href="#" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-logout"></i>
-                    <div>{{ __('menu.sign_out') }}</div>
-                </a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="menu-link bg-transparent border-0">
+                        <i class="menu-icon tf-icons ti ti-logout"></i>
+                        <div>{{ __('menu.sign_out') }}</div>
+                    </button>
+                </form>
             </li>
         </ul>
     @endif

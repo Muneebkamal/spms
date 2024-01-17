@@ -189,10 +189,10 @@
                     data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
                         @if($user->image)
-                            <img src="{{ asset('storage/user_images/' . $user->image) }}" alt
+                            <img id="user_img_nav" src="{{ asset('storage/user_images/' . $user->image) }}" alt
                                 class="rounded-circle">
                         @else
-                            <img src="{{ asset('assets/img/avatars/user.jpg') }}" alt
+                            <img id="user_img_nav" src="{{ asset('assets/img/avatars/user.jpg') }}" alt
                                 class="rounded-circle">
                         @endif
                      </div>
@@ -204,10 +204,10 @@
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
                                         @if($user->image)
-                                            <img src="{{ asset('storage/user_images/' . $user->image) }}" alt
+                                            <img id="user_img_nav_menu" src="{{ asset('storage/user_images/' . $user->image) }}" alt
                                                 class="rounded-circle">
                                         @else
-                                            <img src="{{ asset('assets/img/avatars/user.jpg') }}" alt
+                                            <img id="user_img_nav_menu" src="{{ asset('assets/img/avatars/user.jpg') }}" alt
                                                 class="rounded-circle">
                                         @endif
 
