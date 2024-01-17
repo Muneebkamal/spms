@@ -120,7 +120,7 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, 4rem);
-    display: none
+    display: none !important
 }
 #upload:hover > button{
     position: absolute;
