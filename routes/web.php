@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\GenralController;
+use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\LanguageController;
@@ -25,27 +25,30 @@ Route::middleware(['auth', 'checkRole:admin,agent'])->group(function () {
 
     //-------------------
     // USER PROFILE
-    Route::get('/', [GenralController::class, 'index'])->name('home');
+    Route::get('/', [GeneralController::class, 'index'])->name('home');
 
     //-------------------
     // Route Access records
-    Route::get('/access-records', [GenralController::class, 'accessRecords']);
+    Route::get('/access-records', [GeneralController::class, 'accessRecords']);
 
     //-------------------
     // Route Share List
-    Route::get('/share-list', [GenralController::class, 'shareList']);
+    Route::get('/share-list', [GeneralController::class, 'shareList']);
 
     //-------------------
     // Route Terms of Use
-    Route::get('/terms-of-use', [GenralController::class, 'termOfUse']);
+    Route::get('/terms-of-use', [GeneralController::class, 'termOfUse']);
 
     //-------------------
     // Route Online Form
-    Route::get('/online-form', [GenralController::class, 'onlineForm']);
+    Route::get('/online-form', [GeneralController::class, 'onlineForm']);
 
     //-------------------
     // Route Add property
-    Route::get('/add-property', [PropertyController::class, 'create']);
+    Route::get('/add-property', [PropertyController::class, 'view']);
+    Route::post('/add-property', [PropertyController::class, 'create'])->name('createProperty');
+    Route::get('/check-code/{code}', [PropertyController::class, 'verifyCode'])->name('verifyCode');
+
 
     //-------------------
     // Route Common Words
@@ -60,7 +63,7 @@ Route::middleware(['auth', 'checkRole:admin,agent'])->group(function () {
 
     //------------
     // UI ROUTES
-    Route::put('/toggle-theme/{theme}', [GenralController::class, 'toggleTheme'])->name('toggleTheme');
+    Route::put('/toggle-theme/{theme}', [GeneralController::class, 'toggleTheme'])->name('toggleTheme');
     Route::get('/{language?}', [LanguageController::class, 'switchLanguage'])->name('switch.language');
 
 });
@@ -72,7 +75,7 @@ Route::middleware(['auth', 'checkRole:admin,agent'])->group(function () {
 Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     Route::get('/register', [UserController::class, 'createAgentView'])->middleware('auth')->name('register');
     // Route property List
-    Route::get('/property-list', [PropertyController::class, 'index']);
+    Route::get('/property-list', [PropertyController::class, 'index'])->name('property-list');
     // Route Create Agents
     Route::get('/create-agent', [UserController::class, 'createAgentView'])->name('createAgentView');
     Route::post('/form-agent', [UserController::class, 'createAgent'])->name('createAgent');
@@ -86,3 +89,5 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     // Route All views
     Route::get('/all-views', [UserController::class, 'allViews']);
 });
+
+
