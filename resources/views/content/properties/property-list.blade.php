@@ -3,7 +3,7 @@
 @section('title', 'Property List')
 
 @section('script')
-    @include('content.properties.js.property-list-js')
+    {{-- @include('content.properties.js.property-list-js') --}}
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@
         <span class="bg-primary text-white" id="list" title="List">
             <i class="ti ti-list m-1 fs-2"></i>
         </span>
-        <span id="table" title="Table">    
+        <span id="table" title="Table">
             <i class="ti ti-border-all m-1 fs-2"></i>
         </span>
     </div>
