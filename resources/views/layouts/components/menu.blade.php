@@ -72,6 +72,12 @@
                         </a>
                     </li>
                     <li class="menu-item">
+                        <a href="{{ url('property-details') }}" class="menu-link">
+                            <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                            <div>{{ __('Property Details') }}</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
                         <a href="{{ url('admin-search') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-user-search"></i>
                             <div>{{ __('menu.admin_search') }}</div>
@@ -162,6 +168,12 @@
                         <a href="{{url('add-property')}}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-smart-home"></i>
                             <div>{{ __('menu.add_property') }}</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ url('property-details') }}" class="menu-link">
+                            <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                            <div>{{ __('Property Details') }}</div>
                         </a>
                     </li>
                     <li class="menu-item">
