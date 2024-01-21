@@ -98,7 +98,7 @@
                                 <span class="dropdown-shortcuts-icon rounded-circle mb-2">
                                     <i class="ti ti-user-circle fs-4"></i>
                                 </span>
-                                <a href="app-calendar.html" class="stretched-link">{{__('navbar.create_agent')}}</a>
+                                <a href="{{ route('property-list') }}" class="stretched-link">{{__('navbar.create_agent')}}</a>
                             </div>
                             <div class="dropdown-shortcuts-item col">
                                 <span class="dropdown-shortcuts-icon rounded-circle mb-2">
