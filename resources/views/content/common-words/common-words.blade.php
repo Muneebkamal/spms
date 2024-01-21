@@ -14,10 +14,10 @@
             <div class="card p-4">
                 <h3>{{('Add Words')}}</h3>
                 <form action="">
-                    <label for="">{{('Write your Word')}</label>
+                    <label for="">{{ __('Write your Word')}}</label>
                     <input class="form-control" type="text" placeholder="Write...">
                     <button class="btn btn-primary mt-3">{{('Add Word')}}</button>
-                </form>    
+                </form>
             </div>
         </div>
         <div class="col-md-8">

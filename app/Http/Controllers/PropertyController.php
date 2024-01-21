@@ -17,6 +17,9 @@ class PropertyController extends Controller
     public function index(){
         return view('content.properties.property-list');
     }
+    public function detail($id){
+        return view('content.properties.property-details');
+    }
     public function search(){
         return view('content.properties.admin-search.admin-search');
     }

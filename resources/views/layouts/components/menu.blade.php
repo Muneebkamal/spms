@@ -71,12 +71,7 @@
                             <div>{{ __('menu.property_list') }}</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="{{ url('property-details') }}" class="menu-link">
-                            <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                            <div>{{ __('Property Details') }}</div>
-                        </a>
-                    </li>
+
                     <li class="menu-item">
                         <a href="{{ url('admin-search') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-user-search"></i>

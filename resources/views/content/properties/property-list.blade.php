@@ -3,7 +3,7 @@
 @section('title', 'Property List')
 
 @section('script')
-    {{-- @include('content.properties.js.property-list-js') --}}
+    @include('content.properties.js.property-list-js')
 @endsection
 
 @section('content')
@@ -24,35 +24,35 @@
 <div class="property-list">
     <div class="row">
         <div class="col-md">
-            <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-2">
-                <img class="card-img card-img-left" src="{{asset('assets/img/elements/9.jpg')}}" height="155" alt="Card image" />
-                </div>
-                <div class="col-md-10">
-                <div class="card-body px-4 py-2">
-                    <div class="d-flex justify-content-between">
-                        <h3 class="card-title">{{__('Building')}}</h3>
-                        <div>
-                            <a href="#" class="text-muted"><i class="ti ti-eye"></i></a>
-                            <a href="#" class="text-muted"><i class="ti ti-copy"></i></a>
-                            <a href="#" class="text-muted"><i class="ti ti-trash"></i></a>
+            <div class="card mb-3"onclick="window.location.href = `{{ route('property-details', ['id' => 1]) }}`">
+                <div class="row g-0">
+                    <div class="col-md-2">
+                    <img class="card-img card-img-left" src="{{asset('assets/img/elements/9.jpg')}}" height="155" alt="Card image" />
+                    </div>
+                    <div class="col-md-10">
+                    <div class="card-body px-4 py-2">
+                        <div class="d-flex justify-content-between">
+                            <h3 class="card-title">{{__('Building')}}</h3>
+                            <div>
+                                <a href="#" class="text-muted"><i class="ti ti-eye"></i></a>
+                                <a href="#" class="text-muted"><i class="ti ti-copy"></i></a>
+                                <a href="#" class="text-muted"><i class="ti ti-trash"></i></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><h6 class="mb-0">Code: 63060</h6></div>
+                            <div class="col-md-6"><h6 class="mb-0">District: BWP</h6></div>
+                            <div class="col-md-6 pt-1"><h6 class="mb-0">Street: </h6></div>
+                            <div class="col-md-6 pt-1"><h6 class="mb-0">Bulding: </h6></div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6"><h6 class="mb-0">Code: 63060</h6></div>
-                        <div class="col-md-6"><h6 class="mb-0">District: BWP</h6></div>
-                        <div class="col-md-6 pt-1"><h6 class="mb-0">Street: </h6></div>
-                        <div class="col-md-6 pt-1"><h6 class="mb-0">Bulding: </h6></div>
+                    <hr class="my-2 mx-0"/>
+                    <div class="card-footer d-flex justify-content-between px-4 py-0">
+                            <small>Hamza Aziz</small>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
                     </div>
                 </div>
-                <hr class="my-2 mx-0"/>
-                <div class="card-footer d-flex justify-content-between px-4 py-0">
-                        <small>Hamza Aziz</small>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-            </div>
             </div>
         </div>
     </div>
