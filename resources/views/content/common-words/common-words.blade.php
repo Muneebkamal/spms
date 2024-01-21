@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card p-4">
-                <h3>{{('Add Words')}}</h3>
+                <h3>{{__('Add Words')}}</h3>
                 <form action="">
                     <label for="">{{ __('Write your Word')}}</label>
                     <input class="form-control" type="text" placeholder="Write...">
@@ -27,9 +27,9 @@
                     <table class="table user-list-table" id="common-word-table">
                         <thead>
                         <tr>
-                            <th>{{('Name')}}</th>
-                            <th>{{('Created At')}}</th>
-                            <th>{{('Action')}}</th>
+                            <th>{{__('Name')}}</th>
+                            <th>{{__('Created At')}}</th>
+                            <th>{{__('Action')}}</th>
                         </tr>
                         </thead>
                         <tbody>
