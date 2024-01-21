@@ -48,7 +48,9 @@ Route::middleware(['auth', 'checkRole:admin,agent'])->group(function () {
     Route::get('/add-property', [PropertyController::class, 'view']);
     Route::post('/add-property', [PropertyController::class, 'create'])->name('createProperty');
     Route::get('/check-code/{code}', [PropertyController::class, 'verifyCode'])->name('verifyCode');
-
+    // Route property List
+    Route::get('/property/{id}', [PropertyController::class, 'index'])->name('property-details');
+    Route::get('/property-list', [PropertyController::class, 'index'])->name('property-list');
 
     //-------------------
     // Route Common Words
@@ -74,8 +76,7 @@ Route::middleware(['auth', 'checkRole:admin,agent'])->group(function () {
 //-- -- -- -- -- -- -- -->
 Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     Route::get('/register', [UserController::class, 'createAgentView'])->middleware('auth')->name('register');
-    // Route property List
-    Route::get('/property-list', [PropertyController::class, 'index'])->name('property-list');
+
     // Route Create Agents
     Route::get('/create-agent', [UserController::class, 'createAgentView'])->name('createAgentView');
     Route::post('/form-agent', [UserController::class, 'createAgent'])->name('createAgent');
