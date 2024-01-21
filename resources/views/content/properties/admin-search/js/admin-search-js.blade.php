@@ -1,0 +1,10 @@
+<script>
+    $(document).ready(function(){
+        $('#price-size').hide();
+        $('#buttons').show();
+        $('#price-btn').click(function(){
+            $('#price-size').show();
+            $('#buttons').hide();
+        });
+    });
+</script>
