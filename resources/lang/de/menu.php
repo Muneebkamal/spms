@@ -14,5 +14,6 @@ return [
     'terms_of_use' => '使用条款',
     'online_form' => '在线表单',
     'common_words' => '常用词汇',
-    'sign_out' => '退出登录'
+    'sign_out' => '退出登录',
+    'advanced_search' => '進階搜尋'
 ];
