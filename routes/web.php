@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommonWordsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GeneralController;
@@ -48,15 +49,17 @@ Route::middleware(['auth', 'checkRole:admin,agent'])->group(function () {
     Route::get('/add-property', [PropertyController::class, 'view']);
     Route::post('/add-property', [PropertyController::class, 'create'])->name('createProperty');
     Route::get('/check-code/{code}', [PropertyController::class, 'verifyCode'])->name('verifyCode');
+
     // Route property List
     Route::get('/property/{id}', [PropertyController::class, 'index'])->name('property-details');
     Route::get('/property-list', [PropertyController::class, 'index'])->name('property-list');
 
     //-------------------
     // Route Common Words
-    Route::get('/common-words', function(){
-        return view('content.common-words.common-words');
-    });
+    Route::get('/common-words', [CommonWordsController::class, 'index'])->name('common-words');
+    Route::post('/create-common-words', [CommonWordsController::class, 'create'])->name('create-common-words');
+    Route::post('/update-common-words', [CommonWordsController::class, 'update'])->name('update-common-words');
+    Route::get('/del-common-words', [CommonWordsController::class, 'delete'])->name('del-common-words');
 
     //-------------------
     // PROPERTY SEARCH
