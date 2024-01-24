@@ -59,7 +59,7 @@ Route::middleware(['auth', 'checkRole:admin,agent'])->group(function () {
     Route::get('/common-words', [CommonWordsController::class, 'index'])->name('common-words');
     Route::post('/create-common-words', [CommonWordsController::class, 'create'])->name('create-common-words');
     Route::post('/update-common-words', [CommonWordsController::class, 'update'])->name('update-common-words');
-    Route::get('/del-common-words', [CommonWordsController::class, 'delete'])->name('del-common-words');
+    Route::get('/del-common-words/{id}', [CommonWordsController::class, 'delete'])->name('del-common-words');
 
     //-------------------
     // PROPERTY SEARCH

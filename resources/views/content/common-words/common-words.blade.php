@@ -32,6 +32,18 @@
         </div>
     </div> 
     @endif
+
+    @if(Session::has('delmsg'))
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger alert-dismissible">
+                {{ Session::get('delmsg') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+            </div>
+        </div>
+    </div> 
+    @endif
     
     <!-- Add New Credit Card Modal -->
     <div class="modal fade" id="addNewCCModal" tabindex="-1" aria-hidden="true">
@@ -90,7 +102,7 @@
                                 <td>{{ $commonword->name }}</td>
                                 <td>{{ $commonword->created_at }}</td>
                                 <td>
-                                    <button class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#addNewCCModal" onclick="edit({{$commonword->id}},'{{$commonword->name}}')"><i class="ti ti-pencil mx-1"></i></button> <button class="btn btn-danger m-1"><i class="ti ti-trash mx-1"></i></button>
+                                    <a href="javascript:;" class="m-1 text-muted" data-bs-toggle="modal" data-bs-target="#addNewCCModal" onclick="edit({{$commonword->id}},'{{$commonword->name}}')"><i class="ti ti-pencil mx-1"></i></a> <a class="m-1 text-muted" href="{{ url('del-common-words', $commonword->id) }}" ><i class="ti ti-trash mx-1"></i></a>
                                 </td>
                             </tr> 
                             @endforeach

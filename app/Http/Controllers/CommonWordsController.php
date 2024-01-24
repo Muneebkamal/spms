@@ -26,12 +26,10 @@ class CommonWordsController extends Controller
         Session()->flash('updatemsg', 'Record Updated Successfully.');
         return redirect('common-words', compact('edit')); 
     }
-    public function detele(Request $request){
-        $edit = CommonWord::where('id', $request->id)->first();
-        $edit->name = $request->name;
-        $edit->save();
-        Session()->flash('updatemsg', 'Record Updated Successfully.');
-        return redirect('common-words', compact('edit')); 
+    public function delete($id){
+        $delete = CommonWord::where('id', $id)->delete();
+        Session()->flash('delmsg', 'Record Deleted.');
+        return redirect('common-words'); 
     }
     
 }
