@@ -35,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/add-property', [PropertyController::class, 'view']);
     Route::post('/add-property', [PropertyController::class, 'create'])->name('createProperty');
     Route::get('/check-code/{code}', [PropertyController::class, 'verifyCode'])->name('verifyCode');
-    Route::get('/property/{id}', [PropertyController::class, 'index'])->name('property-details');
+    Route::get('/property/{code}', [PropertyController::class, 'detail'])->name('property-details');
     Route::get('/property-list', [PropertyController::class, 'index'])->name('property-list');
     Route::get('/admin-search', [PropertyController::class, 'search']);
     Route::get('/advanced-search', [PropertyController::class, 'search']);

@@ -12,10 +12,13 @@ class PropertyController extends Controller
         return view('content.properties.add-property');
     }
     public function index(){
-        return view('content.properties.property-list');
+        $properties = Property::all();
+        return view('content.properties.property-list', compact('properties'));
     }
-    public function detail($id){
-        return view('content.properties.property-details');
+    public function detail($code){
+        $property = Property::where('code', $code)->first();
+
+        return view('content.properties.property-details', compact('property'));
     }
     public function search(){
         return view('content.properties.admin-search.admin-search');
