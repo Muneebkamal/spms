@@ -16,4 +16,5 @@ return [
     'online_form' => 'Online Form',
     'common_words' => 'Common Words',
     'sign_out' => 'Sign Out',
+    'advanced_search' => 'Advanced Search'
 ];

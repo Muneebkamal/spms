@@ -1,8 +1,11 @@
 @php
-    $user = \auth()->user()
+$user = \auth()->user()
 @endphp
 <!DOCTYPE html>
-<html lang="en" class="{{ $user->theme == 'light' ? 'light-style' : 'dark-style' }} layout-navbar-fixed layout-menu-fixed layout-compact " dir="ltr">
+<html lang="en"
+    class="{{ $user->theme == 'light' ? 'light-style' : 'dark-style' }} layout-navbar-fixed layout-menu-fixed layout-compact "
+    dir="ltr">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport"
@@ -12,9 +15,8 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon"
-        href="{{ asset('assets/img/default-imgs/logo.png')}}" />
-    {{-- <img src="{{URL::asset('assets/img/default-imgs/logo.png')}}" alt="image/x-icon" width="32">     --}}
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/default-imgs/logo.png')}}" />
+    {{-- <img src="{{URL::asset('assets/img/default-imgs/logo.png')}}" alt="image/x-icon" width="32"> --}}
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -30,12 +32,12 @@
 
     <!-- Core CSS -->
     @if($user->theme == 'dark')
-        <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core-dark.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default-dark.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core-dark.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default-dark.css') }}" />
     @endif
     @if($user->theme == 'light')
-        <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core.css') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default.css') }}" />
     @endif
     <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
 
@@ -50,7 +52,7 @@
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}" />
-
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/flatpickr/flatpickr.css') }}" />
     <!-- Row Group CSS -->
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css')}}">
     <!-- Page CSS -->
@@ -122,7 +124,9 @@
     <script src="{{ asset('assets/vendor/libs/toastr/toastr.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}" ></script>
+    <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/flatpickr/flatpickr.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 
     <!-- Page JS -->
@@ -135,6 +139,7 @@
     <!-- Main JS -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
     @yield('script')
+
 </body>
 
 

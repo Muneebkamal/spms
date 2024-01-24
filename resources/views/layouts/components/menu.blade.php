@@ -166,26 +166,13 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ url('property-details') }}" class="menu-link">
-                            <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                            <div>{{ __('Property Details') }}</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="{{url('admin-search')}}" class="menu-link">
+                        <a href="{{url('advanced-search')}}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-user-search"></i>
-                            <div>{{ __('menu.admin_search') }}</div>
+                            <div>{{ __('menu.advanced_search') }}</div>
                         </a>
                     </li>
                 </ul>
 
-
-            <li class="menu-item">
-                <a href="{{url('all-views')}}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-view-360"></i>
-                    <div>{{ __('menu.all_views') }}</div>
-                </a>
-            </li>
             <li class="menu-item">
                 <a href="{{url('terms-of-use')}}" class="menu-link">
                     <i class="menu-icon tf-icons ti ti-file-invoice"></i>

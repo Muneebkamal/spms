@@ -133,11 +133,11 @@
                             </div>
                         </div>
                         <div class="col-12 d-flex justify-content-between">
-                            <button class="btn btn-label-secondary btn-prev" type="button"  disabled> <i
+                            <button class="btn btn-label-secondary btn-prev" type="button" disabled> <i
                                     class="ti ti-arrow-left me-sm-1 me-0"></i>
                                 <span class="align-middle d-sm-inline-block d-none">Previous</span>
                             </button>
-                            <button class="btn btn-primary btn-next" type="button" > <span
+                            <button class="btn btn-primary btn-next" type="button"> <span
                                     class="align-middle d-sm-inline-block d-none me-sm-1">Next</span> <i
                                     class="ti ti-arrow-right"></i></button>
                         </div>
@@ -189,11 +189,11 @@
                                 placeholder="Remark"></textarea>
                         </div>
                         <div class="col-12 d-flex justify-content-between">
-                            <button class="btn btn-label-secondary btn-prev" type="button" > <i
+                            <button class="btn btn-label-secondary btn-prev" type="button"> <i
                                     class="ti ti-arrow-left me-sm-1 me-0"></i>
                                 <span class="align-middle d-sm-inline-block d-none">Previous</span>
                             </button>
-                            <button class="btn btn-primary btn-next" type="button" > <span
+                            <button class="btn btn-primary btn-next" type="button"> <span
                                     class="align-middle d-sm-inline-block d-none me-sm-1">Next</span> <i
                                     class="ti ti-arrow-right"></i></button>
                         </div>
@@ -289,25 +289,25 @@
                         </div>
                         <div class="col-md-9 py-2 border-start">
                             <div class="d-flex mb-2">
-                                <button data-tab="NewSite"
+                                <button data-tab="NewSite" type="submit"
                                     class="optionsTab btn btn-sm btn-primary me-2">{{__('New Site')}}</button>
-                                <button data-tab="Bargain"
+                                <button data-tab="Bargain" type="button"
                                     class="d-none optionsTab btn btn-sm btn-primary me-2">{{__('Bargain')}}</button>
-                                <button data-tab="Discounted"
+                                <button data-tab="Discounted" type="button"
                                     class="d-none optionsTab btn btn-sm btn-primary me-2">{{__('Discounted')}}</button>
-                                <button data-tab="Recommend"
+                                <button data-tab="Recommend" type="button"
                                     class="d-none optionsTab btn btn-sm btn-primary me-2">{{__('Recommend')}}</button>
-                                <button data-tab="ReadyToListing"
+                                <button data-tab="ReadyToListing" type="button"
                                     class="d-none optionsTab btn btn-sm btn-primary me-2">{{__('Ready to listing')}}</button>
-                                <button data-tab="NewReleased"
+                                <button data-tab="NewReleased" type="button"
                                     class="d-none optionsTab btn btn-sm btn-primary me-2">{{__('New Released')}}</button>
                             </div>
                             <div id="optionContent">
                                 <div id="NewSiteContent">
                                     <h6 class="my-2">{{__('New Site')}}</h6>
                                     <label class="form-label">Date</label>
-                                    <input type="datetime-local" name="others_date[NewSite]" id="others_date[NewSite]"
-                                        class="form-control">
+                                    <input type="text" id="others_date[NewSite]" name="others_date[NewSite]"
+                                        class="form-control  datetime-input">
                                     <label class="form-label">Detail</label>
                                     <textarea name="others_details[NewSite]" id="others_details[NewSite]"
                                         class="form-control" cols="5"></textarea>
@@ -315,7 +315,9 @@
                                 <div id="BargainContent" style="display: none">
                                     <h6 class="my-2">{{__('Bargain')}}</h6>
                                     <label class="form-label">Date</label>
-                                    <input type="datetime-local" name="others_date[Bargain]" class="form-control">
+
+                                    <input type="datetime-local" name="others_date[Bargain]" id="others_date[Bargain]"
+                                        class="form-control datetime-input">
                                     <label class="form-label">Detail</label>
                                     <textarea name="others_details[Bargain]" class="form-control" cols="5"></textarea>
                                 </div>
@@ -323,7 +325,9 @@
                                     <h6 class="my-2">{{__('Discounted')}}</h6>
 
                                     <label class="form-label">Date</label>
-                                    <input type="datetime-local" name="others_date[Discounted]" class="form-control">
+
+                                    <input type="datetime-local" name="others_date[Discounted]"
+                                        id="others_date[Discounted]" class="form-control datetime-input">
                                     <label class="form-label">Detail</label>
                                     <textarea name="others_details[Discounted]" class="form-control"
                                         cols="5"></textarea>
@@ -332,7 +336,9 @@
                                     <h6 class="my-2">{{__('Recommend')}}</h6>
 
                                     <label class="form-label">Date</label>
-                                    <input type="datetime-local" name="others_date[Recommend]" class="form-control">
+
+                                    <input type="datetime-local" name="others_date[Recommend]"
+                                        id="others_date[Recommend]" class="form-control datetime-input">
                                     <label class="form-label">Detail</label>
                                     <textarea name="others_details[Recommend]" class="form-control" cols="5"></textarea>
                                 </div>
@@ -340,8 +346,9 @@
                                     <h6 class="my-2">{{__('Ready to listing')}}</h6>
 
                                     <label class="form-label">Date</label>
+
                                     <input type="datetime-local" name="others_date[ReadyToListing]"
-                                        class="form-control">
+                                        id="others_date[ReadyToListing]" class="form-control datetime-input">
                                     <label class="form-label">Detail</label>
                                     <textarea name="others_details[ReadyToListing]" class="form-control"
                                         cols="5"></textarea>
@@ -350,7 +357,9 @@
                                     <h6 class="my-2">{{__('New Released')}}</h6>
 
                                     <label class="form-label">Date</label>
-                                    <input type="datetime-local" name="others_date[NewReleased]" class="form-control">
+
+                                    <input type="datetime-local" name="others_date[NewReleased]"
+                                        id="others_date[NewReleased]" class="form-control datetime-input">
                                     <label class="form-label">Detail</label>
                                     <textarea name="others_details[NewReleased]" class="form-control"
                                         cols="5"></textarea>
@@ -361,11 +370,11 @@
                     <hr class="mt-0 mb-3">
                     <div class="row px-3">
                         <div class="col-12 d-flex justify-content-between">
-                            <button class="btn btn-label-secondary btn-prev" type="button" >
+                            <button class="btn btn-label-secondary btn-prev" type="button">
                                 <i class="ti ti-arrow-left me-sm-1 me-0"></i>
                                 <span class="align-middle d-sm-inline-block d-none">Previous</span>
                             </button>
-                            <button class="btn btn-primary btn-next" type="button" >
+                            <button class="btn btn-primary btn-next" type="button">
                                 <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                 <i class="ti ti-arrow-right"></i>
                             </button>
@@ -380,7 +389,8 @@
                     <div class="row g-3 px-3">
                         <div class="col-md-6">
                             <label class="form-label" for="twitter">Gross sf:</label>
-                            <input type="number" required value='0.00' id="gross-sf" name="gross-sf" class="form-control" />
+                            <input type="number" required value='0.00' id="gross-sf" name="gross-sf"
+                                class="form-control" />
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="facebook">Net sf:</label>
@@ -388,30 +398,36 @@
                         </div>
                         <div class="col-md-12">
                             <label class="form-label" for="google">Selling Price (M):</label>
-                            <input type="number" required value='0.00' id="selling-price" name="selling-price" class="form-control" />
+                            <input type="number" required value='0.00' id="selling-price" name="selling-price"
+                                class="form-control" />
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="twitter">G@</label>
-                            <input type="number" required value='0.00' id="selling-gross" disabled name="selling-gross" class="form-control" />
+                            <input type="number" required value='0.00' id="selling-gross" disabled name="selling-gross"
+                                class="form-control" />
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="facebook">N@</label>
-                            <input type="number" required value='0.00' id="selling-net" disabled name="selling-net" class="form-control" />
+                            <input type="number" required value='0.00' id="selling-net" disabled name="selling-net"
+                                class="form-control" />
                         </div>
                     </div>
                     <hr>
                     <div class="row px-3">
                         <div class="col-md-12">
                             <label class="form-label" for="google">Rental Price:</label>
-                            <input type="number" required value="0.00" id="rental-price" name="rental-price" class="form-control" />
+                            <input type="number" required value="0.00" id="rental-price" name="rental-price"
+                                class="form-control" />
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="twitter">G@</label>
-                            <input type="number" required value="0.00" id="rental-gross" disabled name="rental-gross" class="form-control" />
+                            <input type="number" required value="0.00" id="rental-gross" disabled name="rental-gross"
+                                class="form-control" />
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="facebook">N@</label>
-                            <input type="number" required value="0.00" id="rental-net" disabled name="rental-net" class="form-control" />
+                            <input type="number" required value="0.00" id="rental-net" disabled name="rental-net"
+                                class="form-control" />
                         </div>
                     </div>
                     <hr>
@@ -433,11 +449,11 @@
                             <input type="number" id="oths" name="oths" value="0.00" required class="form-control" />
                         </div>
                         <div class="col-12 d-flex justify-content-between mt-3">
-                            <button class="btn btn-label-secondary btn-prev" type="button" > <i
+                            <button class="btn btn-label-secondary btn-prev" type="button"> <i
                                     class="ti ti-arrow-left me-sm-1 me-0"></i>
                                 <span class="align-middle d-sm-inline-block d-none">Previous</span>
                             </button>
-                            <button type="submit" class="btn btn-success btn-submit">Submit</button>
+                            <button type="submit" id="AddProperty" class="btn btn-success btn-submit">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -449,110 +465,122 @@
 @endsection
 @section('script')
 <script>
-    $(document).ready(function () {
-        $("#createProperty").submit(function (e) {
-            e.preventDefault();
+    flatpickr(".datetime-input", {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        onChange: function (selectedDates, dateStr, instance) {}
+    });
 
-            if($('#code').val() == '') {
-                $('.step[data-target="#building-info"] > button').click();
-                $('#code_msg')
-                    .show()
-                    .html('Code is required')
-                    .addClass('text-danger')
-                    .removeClass('text-success');
-                return;
-            }else if($('#building_name').val() == '') {
-                $('.step[data-target="#building-info"] > button').click();
-                $('#building_name_msg')
-                    .show()
-                    .html('Building Name is required')
-                return;
-            }
+    $("#createProperty").submit(function (e) {
+        e.preventDefault();
+
+        if ($('#code').val() == '') {
+            $('.step[data-target="#building-info"] > button').click();
+            $('#code_msg')
+                .show()
+                .html('Code is required')
+                .addClass('text-danger')
+                .removeClass('text-success');
+            return;
+        } else if ($('#building_name').val() == '') {
+            $('.step[data-target="#building-info"] > button').click();
+            $('#building_name_msg')
+                .show()
+                .html('Building Name is required')
+            return;
+        }
 
 
 
-            var formData = new FormData(this);
-            // Making FACILITY ARRAY
-            var arrayFacilities = [];
-            $('#facilities > option:selected').each(function () {
-                arrayFacilities.push($(this).val());
-            });
-            // Making DECORE ARRAY
-            var arraydecoration = [];
-            $('#decoration > option:selected').each(function () {
-                arraydecoration.push($(this).val());
-            });
-            // Making TYPES ARRAY
-            var arrayTypes = [];
-            $('#types > option:selected').each(function () {
-                arrayTypes.push($(this).val());
-            });
-
-            // APPENDING ARRAYS IN FORM DATA
-            formData.append('facilities', arrayFacilities);
-            formData.append('decoration', arraydecoration);
-            formData.append('types', arrayTypes);
-
-            const othersNames = ['NewSite', 'Bargain', 'Discounted', 'Recommend', 'ReadyToListing',
-                'NewReleased'
-            ];
-            var arrayOthers = [];
-            var arrayDates = [];
-            var arrayDetails = [];
-
-            othersNames.forEach((name) => {
-                const checkbox = $('input[name="others[' + name + ']"]').is(':checked');
-
-                if (checkbox) {
-                    others = $('input[name="others[' + name + ']"]').val()
-                    arrayOthers.push(others)
-                    date = $('input[name="others_date[' + name + ']"]').val()
-                    if (date) {
-                        arrayDates.push(date)
-                    } else {
-                        arrayDates.push('N\A')
-                    }
-                    detail = $('textarea[name="others_details[' + name + ']"]').val()
-                    if (detail) {
-                        arrayDetails.push(detail)
-                    } else {
-                        arrayDetails.push('N\A')
-                    }
-                }
-            });
-
-            // APPENDNG ARRAYS IN FORM DATA
-            formData.append('others_dates', arrayDates);
-            formData.append('others', arrayOthers);
-            formData.append('others_details', arrayDetails);
-
-            sellingGross = $('#selling-gross').val()
-            sellingNet = $('#selling-net').val()
-            rentalGross = $('#rental-gross').val()
-            rentalNet = $('#rental-net').val()
-
-            formData.append('selling-gross', sellingGross);
-            formData.append('selling-net', sellingNet);
-            formData.append('rental-gross', rentalGross);
-            formData.append('rental-net', rentalNet);
-
-            // AJAX CALL
-            $.ajax({
-                url: '{{ route("createProperty") }}',
-                type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function (response) {},
-                error: function (error) {
-                    console.error(error);
-                }
-            });
+        var formData = new FormData(this);
+        // Making FACILITY ARRAY
+        var arrayFacilities = [];
+        $('#facilities > option:selected').each(function () {
+            arrayFacilities.push($(this).val());
+        });
+        // Making DECORE ARRAY
+        var arraydecoration = [];
+        $('#decoration > option:selected').each(function () {
+            arraydecoration.push($(this).val());
+        });
+        // Making TYPES ARRAY
+        var arrayTypes = [];
+        $('#types > option:selected').each(function () {
+            arrayTypes.push($(this).val());
         });
 
+        // APPENDING ARRAYS IN FORM DATA
+        formData.append('facilities', arrayFacilities);
+        formData.append('decoration', arraydecoration);
+        formData.append('types', arrayTypes);
+
+
+        const othersNames = ['NewSite', 'Bargain', 'Discounted', 'Recommend', 'ReadyToListing',
+            'NewReleased'
+        ];
+        var arrayOthers = [];
+        var arrayDates = [];
+        var arrayDetails = [];
+
+        othersNames.forEach((name) => {
+            const checkbox = $('input[name="others[' + name + ']"]').is(':checked');
+
+            if (checkbox) {
+                others = $('input[name="others[' + name + ']"]').val()
+                arrayOthers.push(others)
+                date = $('input[name="others_date[' + name + ']"]').val()
+                if (date) {
+                    arrayDates.push(date)
+                } else {
+                    arrayDates.push('N\A')
+                }
+                detail = $('textarea[name="others_details[' + name + ']"]').val()
+                if (detail) {
+                    arrayDetails.push(detail)
+                } else {
+                    arrayDetails.push('N\A')
+                }
+            }
+        });
+
+
+        // APPENDNG ARRAYS IN FORM DATA
+        formData.append('others_dates', arrayDates);
+        formData.append('others', arrayOthers);
+        formData.append('others_details', arrayDetails);
+
+        sellingGross = $('#selling-gross').val()
+        sellingNet = $('#selling-net').val()
+        rentalGross = $('#rental-gross').val()
+        rentalNet = $('#rental-net').val()
+
+        formData.append('selling-gross', sellingGross);
+        formData.append('selling-net', sellingNet);
+        formData.append('rental-gross', rentalGross);
+        formData.append('rental-net', rentalNet);
+
+        // AJAX CALL
+        $.ajax({
+            url: '{{ route("createProperty") }}',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                if (response.success) {
+                    toastr['success']('New Property ' + response.name + ' Created.',
+                        'Property Created!');
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    });
+    $(document).ready(function () {
         $('#code').on('input', function () {
             var code = $(this).val();
             if (code !== '') {
@@ -599,7 +627,6 @@
 <script src="{{ asset('assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js')}}"></script>
 <script src="{{ asset('assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js')}}"></script>
 <script src="{{ asset('assets/js/form-wizard-numbered.js')}}"></script>
-
 <script>
     $(document).ready(function () {
         let dataSet = {
@@ -613,8 +640,6 @@
         $('#types').select2(dataSet);
     });
 
-</script>
-<script>
     $('.optionsTabCheck').on('change', function () {
         id = $(this).data('id')
         if ($(this).is(':checked')) {
@@ -634,60 +659,60 @@
         $('#optionContent > div').hide()
         $('#' + id + 'Content').show()
     })
-    $('#gross-sf').on('input',function() {
+    $('#gross-sf').on('input', function () {
         calculateGrossAndNet()
     })
-    $('#net-sf').on('input',function() {
+    $('#net-sf').on('input', function () {
         calculateGrossAndNet()
     })
-    $('#rental-price').on('input',function() {
+    $('#rental-price').on('input', function () {
         calculateGrossAndNet()
     })
-    $('#selling-price').on('input',function() {
+    $('#selling-price').on('input', function () {
         calculateGrossAndNet()
     })
-function calculateGrossAndNet() {
-    let gross_sf = parseFloat($('#gross-sf').val());
-    let net_sf = parseFloat($('#net-sf').val());
+
+    function calculateGrossAndNet() {
+        let gross_sf = parseFloat($('#gross-sf').val());
+        let net_sf = parseFloat($('#net-sf').val());
 
 
-    let selling_gross = $('#selling-gross');
-    let rental_gross = $('#rental-gross');
-    let selling_net = $('#selling-net');
-    let rental_net = $('#rental-net');
+        let selling_gross = $('#selling-gross');
+        let rental_gross = $('#rental-gross');
+        let selling_net = $('#selling-net');
+        let rental_net = $('#rental-net');
 
-    let rental_price = parseFloat($('#rental-price').val());
-    let selling_price = parseFloat($('#selling-price').val());
+        let rental_price = parseFloat($('#rental-price').val());
+        let selling_price = parseFloat($('#selling-price').val());
 
-    if(rental_price) {
+        if (rental_price) {
 
-        if(net_sf) {
-            rental_net.val((rental_price / net_sf).toFixed(2));
-        }else{
-            rental_net.val(0);
+            if (net_sf) {
+                rental_net.val((rental_price / net_sf).toFixed(2));
+            } else {
+                rental_net.val(0);
+            }
+            if (gross_sf) {
+                rental_gross.val((rental_price / gross_sf).toFixed(2));
+            } else {
+                rental_gross.val(0);
+            }
         }
-        if(gross_sf) {
-            rental_gross.val((rental_price / gross_sf).toFixed(2));
-        }else{
-            rental_gross.val(0);
+        if (selling_price) {
+            if (gross_sf) {
+                selling_gross.val((selling_price / gross_sf).toFixed(2));
+            } else {
+                selling_gross.val(0);
+            }
+
+            if (net_sf) {
+                selling_net.val((selling_price / net_sf).toFixed(2));
+            } else {
+                selling_net.val(0);
+            }
         }
+
     }
-    if(selling_price) {
-        if(gross_sf) {
-            selling_gross.val((selling_price / gross_sf).toFixed(2));
-        }else{
-            selling_gross.val(0);
-        }
-
-        if(net_sf) {
-            selling_net.val((selling_price / net_sf).toFixed(2));
-        }else{
-            selling_net.val(0);
-        }
-    }
-
-}
-
 
 </script>
 
@@ -695,6 +720,5 @@ function calculateGrossAndNet() {
     .activeOptionTab {
         background-color: #28c76f !important
     }
-
 </style>
 @endsection
