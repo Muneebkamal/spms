@@ -3,7 +3,7 @@
 @section('title', 'Property Details')
 
 @section('content')
-<h4 class="py-3 mb-4">
+<h4>
     Property Details
 </h4>
 <div class="row">
@@ -16,7 +16,7 @@
           <div class=" d-flex align-items-center flex-column">
             <img class="img-fluid rounded mb-3 pt-1 mt-4" src="../../assets/img/avatars/15.png" height="100" width="100" alt="User avatar" />
             <div class="user-info text-center">
-              <h4 class="mb-2">Violet Mendoza</h4>
+              <h4 class="mb-2">{{ $property->building }}</h4>
               <span class="badge bg-label-secondary mt-1">Author</span>
             </div>
           </div>

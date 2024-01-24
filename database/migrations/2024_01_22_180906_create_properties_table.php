@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id('building_id');
-            $table->string('code')->nullable();
+            $table->string('code')->unique()->nullable();
             $table->string('district')->nullable();
             $table->string('street')->nullable();
             $table->string('building')->nullable();
