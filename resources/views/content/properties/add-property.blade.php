@@ -14,14 +14,14 @@
 
 @section('content')
 <div class="col-12 mb-4">
-    <small class="text-light fw-medium">{{__('New Property')}}</small>
+    <small class="text-light fw-medium">{{__('add-property.New Property')}}</small>
     <div class="bs-stepper wizard-numbered mt-2">
         <div class="bs-stepper-header">
             <div class="step" data-target="#building-info">
                 <button type="button" id="getFirstPage" class="step-trigger">
                     <span class="bs-stepper-circle">1</span>
                     <span class="bs-stepper-label">
-                        <span class="bs-stepper-title">{{__('Building Info')}}</span>
+                        <span class="bs-stepper-title">{{__('add-property.Building Info')}}</span>
                 </button>
             </div>
             <div class="line">
@@ -31,7 +31,7 @@
                 <button type="button" class="step-trigger">
                     <span class="bs-stepper-circle">2</span>
                     <span class="bs-stepper-label">
-                        <span class="bs-stepper-title">{{__('Landlord Details')}}</span>
+                        <span class="bs-stepper-title">{{__('add-property.Landlord Details')}}</span>
                     </span>
 
                 </button>
@@ -43,7 +43,7 @@
                 <button type="button" class="step-trigger">
                     <span class="bs-stepper-circle">3</span>
                     <span class="bs-stepper-label">
-                        <span class="bs-stepper-title">{{__('FTOD')}}</span>
+                        <span class="bs-stepper-title">{{__('add-property.FTOD')}}</span>
                     </span>
                 </button>
             </div>
