@@ -1,4 +1,46 @@
 <script>
+
+
+        var e = `<div class="dz-preview dz-file-preview">
+                <div class="dz-details">
+                    <div class="dz-thumbnail">
+                        <img data-dz-thumbnail>
+                        <span class="dz-nopreview">No preview</span>
+                        <div class="dz-success-mark"></div>
+                        <div class="dz-error-mark"></div>
+                        <div class="dz-error-message"><span data-dz-errormessage></span></div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-dz-uploadprogress></div>
+                        </div>
+                    </div>
+                    <div class="dz-filename" data-dz-name></div>
+                    <div class="dz-size" data-dz-size></div>
+                </div>
+            </div>`;
+
+        // Initialize Dropzone
+        var myDropzone = new Dropzone("#createProperty", {
+            url: "/upload-image",
+            previewTemplate: e,
+            parallelUploads: 1,
+            maxFilesize: 5,
+            addRemoveLinks: true,
+            previewsContainer: "#uploadedImages",
+            // You probably don't want the whole body
+            // to be clickable to select files
+            clickable: true,
+             acceptedFiles: 'image/*'
+        });
+        myDropzone.on('success', function (file, response) {
+            console.log('File uploaded successfully:', response);
+        });
+
+        myDropzone.on('error', function (file, errorMessage) {
+            console.error('Error uploading file:', errorMessage);
+        });
+
+
+
     flatpickr(".datetime-input", {
         enableTime: true,
         dateFormat: "Y-m-d H:i",
@@ -92,6 +134,13 @@
         formData.append('selling-net', sellingNet);
         formData.append('rental-gross', rentalGross);
         formData.append('rental-net', rentalNet);
+
+        myDropzone.files.forEach(function(file, index) {
+            formData.append('images[' + index + ']', file);
+        });
+
+        // Add the total number of images
+        formData.append('totalImages', myDropzone.files.length);
 
         // AJAX CALL
         $.ajax({

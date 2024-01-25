@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\User;
+use App\Models\Photo;
 
 class PropertyController extends Controller
 {
@@ -12,20 +13,17 @@ class PropertyController extends Controller
         return view('content.properties.add-property');
     }
     public function index(){
-        $properties = Property::all();
+        $properties = Property::with('photoes')->get();
         return view('content.properties.property-list', compact('properties'));
     }
     public function detail($code){
         $property = Property::where('code', $code)->first();
-
-        return view('content.properties.property-details', compact('property'));
+        $photo = Photo::where('code', $code)->get();
+        return view('content.properties.property-details', compact('property','photo'));
     }
     public function delete($code){
         $property = Property::where('code', $code)->first();
-        if($property) {
-            $property->delete();
-        }
-
+        if($property) {$property->delete();}
         return response()->json(['success' => true , 'code' => $code]);
     }
     public function search(){
@@ -141,24 +139,32 @@ class PropertyController extends Controller
             'oths' => $oths,
         ]);
 
+        $totalImages = $req->input('totalImages');
+        $newBuildingImagesPath = 'storage/properties/'.$newBuilding->building_id;
+
+        for ($i = 0; $i < $totalImages; $i++) {
+            $image = $req->file('images.' . $i);
+            $filename = uniqid('') . '_' . uniqid('') . '.' . $image->getClientOriginalExtension();
+            $image->move($newBuildingImagesPath, $filename);
+
+            Photo::create([
+                'image' => $filename,
+                'code' => $newBuilding->code,
+                'image_created_at' => now(),
+                'room_number' => '',
+                'image_watermark' => '',
+                'image_resized' => '',
+                'size' => '',
+                'price' => '',
+            ]);
+        };
+
         return response()->json(['success' => true,'name' => $newBuilding->building]);
     }
     public function uploadImage(Request $request)
     {
         // Retrieve the total number of images
-        $totalImages = $request->input('totalImages');
-        // Process each image
-        for ($i = 0; $i < $totalImages; $i++) {
-            // Retrieve each image using the key
-            $image = $request->file('images.' . $i);
 
-            // Generate a unique filename for the image
-            $filename = uniqid('property_image_') . '.' . $image->getClientOriginalExtension();
-
-            // Save the image to the storage path
-            $image->move('storage/properties/', $filename);
-
-        }
 
         return response()->json(['success' => true]);
     }
