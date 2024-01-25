@@ -13,10 +13,9 @@ use App\Http\Controllers\LanguageController;
 Auth::routes();
 
 // --------------
-// GLOBAL ACCESS ROUTES
+// AUTHENCATED ROUTES
 // --------------
 Route::middleware(['auth'])->group(function () {
-
     // --------------
     // USER PROFILE ROUTES
     // --------------
@@ -32,15 +31,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/share-list', [GeneralController::class, 'shareList']);
     Route::get('/terms-of-use', [GeneralController::class, 'termOfUse']);
     Route::get('/online-form', [GeneralController::class, 'onlineForm']);
+    // PROPERTY ROUTES
     Route::get('/add-property', [PropertyController::class, 'view']);
     Route::post('/add-property', [PropertyController::class, 'create'])->name('createProperty');
     Route::get('/check-code/{code}', [PropertyController::class, 'verifyCode'])->name('verifyCode');
     Route::get('/property/{code}', [PropertyController::class, 'detail'])->name('property-details');
-    Route::get('/property-list', [PropertyController::class, 'index'])->name('property-list');
-    Route::get('/admin-search', [PropertyController::class, 'search']);
     Route::get('/advanced-search', [PropertyController::class, 'search']);
-
-    // Route Common Words
+    Route::post('/upload-image', [PropertyController::class, 'uploadImage'])->name('upload-image');
+    // COMMON WORDS ROUTES
     Route::get('/common-words', [CommonWordsController::class, 'index'])->name('common-words');
     Route::post('/create-common-words', [CommonWordsController::class, 'create'])->name('create-common-words');
     Route::post('/update-common-words', [CommonWordsController::class, 'update'])->name('update-common-words');
@@ -59,6 +57,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/user-photo-permission', [UserController::class, 'togglePhotoPermission'])->name('photo-permission');
         Route::get('/user-contact-permission', [UserController::class, 'toggleContactPermission'])->name('contact-permission');
         Route::get('/all-views', [UserController::class, 'allViews']);
+        Route::get('/property-list', [PropertyController::class, 'index'])->name('property-list');
+        Route::delete('/delete-property/{code}', [PropertyController::class, 'delete'])->name('delete-property');
+        Route::get('/admin-search', [PropertyController::class, 'search']);
     });
 
     // --------------
@@ -67,3 +68,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/toggle-theme/{theme}', [GeneralController::class, 'toggleTheme'])->name('toggleTheme');
     Route::get('/{language?}', [LanguageController::class, 'switchLanguage'])->name('switch.language');
 });
+
+// --------------
+// NOT AUTHENCCATED ROUTES
+// --------------
