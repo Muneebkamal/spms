@@ -25,8 +25,8 @@
             <div class="card-body">
                 <div class="user-avatar-section">
                     <div class=" d-flex align-items-center flex-column">
-                        @if($photoes->isNotEmpty())
-                            <img class="img-fluid rounded mb-3 pt-1 mt-4" src="{{asset('storage/properties/').'/'.$property->building_id.'/'. $photoes->first()->image }}" height="100"
+                        @if($photo->isNotEmpty())
+                            <img class="img-fluid rounded mb-3 pt-1 mt-4" src="{{asset('storage/properties/').'/'.$property->building_id.'/'. $photo->first()->image }}" height="100"
                                 width="100" alt="User avatar" />
                         @else
                             <img class="img-fluid rounded mb-3 pt-1 mt-4"  src="{{asset('assets/img/default-imgs/propertyImageNotSet.jpg')}}" height="100"
@@ -411,9 +411,9 @@
                 <div class="tab-pane fade p-4" id="navs-pills-justified-images" role="tabpanel">
                     <!-- Gallery -->
                     <div class="row">
-                        @if($photoes->isNotEmpty())
+                        @if($photo->isNotEmpty())
                         <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
-                            @foreach($photoes as $photo)
+                            @foreach($photo as $photo)
                                 @if($loop->iteration % 2 !== 0)
                                     <img src="{{asset('storage/properties/').'/'.$property->building_id.'/'. $photo->image }}"
                                         class="w-100 shadow-1-strong rounded mb-4 open-img" alt="Boat on Calm Water"
@@ -422,7 +422,7 @@
                             @endforeach
                         </div>
                         <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
-                            @foreach($photoes as $photo)
+                            @foreach($photo as $photo)
                                 @if($loop->iteration % 2 == 0)
                                     <img src="{{asset('storage/properties/').'/'.$property->building_id.'/'. $photo->image }}"
                                         class="w-100 shadow-1-strong rounded mb-4 open-img" alt="Boat on Calm Water"

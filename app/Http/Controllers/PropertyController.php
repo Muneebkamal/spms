@@ -22,16 +22,16 @@ class PropertyController extends Controller
         return view('content.properties.add-property', compact('options'));
     }
     public function index(){
-        $properties = Property::with('photoes')->get();
+        $properties = Property::with('photo')->get();
         return view('content.properties.property-list', compact('properties'));
     }
 
     public function detail($code){
         $property = Property::where('code', $code)->first();
-        $photoes = Photo::where('code', $code)->get();
+        $photo = Photo::where('code', $code)->get();
         $options = $this->options;
 
-        return view('content.properties.property-details', compact('property','photoes','options'));
+        return view('content.properties.property-details', compact('property','photo','options'));
     }
 
     public function delete($code){
