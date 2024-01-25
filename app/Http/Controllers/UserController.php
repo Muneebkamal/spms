@@ -116,10 +116,10 @@ class UserController extends Controller
         $image = $request->file('image');
         $filename = uniqid() . '.' . $image->getClientOriginalExtension();
         $image->move('storage/user_images/', $filename);
-        // $path = $image->storeAs('storage/user_images/', $filename);
         $user->image = $filename;
         $user->save();
 
         return response()->json(['success' => true, 'path' => asset('storage/user_images/' . $filename)]);
     }
+
 }

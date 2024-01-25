@@ -20,6 +20,14 @@ class PropertyController extends Controller
 
         return view('content.properties.property-details', compact('property'));
     }
+    public function delete($code){
+        $property = Property::where('code', $code)->first();
+        if($property) {
+            $property->delete();
+        }
+
+        return response()->json(['success' => true , 'code' => $code]);
+    }
     public function search(){
         return view('content.properties.admin-search.admin-search');
     }
@@ -134,6 +142,25 @@ class PropertyController extends Controller
         ]);
 
         return response()->json(['success' => true,'name' => $newBuilding->building]);
+    }
+    public function uploadImage(Request $request)
+    {
+        // Retrieve the total number of images
+        $totalImages = $request->input('totalImages');
+        // Process each image
+        for ($i = 0; $i < $totalImages; $i++) {
+            // Retrieve each image using the key
+            $image = $request->file('images.' . $i);
+
+            // Generate a unique filename for the image
+            $filename = uniqid('property_image_') . '.' . $image->getClientOriginalExtension();
+
+            // Save the image to the storage path
+            $image->move('storage/properties/', $filename);
+
+        }
+
+        return response()->json(['success' => true]);
     }
 
     public function verifyStrings(Request $request, $fieldName)
