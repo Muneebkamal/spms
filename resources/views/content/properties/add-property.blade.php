@@ -81,6 +81,10 @@
                         <div class="col-md-6">
                             <select id="district" name="district" class="form-control">
                                 <option value="district">{{ __('add-property.District') }}</option>
+
+
+
+
                                 <option value="yt">yt</option>
                                 <option value="kt">kt</option>
                             </select>
@@ -236,7 +240,7 @@
                     <div class="row g-3 px-3">
                         <div class="col-md-12">
                             <label class="mx-1">{{__('add-property.Facilities')}}</label>
-                            <select id="facilities" data-placeholder="add-property.Select Facilities" multiple>
+                            <select id="facilities" class="select2" data-placeholder="{{__('add-property.Select Facilities')}}" multiple>
                                 <option value="Carpark 車場">Carpark 車場</option>
                                 <option value="Convenient 近地鐵">Convenient 近地鐵</option>
                                 <option value="H.celling高樓底">H.celling 高樓底</option>
@@ -257,7 +261,7 @@
                         </div>
                         <div class="col-md-12">
                             <label class="mx-1">{{__('add-property.Types')}}</label>
-                            <select id="types" data-placeholder="Select Types" multiple="" class="form-select">
+                            <select id="types" class="select2" data-placeholder="Select Types" multiple="" class="form-select">
                                 <option value="Rent 放租">Rent 放租</option>
                                 <option value="Sales 放售">Sales 放售</option>
                                 <option value="Subdivided 分間">Subdivided 分間</option>
@@ -278,7 +282,7 @@
                         </div>
                         <div class="col-md-12">
                             <label class="mx-1">{{__('add-property.Decoration')}}</label>
-                            <select id="decoration" data-placeholder="{{ __('add-property.Select Decoration') }}"
+                            <select id="decoration" class="select2" data-placeholder="{{ __('add-property.Select Decoration') }}"
                                 multiple="multiple" class="form-select">
                                 <option value="budget 預算">Budget 預算</option>
                                 <option value="basic 基本的">Basic 基本的</option>

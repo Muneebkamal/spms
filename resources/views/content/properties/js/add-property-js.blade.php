@@ -204,17 +204,7 @@
 </script>
 
 <script>
-    $(document).ready(function () {
-        let dataSet = {
-            allowClear: true,
-            closeOnSelect: false,
-            selectOnClose: false,
-        }
 
-        $('#decoration').select2(dataSet);
-        $('#facilities').select2(dataSet);
-        $('#types').select2(dataSet);
-    });
 
     $('.optionsTabCheck').on('change', function () {
         id = $(this).data('id')

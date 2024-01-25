@@ -6,26 +6,40 @@ use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\User;
 use App\Models\Photo;
+use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller
 {
+    protected $options;
+
+    public function __construct()
+    {
+        $this->options = DB::table('options')->get();
+    }
+
     public function view(){
-        return view('content.properties.add-property');
+        $options = $this->options;
+        return view('content.properties.add-property', compact('options'));
     }
     public function index(){
         $properties = Property::with('photoes')->get();
         return view('content.properties.property-list', compact('properties'));
     }
+
     public function detail($code){
         $property = Property::where('code', $code)->first();
-        $photo = Photo::where('code', $code)->get();
-        return view('content.properties.property-details', compact('property','photo'));
+        $photoes = Photo::where('code', $code)->get();
+        $options = $this->options;
+
+        return view('content.properties.property-details', compact('property','photoes','options'));
     }
+
     public function delete($code){
         $property = Property::where('code', $code)->first();
         if($property) {$property->delete();}
         return response()->json(['success' => true , 'code' => $code]);
     }
+
     public function search(){
         return view('content.properties.admin-search.admin-search');
     }
