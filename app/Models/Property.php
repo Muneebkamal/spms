@@ -64,7 +64,7 @@ class Property extends Model
         'oths',
     ];
 
-    public function photoes()
+    public function photo()
     {
         return $this->hasMany(Photo::class, 'code', 'code');
     }
