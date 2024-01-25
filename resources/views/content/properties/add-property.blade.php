@@ -10,7 +10,11 @@
 <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.css')}}" />
 <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css')}}" />
 <link rel="stylesheet" href="{{ asset('assets/vendor/libs/%40form-validation/umd/styles/index.min.css')}}" />
-@endsection()
+<link rel="stylesheet" href="{{ asset('assets/vendor/libs/dropzone/dropzone.css') }}" />
+<style>
+.dz-message:before {display: none}
+</style>
+@endsection
 
 @section('content')
 <div class="col-12 mb-4">
@@ -69,12 +73,18 @@
                     </div>
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <input type="text" id="code" name="code" class="form-control" placeholder="{{ __('add-property.Code') }}" />
-                            <span class="text-danger" style="display: none" id="code_msg">{{ __('add-property.Code Already Exists') }}</span>
+                            <input type="text" id="code" name="code" class="form-control"
+                                placeholder="{{ __('add-property.Code') }}" />
+                            <span class="text-danger" style="display: none"
+                                id="code_msg">{{ __('add-property.Code Already Exists') }}</span>
                         </div>
                         <div class="col-md-6">
                             <select id="district" name="district" class="form-control">
                                 <option value="district">{{ __('add-property.District') }}</option>
+
+
+
+
                                 <option value="yt">yt</option>
                                 <option value="kt">kt</option>
                             </select>
@@ -85,19 +95,24 @@
                             <span class="text-danger" style="display: none" id="building_name_msg"></span>
                         </div>
                         <div class="col-md-12">
-                            <input type="text" id="address" name="address" class="form-control" placeholder="{{ __('add-property.Addsress') }}" />
+                            <input type="text" id="address" name="address" class="form-control"
+                                placeholder="{{ __('add-property.Addsress') }}" />
                         </div>
                         <div class="col-md-12">
-                            <input type="text" id="year" name="year" class="form-control" placeholder="{{ __('add-property.Year') }}" />
+                            <input type="text" id="year" name="year" class="form-control"
+                                placeholder="{{ __('add-property.Year') }}" />
                         </div>
                         <div class="col-md-6">
-                            <input type="text" id="block" name="block" class="form-control" placeholder="{{ __('add-property.Block') }}" />
+                            <input type="text" id="block" name="block" class="form-control"
+                                placeholder="{{ __('add-property.Block') }}" />
                         </div>
                         <div class="col-md-6">
-                            <input type="text" id="floor" name="floor" class="form-control" placeholder="{{ __('add-property.Floor') }}" />
+                            <input type="text" id="floor" name="floor" class="form-control"
+                                placeholder="{{ __('add-property.Floor') }}" />
                         </div>
                         <div class="col-md-6">
-                            <input type="text" id="flat" name="flat" class="form-control" placeholder="{{ __('add-property.Flat') }}" />
+                            <input type="text" id="flat" name="flat" class="form-control"
+                                placeholder="{{ __('add-property.Flat') }}" />
                         </div>
                         <div class="col-md-6">
                             <input type="number" id="no_rooms" name="no_rooms" class="form-control"
@@ -132,14 +147,30 @@
                                     placeholder="{{ __('add-property.Agent Comment') }}"></textarea>
                             </div>
                         </div>
+                        <div class="col-12">
+                         <label class="mb-2">Building Images</label>
+                            <div class="border p-2">
+                                <div class="dz-message needsclick my-5">
+                                    Drop Images here or click to upload
+                                    <span class="note needsclick">(Click to upload property iamges)</span>
+                                </div>
+                                <div id="uploadedImages"></div>
+                                <div class="fallback">
+                                    <input name="file" accept="image/*" type="file" />
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="col-12 d-flex justify-content-between">
                             <button class="btn btn-label-secondary btn-prev" type="button" disabled> <i
                                     class="ti ti-arrow-left me-sm-1 me-0"></i>
-                                <span class="align-middle d-sm-inline-block d-none">{{ __('add-property.Previous') }}</span>
+                                <span
+                                    class="align-middle d-sm-inline-block d-none">{{ __('add-property.Previous') }}</span>
                             </button>
                             <button class="btn btn-primary btn-next" type="button"> <span
-                                    class="align-middle d-sm-inline-block d-none me-sm-1">{{ __('add-property.Next') }}</span> <i
-                                    class="ti ti-arrow-right"></i></button>
+                                    class="align-middle d-sm-inline-block d-none me-sm-1">{{ __('add-property.Next') }}</span>
+                                <i class="ti ti-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -178,7 +209,8 @@
                                 placeholder="{{ __('add-property.Landlord Name') }}" />
                         </div>
                         <div class="col-md-12">
-                            <input type="text" id="bank" name="bank" class="form-control" placeholder="{{ __('add-property.Bank') }}" />
+                            <input type="text" id="bank" name="bank" class="form-control"
+                                placeholder="{{ __('add-property.Bank') }}" />
                         </div>
                         <div class="col-md-12">
                             <input type="text" id="bank_acc" name="bank_acc" class="form-control"
@@ -191,11 +223,12 @@
                         <div class="col-12 d-flex justify-content-between">
                             <button class="btn btn-label-secondary btn-prev" type="button"> <i
                                     class="ti ti-arrow-left me-sm-1 me-0"></i>
-                                <span class="align-middle d-sm-inline-block d-none">{{ __('add-property.Previous') }}</span>
+                                <span
+                                    class="align-middle d-sm-inline-block d-none">{{ __('add-property.Previous') }}</span>
                             </button>
                             <button class="btn btn-primary btn-next" type="button"> <span
-                                    class="align-middle d-sm-inline-block d-none me-sm-1">{{ __('add-property.Next') }}</span> <i
-                                    class="ti ti-arrow-right"></i></button>
+                                    class="align-middle d-sm-inline-block d-none me-sm-1">{{ __('add-property.Next') }}</span>
+                                <i class="ti ti-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -207,7 +240,7 @@
                     <div class="row g-3 px-3">
                         <div class="col-md-12">
                             <label class="mx-1">{{__('add-property.Facilities')}}</label>
-                            <select id="facilities" data-placeholder="add-property.Select Facilities" multiple>
+                            <select id="facilities" class="select2" data-placeholder="{{__('add-property.Select Facilities')}}" multiple>
                                 <option value="Carpark 車場">Carpark 車場</option>
                                 <option value="Convenient 近地鐵">Convenient 近地鐵</option>
                                 <option value="H.celling高樓底">H.celling 高樓底</option>
@@ -228,7 +261,7 @@
                         </div>
                         <div class="col-md-12">
                             <label class="mx-1">{{__('add-property.Types')}}</label>
-                            <select id="types" data-placeholder="Select Types" multiple="" class="form-select">
+                            <select id="types" class="select2" data-placeholder="Select Types" multiple="" class="form-select">
                                 <option value="Rent 放租">Rent 放租</option>
                                 <option value="Sales 放售">Sales 放售</option>
                                 <option value="Subdivided 分間">Subdivided 分間</option>
@@ -249,8 +282,8 @@
                         </div>
                         <div class="col-md-12">
                             <label class="mx-1">{{__('add-property.Decoration')}}</label>
-                            <select id="decoration" data-placeholder="{{ __('add-property.Select Decoration') }}" multiple="multiple"
-                                class="form-select">
+                            <select id="decoration" class="select2" data-placeholder="{{ __('add-property.Select Decoration') }}"
+                                multiple="multiple" class="form-select">
                                 <option value="budget 預算">Budget 預算</option>
                                 <option value="basic 基本的">Basic 基本的</option>
                                 <option value="luxury 奢華">Luxury 奢華</option>
@@ -372,10 +405,12 @@
                         <div class="col-12 d-flex justify-content-between">
                             <button class="btn btn-label-secondary btn-prev" type="button">
                                 <i class="ti ti-arrow-left me-sm-1 me-0"></i>
-                                <span class="align-middle d-sm-inline-block d-none">{{ __('add-property.Previous') }}</span>
+                                <span
+                                    class="align-middle d-sm-inline-block d-none">{{ __('add-property.Previous') }}</span>
                             </button>
                             <button class="btn btn-primary btn-next" type="button">
-                                <span class="align-middle d-sm-inline-block d-none me-sm-1">{{ __('add-property.Next') }}</span>
+                                <span
+                                    class="align-middle d-sm-inline-block d-none me-sm-1">{{ __('add-property.Next') }}</span>
                                 <i class="ti ti-arrow-right"></i>
                             </button>
                         </div>
@@ -451,9 +486,11 @@
                         <div class="col-12 d-flex justify-content-between mt-3">
                             <button class="btn btn-label-secondary btn-prev" type="button"> <i
                                     class="ti ti-arrow-left me-sm-1 me-0"></i>
-                                <span class="align-middle d-sm-inline-block d-none">{{ __('add-property.Previous') }}</span>
+                                <span
+                                    class="align-middle d-sm-inline-block d-none">{{ __('add-property.Previous') }}</span>
                             </button>
-                            <button type="submit" id="AddProperty" class="btn btn-success btn-submit">{{ __('add-property.Submit') }}</button>
+                            <button type="submit" id="AddProperty"
+                                class="btn btn-success btn-submit">{{ __('add-property.Submit') }}</button>
                         </div>
                     </div>
                 </div>
@@ -464,161 +501,8 @@
 
 @endsection
 @section('script')
-{{-- <script>
-    flatpickr(".datetime-input", {
-        enableTime: true,
-        dateFormat: "Y-m-d H:i",
-        onChange: function (selectedDates, dateStr, instance) {}
-    });
 
-    $("#createProperty").submit(function (e) {
-        e.preventDefault();
-
-        if ($('#code').val() == '') {
-            $('.step[data-target="#building-info"] > button').click();
-            $('#code_msg')
-                .show()
-                .html('Code is required')
-                .addClass('text-danger')
-                .removeClass('text-success');
-            return;
-        } else if ($('#building_name').val() == '') {
-            $('.step[data-target="#building-info"] > button').click();
-            $('#building_name_msg')
-                .show()
-                .html('Building Name is required')
-            return;
-        }
-
-
-
-        var formData = new FormData(this);
-        // Making FACILITY ARRAY
-        var arrayFacilities = [];
-        $('#facilities > option:selected').each(function () {
-            arrayFacilities.push($(this).val());
-        });
-        // Making DECORE ARRAY
-        var arraydecoration = [];
-        $('#decoration > option:selected').each(function () {
-            arraydecoration.push($(this).val());
-        });
-        // Making TYPES ARRAY
-        var arrayTypes = [];
-        $('#types > option:selected').each(function () {
-            arrayTypes.push($(this).val());
-        });
-
-        // APPENDING ARRAYS IN FORM DATA
-        formData.append('facilities', arrayFacilities);
-        formData.append('decoration', arraydecoration);
-        formData.append('types', arrayTypes);
-
-
-        const othersNames = ['NewSite', 'Bargain', 'Discounted', 'Recommend', 'ReadyToListing',
-            'NewReleased'
-        ];
-        var arrayOthers = [];
-        var arrayDates = [];
-        var arrayDetails = [];
-
-        othersNames.forEach((name) => {
-            const checkbox = $('input[name="others[' + name + ']"]').is(':checked');
-
-            if (checkbox) {
-                others = $('input[name="others[' + name + ']"]').val()
-                arrayOthers.push(others)
-                date = $('input[name="others_date[' + name + ']"]').val()
-                if (date) {
-                    arrayDates.push(date)
-                } else {
-                    arrayDates.push('N\A')
-                }
-                detail = $('textarea[name="others_details[' + name + ']"]').val()
-                if (detail) {
-                    arrayDetails.push(detail)
-                } else {
-                    arrayDetails.push('N\A')
-                }
-            }
-        });
-
-
-        // APPENDNG ARRAYS IN FORM DATA
-        formData.append('others_dates', arrayDates);
-        formData.append('others', arrayOthers);
-        formData.append('others_details', arrayDetails);
-
-        sellingGross = $('#selling-gross').val()
-        sellingNet = $('#selling-net').val()
-        rentalGross = $('#rental-gross').val()
-        rentalNet = $('#rental-net').val()
-
-        formData.append('selling-gross', sellingGross);
-        formData.append('selling-net', sellingNet);
-        formData.append('rental-gross', rentalGross);
-        formData.append('rental-net', rentalNet);
-
-        // AJAX CALL
-        $.ajax({
-            url: '{{ route("createProperty") }}',
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function (response) {
-                if (response.success) {
-                    toastr['success']('New Property ' + response.name + ' Created.',
-                        'Property Created!');
-                }
-            },
-            error: function (error) {
-                console.error(error);
-            }
-        });
-    });
-    $(document).ready(function () {
-        $('#code').on('input', function () {
-            var code = $(this).val();
-            if (code !== '') {
-                $.ajax({
-                    url: '/check-code/' + code,
-                    type: 'GET',
-                    processData: false,
-                    contentType: false,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function (response) {
-                        if (response.success) {
-                            $('#code_msg')
-                                .show()
-                                .removeClass('text-danger')
-                                .addClass('text-success')
-                                .html(response.msg)
-                        } else {
-                            $('#code_msg')
-                                .show()
-                                .html(response.msg)
-                                .addClass('text-danger')
-                                .removeClass('text-success');
-                        }
-                    },
-                    error: function (error) {
-                        // Handle the error response
-                        console.error(error);
-                    }
-                });
-            } else {
-                $('#code_msg').hide()
-            }
-        });
-    });
-
-</script> --}}
+<script src="{{ asset('assets/vendor/libs/dropzone/dropzone.js') }}"></script>
 
 @include('content/properties/js/add-property-js')
 
@@ -628,98 +512,9 @@
 <script src="{{ asset('assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js')}}"></script>
 <script src="{{ asset('assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js')}}"></script>
 <script src="{{ asset('assets/js/form-wizard-numbered.js')}}"></script>
-{{-- <script>
-    $(document).ready(function () {
-        let dataSet = {
-            allowClear: true,
-            closeOnSelect: false,
-            selectOnClose: false,
-        }
 
-        $('#decoration').select2(dataSet);
-        $('#facilities').select2(dataSet);
-        $('#types').select2(dataSet);
-    });
-
-    $('.optionsTabCheck').on('change', function () {
-        id = $(this).data('id')
-        if ($(this).is(':checked')) {
-            $('.activeOptionTab').removeClass('activeOptionTab')
-            $('.optionsTab[data-tab=' + id + ']').removeClass('d-none').addClass('activeOptionTab')
-            $('#optionContent > div').hide()
-            $('#' + id + 'Content').show()
-        } else {
-            $('.optionsTab[data-tab=' + id + ']').addClass('d-none').removeClass('activeOptionTab')
-            $('#' + id + 'Content').hide()
-        }
-    })
-    $('.optionsTab').on('click', function () {
-        id = $(this).data('tab')
-        $('.activeOptionTab').removeClass('activeOptionTab')
-        $(this).addClass('activeOptionTab')
-        $('#optionContent > div').hide()
-        $('#' + id + 'Content').show()
-    })
-    $('#gross-sf').on('input', function () {
-        calculateGrossAndNet()
-    })
-    $('#net-sf').on('input', function () {
-        calculateGrossAndNet()
-    })
-    $('#rental-price').on('input', function () {
-        calculateGrossAndNet()
-    })
-    $('#selling-price').on('input', function () {
-        calculateGrossAndNet()
-    })
-
-    function calculateGrossAndNet() {
-        let gross_sf = parseFloat($('#gross-sf').val());
-        let net_sf = parseFloat($('#net-sf').val());
+<script>
 
 
-        let selling_gross = $('#selling-gross');
-        let rental_gross = $('#rental-gross');
-        let selling_net = $('#selling-net');
-        let rental_net = $('#rental-net');
-
-        let rental_price = parseFloat($('#rental-price').val());
-        let selling_price = parseFloat($('#selling-price').val());
-
-        if (rental_price) {
-
-            if (net_sf) {
-                rental_net.val((rental_price / net_sf).toFixed(2));
-            } else {
-                rental_net.val(0);
-            }
-            if (gross_sf) {
-                rental_gross.val((rental_price / gross_sf).toFixed(2));
-            } else {
-                rental_gross.val(0);
-            }
-        }
-        if (selling_price) {
-            if (gross_sf) {
-                selling_gross.val((selling_price / gross_sf).toFixed(2));
-            } else {
-                selling_gross.val(0);
-            }
-
-            if (net_sf) {
-                selling_net.val((selling_price / net_sf).toFixed(2));
-            } else {
-                selling_net.val(0);
-            }
-        }
-
-    }
-
-</script> --}}
-
-{{-- <style>
-    .activeOptionTab {
-        background-color: #28c76f !important
-    }
-</style> --}}
+</script>
 @endsection
