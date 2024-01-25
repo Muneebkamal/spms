@@ -12,6 +12,7 @@ use App\Http\Controllers\LanguageController;
 // --------------
 Auth::routes();
 
+Route::get('/FileSave', [PropertyController::class, 'FileSave']);
 // --------------
 // AUTHENCATED ROUTES
 // --------------
