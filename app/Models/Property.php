@@ -63,4 +63,9 @@ class Property extends Model
         'land',
         'oths',
     ];
+
+    public function photoes()
+    {
+        return $this->hasMany(Photo::class, 'code', 'code');
+    }
 }

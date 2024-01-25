@@ -67,8 +67,14 @@
             <div class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-2">
-                        <img class="card-img card-img-left" src="{{asset('assets/img/elements/9.jpg')}}" height="155"
+                        @if ($property->photoes->isNotEmpty())
+                            <img class="card-img card-img-left" src="{{asset('storage/properties/').'/'.$property->building_id.'/'. $property->photoes->first()->image }}" height="155"
                             alt="Card image" />
+                        @else
+                            <img class="card-img card-img-left" src="{{asset('assets/img/default-imgs/propertyImageNotSet.jpg')}}" height="155"
+                            alt="Card image" />
+                        @endif
+
                     </div>
                     <div class="col-md-10">
                         <div class="card-body px-4 py-2">
