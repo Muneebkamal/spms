@@ -2,6 +2,19 @@
 
 @section('title', 'Property Details')
 
+@section('script')
+<script>
+      $('.open-img').on('click', function () {
+      var imageSRC = $(this).attr('src');
+      $(".random-img").attr("src", imageSRC);
+      console.log(imageSRC)
+      $('#modals-transparent').on('show.bs.modal', function  () {
+      console.log("Done.")
+     })
+})
+</script>
+@endsection
+
 @section('content')
 <h4>
     Property Details
@@ -308,17 +321,76 @@
                 </div>
               </form>
             </div>
+
+            {{-- images --}}
+
+          <!-- Modal template -->
+          <div class="modal modal-transparent fade" id="modals-transparent" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content p-4">
+                <div class="modal-body">
+                  <a href="javascript:void(0);" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></a>
+                  <img src="" class="random-img img-fluid img-thumbnail" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
             <div class="tab-pane fade p-4" id="navs-pills-justified-images" role="tabpanel">
-                <p>
-                  Oat cake chupa chups dragée donut toffee. Sweet cotton candy jelly beans macaroon gummies cupcake gummi
-                  bears
-                  cake chocolate.
-                </p>
-                <p class="mb-0">
-                  Cake chocolate bar cotton candy apple pie tootsie roll ice cream apple pie brownie cake. Sweet roll icing
-                  sesame snaps caramels danish toffee. Brownie biscuit dessert dessert. Pudding jelly jelly-o tart brownie
-                  jelly.
-                </p>
+                <!-- Gallery -->
+                  <div class="row">
+                    <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                      <div class="bg-image hover-overlay">
+                        <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
+                        class="w-100 shadow-1-strong rounded mb-4 open-img"
+                        alt="Boat on Calm Water" data-bs-toggle="modal" data-bs-target="#modals-transparent"
+                      />
+                        <div class="mask" style="
+                              background: linear-gradient(
+                                45deg,
+                                hsla(168, 85%, 52%, 0.5),
+                                hsla(263, 88%, 45%, 0.5) 100%
+                              );
+                            "
+                        ></div>
+                      </div>
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp"
+                        class="w-100 shadow-1-strong rounded mb-4 open-img"
+                        alt="Wintry Mountain Landscape" data-bs-toggle="modal" data-bs-target="#modals-transparent"
+                      />
+                    </div>
+
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain2.webp"
+                        class="w-100 shadow-1-strong rounded mb-4 open-img"
+                        alt="Mountains in the Clouds" data-bs-toggle="modal" data-bs-target="#modals-transparent"
+                      />
+
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
+                        class="w-100 shadow-1-strong rounded mb-4 open-img"
+                        alt="Boat on Calm Water" data-bs-toggle="modal" data-bs-target="#modals-transparent"
+                      />
+                    </div>
+
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp"
+                        class="w-100 shadow-1-strong rounded mb-4 open-img"
+                        alt="Waves at Sea" data-bs-toggle="modal" data-bs-target="#modals-transparent"
+                      />
+
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain3.webp"
+                        class="w-100 shadow-1-strong rounded mb-4 open-img"
+                        alt="Yosemite National Park" data-bs-toggle="modal" data-bs-target="#modals-transparent"
+                      />
+                    </div>
+                  </div>
+                  <!-- Gallery -->
               </div>
               <div class="tab-pane fade p-4" id="navs-pills-justified-maps" role="tabpanel">
                 <iframe
