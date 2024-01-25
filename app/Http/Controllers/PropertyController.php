@@ -191,4 +191,14 @@ class PropertyController extends Controller
         }
         return $value;
     }
+
+    public function FileSave($url){
+        $imageUrl = $url;
+        $imageContent = file_get_contents($imageUrl);
+        if ($imageContent !== false) {
+            $localPath = uniqid().'Storage/image.jpg';
+            file_put_contents($localPath, $imageContent);
+            return true;
+        }
+    }
 }
