@@ -192,13 +192,19 @@ class PropertyController extends Controller
         return $value;
     }
 
-    public function FileSave($url){
-        $imageUrl = $url;
-        $imageContent = file_get_contents($imageUrl);
-        if ($imageContent !== false) {
-            $localPath = uniqid().'Storage/image.jpg';
-            file_put_contents($localPath, $imageContent);
-            return true;
+    public function FileSave(){
+
+        $properties=Property::all();
+        foreach ($properties as $key => $value) {
+            $photo=Photo::where('code',$value->code)->first();
+            if(!empty($photo)){
+                $imageUrl = asset('storage/properties/1/'.$photo->image);
+                $image = file_get_contents($imageUrl);
+                file_put_contents(public_path('storage/properties/'.uniqid('') . '_' . uniqid('').'.png'), $image);
+            }
+
+
         }
+
     }
 }
