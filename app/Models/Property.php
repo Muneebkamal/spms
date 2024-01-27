@@ -64,8 +64,13 @@ class Property extends Model
         'oths',
     ];
 
-    public function photo()
+    public function photos()
     {
         return $this->hasMany(Photo::class, 'code', 'code');
+    }
+
+    public function singlephoto()
+    {
+        return $this->hasOne(Photo::class, 'code', 'code');
     }
 }

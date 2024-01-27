@@ -11,15 +11,18 @@ use Illuminate\Support\Facades\DB;
 class PropertyController extends Controller
 {
     protected $options;
+    protected $properties;
 
     public function __construct()
     {
         $this->options = DB::table('options')->get();
+        $this->properties = DB::table('properties')->get();
     }
 
     public function view(){
         $options = $this->options;
-        return view('content.properties.add-property', compact('options'));
+        $properties = $this->properties;
+        return view('content.properties.add-property', compact('options','properties'));
     }
     public function index(){
         $properties = Property::with('photo')->get();
@@ -40,8 +43,56 @@ class PropertyController extends Controller
         return response()->json(['success' => true , 'code' => $code]);
     }
 
-    public function search(){
-        return view('content.properties.admin-search.admin-search');
+    public function search(Request $request){
+        $options = $this->options;
+        return view('content.properties.admin-search.admin-search',compact('options'));
+    }
+    public function AdminAjaxSearch(Request $request){
+        $property = Property::with('singlephoto');
+        
+        // district search
+        if(!empty($request->district)){
+            $property->whereIn('district',$request->district);
+        }
+        // facilities search
+        if(!empty($request->facility)){
+            $property->whereIn('facilities',$request->facility);
+        }
+        // decorations search
+        if(!empty($request->decoration)){
+            $property->whereIn('decorations',$request->decoration);
+        }
+        // types search
+        if(!empty($request->type)){
+            $property->whereIn('types',$request->type);
+        }
+        // others search
+        if(!empty($request->other)){
+            $property->whereIn('others',$request->other);
+        }
+        // building_name search
+        if(!empty($request->building_name)){
+            $property->where('building','LIKE',"%{$request->building_name}%");
+        }
+        // fetch searched data
+        $html = '<tbody>';
+        foreach ($property->get() as $data) {
+            $html .= '
+                <tr>
+                    <td>' . $data->building_id . '</td>
+                    <td>' . $data->building . '</td>
+                    <td>' . $data->decorations . '</td>';
+            if (!empty($data->singlephoto)) {
+                $html .= '<td><image src="' .asset('/storage/properties/'.$data->building_id.'/'.optional($data->singlephoto)->image) . '" width="50" height="50"></td>';
+            }
+        
+            $html .= '
+                </tr>';
+        }
+        $html .= '</tbody>';
+        return $html;
+        
+       
     }
 
     public function verifyCode($code){
@@ -207,4 +258,14 @@ class PropertyController extends Controller
         }
 
     }
+
+    public function BuildingNameCheck($code){
+        $buildingData = Property::where('building_id', $code)->select('building_id', 'building', 'street', 'year')->first();
+        if($buildingData) {
+            return response()->json(['success' => true, 'buildingData' => $buildingData]);
+        } else {
+            return response()->json(['success' => false, 'msg' => 'Not Avliable']);
+        }
+    }
+    
 }

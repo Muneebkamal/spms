@@ -87,11 +87,17 @@
                                     @endif
                                 @endforeach
                             </select>
-                        </div>
+                        </div> 
                         <div class="col-md-12">
-                            <input type="text" id="building_name" name="building_name" class="form-control"
-                                placeholder="{{ __('add-property.Building Name') }}" />
-                            <span class="text-danger" style="display: none" id="building_name_msg"></span>
+                            <select id="building_name" name="building_name" class="select2" data-placeholder="{{ __('add-property.Building Name') }}" class="form-select">
+                                <option value=""></option>
+                                @if(!empty($properties))  
+                                    @foreach($properties as $property)  
+                                    <option value="{{$property->building_id}}">{{$property->building}}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        <span class="text-danger" style="display: none" id="building_name_msg"></span>
                         </div>
                         <div class="col-md-12">
                             <input type="text" id="address" name="address" class="form-control"

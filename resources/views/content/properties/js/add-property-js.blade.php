@@ -218,6 +218,33 @@
             $('#' + id + 'Content').hide()
         }
     })
+
+
+    $('#building_name').on('change', function () {
+        building_name = $(this).val();
+        $('#address').val('');
+        $('#year').val('');
+        
+        $.ajax({
+                url: '/building-name-check/' + building_name,
+                type: 'GET',
+                processData: false,
+                contentType: false,
+                headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (response) {
+                    if(response.success === true){
+                        $('#address').val(response.buildingData.street);
+                        $('#year').val(response.buildingData.year);
+                    }
+                    
+                },
+        });
+        
+    })
+
+    
     $('.optionsTab').on('click', function () {
         id = $(this).data('tab')
         $('.activeOptionTab').removeClass('activeOptionTab')
