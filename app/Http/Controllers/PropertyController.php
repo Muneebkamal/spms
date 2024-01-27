@@ -34,6 +34,10 @@ class PropertyController extends Controller
         return view('content.properties.property-details', compact('property','photo','options'));
     }
 
+    public function detail2($code){
+        return view('content.properties.property-details2');
+    }
+
     public function delete($code){
         $property = Property::where('code', $code)->first();
         if($property) {$property->delete();}
