@@ -7,6 +7,7 @@ use App\Models\Property;
 use App\Models\User;
 use App\Models\Photo;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class PropertyController extends Controller
 {
@@ -351,18 +352,41 @@ class PropertyController extends Controller
 
         $properties=Property::all();
         foreach ($properties as $key => $value) {
-            $photos=Photo::where('code',$value->code)->get();
+            // dd($value->code);
+            $photos=Photo::where('code',$value->code)->where('is_saved',0)->get();
+            
             foreach($photos as $photo){
                 
                 $imageUrl = 'https://boshinghk.com/spms/images/'.$photo->image; //asset('storage/properties/'.$value->building_id.'/'.$photo->image);
+                
+                $extension = pathinfo(parse_url($imageUrl, PHP_URL_PATH), PATHINFO_EXTENSION);
+                
+                $basename = basename($imageUrl);
+                
+                $name = explode('.'.$extension,$basename);
+                $name = $name[0];
+                // dd($name);
                 $image = file_get_contents($imageUrl);
-                $ext = $image->getClientOriginalExtension();
-                dd($ext);
-                file_put_contents(public_path('storage/properties/'.$value->building_id.'/'.'.'.$ext), $image);
-            
+                
+                $target_dir = 'storage/app/properties/'.$value->code;
+    
+                if (!File::isDirectory($target_dir)) {
+                    mkdir($target_dir, 0777, true);
+                }
+                
+                
+                
+                if(file_put_contents($target_dir.'/'.$name.'.'.$extension, $image)){
+                    $photo->is_saved = 1;
+                    $photo->save();
+                }else{
+                    dd('else');
+                }
+                
+               
             }
             
-
+          
 
         }
 
