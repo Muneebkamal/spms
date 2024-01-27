@@ -226,7 +226,7 @@
         $('#year').val('');
         
         $.ajax({
-                url: '/building-name-check/' + building_name,
+                url: '{{ url("/building-name-check") }}/' + building_name,
                 type: 'GET',
                 processData: false,
                 contentType: false,

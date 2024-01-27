@@ -19,7 +19,7 @@
         var formData = $(this).serialize();
         $.ajax({
             type: 'GET',
-            url: '/admin-ajax-search/',
+            url: '{{ url("admin-ajax-search") }}',
             data: formData,
             success: function(result) {
                 $(".saveCustomers_sve_btn").css('display', 'block')
