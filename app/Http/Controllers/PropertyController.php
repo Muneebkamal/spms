@@ -351,12 +351,17 @@ class PropertyController extends Controller
 
         $properties=Property::all();
         foreach ($properties as $key => $value) {
-            $photo=Photo::where('code',$value->code)->first();
-            if(!empty($photo)){
-                $imageUrl = asset('storage/properties/1/'.$photo->image);
+            $photos=Photo::where('code',$value->code)->get();
+            foreach($photos as $photo){
+                
+                $imageUrl = 'https://boshinghk.com/spms/images/'.$photo->image; //asset('storage/properties/'.$value->building_id.'/'.$photo->image);
                 $image = file_get_contents($imageUrl);
-                file_put_contents(public_path('storage/properties/'.uniqid('') . '_' . uniqid('').'.png'), $image);
+                $ext = $image->getClientOriginalExtension();
+                dd($ext);
+                file_put_contents(public_path('storage/properties/'.$value->building_id.'/'.'.'.$ext), $image);
+            
             }
+            
 
 
         }
