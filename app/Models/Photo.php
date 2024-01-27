@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Photo extends Model
 {
-    protected $table = 'photoes';
+    protected $table = 'photos';
     protected $primaryKey = 'image_id';
     public $timestamps = false;
 
