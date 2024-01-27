@@ -36,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/add-property', [PropertyController::class, 'view']);
     Route::post('/add-property', [PropertyController::class, 'create'])->name('createProperty');
     Route::get('/check-code/{code}', [PropertyController::class, 'verifyCode'])->name('verifyCode');
+    Route::get('/building-name-check/{code}', [PropertyController::class, 'BuildingNameCheck'])->name('BuildingNameCheck');
     Route::get('/property/{code}', [PropertyController::class, 'detail'])->name('property-details');
     Route::get('/property2/{code}', [PropertyController::class, 'detail2'])->name('property-details2');
     Route::get('/advanced-search', [PropertyController::class, 'search']);
@@ -62,6 +63,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/property-list', [PropertyController::class, 'index'])->name('property-list');
         Route::delete('/delete-property/{code}', [PropertyController::class, 'delete'])->name('delete-property');
         Route::get('/admin-search', [PropertyController::class, 'search']);
+        Route::get('/admin-ajax-search', [PropertyController::class, 'AdminAjaxSearch']);
+
+        
     });
 
     // --------------
