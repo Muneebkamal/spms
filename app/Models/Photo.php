@@ -20,6 +20,7 @@ class Photo extends Model
         'image_resized',
         'size',
         'price',
+        'is_saved'
     ];
 
 }
