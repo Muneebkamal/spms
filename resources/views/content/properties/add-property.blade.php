@@ -80,13 +80,12 @@
                         </div>
                         <div class="col-md-6">
                             <select id="district" name="district" class="form-control">
-                                <option value="district">{{ __('add-property.District') }}</option>
-
-
-
-
-                                <option value="yt">yt</option>
-                                <option value="kt">kt</option>
+                                <option value="">{{ __('add-property.District') }}</option>
+                                @foreach($options as $type)
+                                    @if($type->opt_type == 'district')
+                                       <option value="{{$type->code}}">{{$type->name}}</option>
+                                    @endif
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-12">
@@ -241,42 +240,21 @@
                         <div class="col-md-12">
                             <label class="mx-1">{{__('add-property.Facilities')}}</label>
                             <select id="facilities" class="select2" data-placeholder="{{__('add-property.Select Facilities')}}" multiple>
-                                <option value="Carpark 車場">Carpark 車場</option>
-                                <option value="Convenient 近地鐵">Convenient 近地鐵</option>
-                                <option value="H.celling高樓底">H.celling 高樓底</option>
-                                <option value="Lobby 冷氣大堂">Lobby 冷氣大堂</option>
-                                <option value="Sunlight 揚窗">Sunlight 揚窗</option>
-                                <option value="Toilet 內厠">Toilet 內厠</option>
-                                <option value="Heater 熱水爐">Heater 熱水爐</option>
-                                <option value="Sink 鋅盤">Sink 鋅盤</option>
-                                <option value="Electrical 大電">Electrical 大電</option>
-                                <option value="Wide door 闊門">Wide door 闊門</option>
-                                <option value="Ekey 密碼鎖">Ekey 密碼鎖</option>
-                                <option value="Bricked 磗牆">Bricked 磗牆</option>
-                                <option value="Free wifi 送上網">Free wifi 送上網</option>
-                                <option value="Room 有房">Room 有房</option>
-                                <option value="Roof bal天台露台">Roof bal天台露台</option>
-                                <option value="Shop 店舖">Shop 店舖</option>
+                                @foreach($options as $facility)
+                                    @if($facility->opt_type == 'facility')
+                                      <option value="{{$facility->name}}">{{$facility->name}}</option>
+                                    @endif
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-12">
                             <label class="mx-1">{{__('add-property.Types')}}</label>
                             <select id="types" class="select2" data-placeholder="Select Types" multiple="" class="form-select">
-                                <option value="Rent 放租">Rent 放租</option>
-                                <option value="Sales 放售">Sales 放售</option>
-                                <option value="Subdivided 分間">Subdivided 分間</option>
-                                <option value="Independent 獨立單位">Independent 獨立單位</option>
-                                <option value="Development 發展商">Development 發展商</option>
-                                <option value="Office 寫字樓">Office 寫字樓</option>
-                                <option value="Warehouse 倉庫">Warehouse 倉庫</option>
-                                <option value="Overnight 過夜">Overnight 過夜</option>
-                                <option value="Upstairs shop 樓上舖">Upstairs shop 樓上舖</option>
-                                <option value="Party room 派對房">Party room 派對房</option>
-                                <option value="Band 夾">Band 夾</option>
-                                <option value="Class 有聲教班">Class 有聲教班</option>
-                                <option value="Class 一般教班">Class 一般教班</option>
-                                <option value="Bakery 烘焙">Bakery 烘焙</option>
-                                <option value="Photos 攝影">Photos 攝影</option>
+                                @foreach($options as $type)
+                                    @if($type->opt_type == 'type')
+                                       <option value="{{$type->name}}">{{$type->name}}</option>
+                                    @endif
+                                @endforeach
                             </select>
 
                         </div>
@@ -284,14 +262,11 @@
                             <label class="mx-1">{{__('add-property.Decoration')}}</label>
                             <select id="decoration" class="select2" data-placeholder="{{ __('add-property.Select Decoration') }}"
                                 multiple="multiple" class="form-select">
-                                <option value="budget 預算">Budget 預算</option>
-                                <option value="basic 基本的">Basic 基本的</option>
-                                <option value="luxury 奢華">Luxury 奢華</option>
-                                <option value="classic 經典的">Classic 經典的</option>
-                                <option value="chill 寒意">Chill 寒意</option>
-                                <option value="grand 盛大">Grand 盛大</option>
-                                <option value="modern 現代的">Modern 現代的</option>
-                                <option value="premium 優質的">Premium 優質的</option>
+                                @foreach($options as $decoration)
+                                    @if($decoration->opt_type == 'decoration')
+                                       <option value="{{$decoration->name}}">{{$decoration->name}}</option>
+                                    @endif
+                                @endforeach
                             </select>
 
                         </div>
