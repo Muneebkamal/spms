@@ -117,7 +117,8 @@
         <div class="row mt-3 d-flex">
             <div class="col-md-6">
                 <div id="buttons">
-                    <button class="btn btn-success">{{__('Search')}}</button>
+                    <button class="btn btn-success saveCustomer_processing d-none" disabled>Processing ...</button>
+                    <button class="btn btn-success saveCustomers_sve_btn">{{__('Search')}}</button>
                     <button class="btn btn-danger">{{__('Clear')}}</button>
                 </div>    
             </div>
@@ -170,12 +171,6 @@
             </div>
         </div>
     </form> 
-    
-    
-
-
-
-
     <table class="table" id="fetchProperty"></table>
 </div>
 @endsection
