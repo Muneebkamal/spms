@@ -42,7 +42,7 @@
                                         <i class="ti mb-2 ti-map-pin-filled"></i>
                                         District:
                                     </span>&nbsp;
-                                    KT
+                                    {{$property->district}}
                                 </h6>
                             </div>
                             <div class="col-4 my-2">
@@ -51,7 +51,7 @@
                                         <i class="ti mb-2 ti-calendar"></i>
                                         Year:
                                     </span>&nbsp;
-                                    KT 312
+                                    {{$property->year}}
                                 </h6>
                             </div>
                             <div class="col-4 my-2">
@@ -60,7 +60,7 @@
                                         <i class="ti mb-2 ti-door"></i>
                                         Flat:
                                     </span>&nbsp;
-                                    KT 312
+                                    {{$property->flat}}
                                 </h6>
                             </div>
                             <div class="col-4 my-2">
@@ -69,7 +69,7 @@
                                         <i class="ti mb-2 ti-building"></i>
                                         Floor:
                                     </span>&nbsp;
-                                    KT 312
+                                    {{$property->floor}}
                                 </h6>
                             </div>
                             <div class="col-4 my-2">
@@ -78,7 +78,7 @@
                                         <i class="ti mb-2 ti-building-arch"></i>
                                         No of Rooms:
                                     </span>&nbsp;
-                                    KT 312
+                                    {{$property->no_room}}
                                 </h6>
                             </div>
                             <div class="col-4 my-2">
@@ -87,7 +87,7 @@
                                         <i class="ti mb-2 ti-brand-blogger"></i>
                                         Cargo Lift:
                                     </span>&nbsp;
-                                    KT 312
+                                    {{$property->cargo_lift}}
                                 </h6>
                             </div>
                             <div class="col-4 my-2">
@@ -96,7 +96,7 @@
                                         <i class="ti mb-2 ti-user"></i>
                                         Customer Lift:
                                     </span>&nbsp;
-                                    KT 312
+                                    {{$property->customer_lift}}
                                 </h6>
                             </div>
                             <div class="col-4 my-2">
@@ -105,7 +105,7 @@
                                         <i class="ti mb-2 ti-clock"></i>
                                         24 Hours:
                                     </span>&nbsp;
-                                    KT 312
+                                    {{$property->tf_hr}}
                                 </h6>
                             </div>
                             <div class="col-4 my-2">
@@ -114,7 +114,7 @@
                                         <i class="ti mb-2 ti-lock-open"></i>
                                         Enter Password:
                                     </span>&nbsp;
-                                    KT 312
+                                    {{$property->enter_password}}
                                 </h6>
                             </div>
                             <div class="col-4 my-2">
@@ -123,7 +123,7 @@
                                         <i class="ti mb-2 ti-building-estate"></i>
                                         Block:
                                     </span>&nbsp;
-                                    KT 312
+                                    {{$property->block}}
                                 </h6>
                             </div>
                             <div class="col-4 my-2">
@@ -132,7 +132,7 @@
                                         <i class="ti mb-2 ti-map-pins"></i>
                                         Address:
                                     </span>&nbsp;
-                                    KT 312
+                                    
                                 </h6>
                             </div>
                         </div>
@@ -159,7 +159,7 @@
                                     </div>
                                     <div class="col-6 my-2">
                                         <h6 class="mb-0">
-                                            3232133
+                                            {{$property->contact1}}
                                         </h6>
                                     </div>
                                     <div class="col-6 my-2">
@@ -172,7 +172,7 @@
                                     </div>
                                     <div class="col-6 my-2">
                                         <h6 class="mb-0">
-                                            3232133
+                                            {{$property->contact2}}
                                         </h6>
                                     </div>
                                     <div class="col-6 my-2">
@@ -185,7 +185,7 @@
                                     </div>
                                     <div class="col-6 my-2">
                                         <h6 class="mb-0">
-                                            3232133
+                                            {{$property->contact3}}
                                         </h6>
                                     </div>
                                 </div>
@@ -197,7 +197,7 @@
                                             <i class="ti mb-2 ti-currency-dollar"></i>
                                             Bank:
                                         </span>&nbsp;
-                                        KT 312
+                                        {{$property->bank}}
                                     </h6>
                                 </div>
                                 <div class="col-12 my-2">
@@ -206,7 +206,7 @@
                                             <i class="ti mb-2 ti-file-analytics"></i>
                                             Bank Account:
                                         </span>&nbsp;
-                                        KT 312
+                                        {{$property->bank_acc}}
                                     </h6>
                                 </div>
                                 <div class="col-12 my-2">
@@ -215,7 +215,7 @@
                                             <i class="ti mb-2 ti-user"></i>
                                             Indivisual:
                                         </span>&nbsp;
-                                        KT 312
+                                        {{$property->individual}}
                                     </h6>
                                 </div>
                                 <div class="col-12 my-2">
@@ -224,7 +224,7 @@
                                             <i class="ti mb-2 ti-slashes"></i>
                                             Seprate:
                                         </span>&nbsp;
-                                        KT 312
+                                        {{$property->separate}}
                                     </h6>
                                 </div>
                                 <div class="col-12 my-2">
@@ -233,7 +233,7 @@
                                             <i class="ti mb-2 ti-message"></i>
                                             Remark:
                                         </span>&nbsp;
-                                        KT 312
+                                            
                                     </h6>
                                 </div>
                             </div>
@@ -252,92 +252,40 @@
                             <div class="col-4 border-end">
                                 <h3 class="my-2">Facilities</h3>
                                 <ul class="ps-3 check-list">
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is faciluity</span>
-                                    </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is faciluity</span>
-                                    </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is faciluity</span>
-                                    </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is faciluity</span>
-                                    </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is faciluity</span>
-                                    </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is faciluity</span>
-                                    </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is faciluity</span>
-                                    </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is faciluity</span>
-                                    </li>
+                                    @foreach($options as $type)
+                                        @if($type->opt_type == 'facility')
+                                        <li>
+                                            <i class="ti ti-check me-2"></i>
+                                            <span>{{$type->name}}</span>
+                                        </li>
+                                        @endif
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="col-4 border-end">
                                 <h3 class="my-2">Decoration</h3>
                                 <ul class="ps-3 check-list">
+                                @foreach($options as $type)
+                                    @if($type->opt_type == 'decoration')
                                     <li>
                                         <i class="ti ti-check me-2"></i>
-                                        <span>This is decoration</span>
+                                        <span>{{$type->name}}</span>
                                     </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is decoration</span>
-                                    </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is decoration</span>
-                                    </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is decoration</span>
-                                    </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is decoration</span>
-                                    </li>
+                                    @endif
+                                @endforeach
                                 </ul>
                             </div>
                             <div class="col-4">
                                 <h3 class="my-2">Types</h3>
                                 <ul class="ps-3 check-list">
+                                @foreach($options as $type)
+                                    @if($type->opt_type == 'type')
                                     <li>
                                         <i class="ti ti-check me-2"></i>
-                                        <span>This is faciluity</span>
+                                        <span>{{$type->name}}</span>
                                     </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is faciluity</span>
-                                    </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is faciluity</span>
-                                    </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is faciluity</span>
-                                    </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is faciluity</span>
-                                    </li>
-                                    <li>
-                                        <i class="ti ti-check me-2"></i>
-                                        <span>This is faciluity</span>
-                                    </li>
+                                    @endif
+                                @endforeach
                                 </ul>
                             </div>
                             <div class="col-12 border-top"></div>
@@ -422,7 +370,7 @@
                                         <i class="ti mb-2 ti-phone"></i>
                                         Gross SF:
                                     </span>
-                                    2133.44
+                                    {{$property->gross_sf}}
                                 </h6>
                             </div>
                             <div class="col-6 my-1">
@@ -431,7 +379,7 @@
                                         <i class="ti mb-2 ti-phone"></i>
                                         Net SF:
                                     </span>
-                                    312.4
+                                    {{$property->net_sf}}
                                 </h6>
                             </div>
                             <div class="row">
@@ -442,21 +390,21 @@
                                             <i class="ti mb-2 ti-phone"></i>
                                             Selling Price:
                                         </span>
-                                        312.4
+                                        {{$property->selling_price}}
                                     </p>
                                     <p class="mb-2 px-2">
                                         <span class="text-muted me-1">
                                             <i class="ti mb-2 ti-phone"></i>
                                             Selling G@:
                                         </span>
-                                        312.4
+                                        {{$property->selling_g}}
                                     </p>
                                     <p class="mb-2 px-2">
                                         <span class="text-muted me-1">
                                             <i class="ti mb-2 ti-phone"></i>
                                             Selling N@:
                                         </span>
-                                        312.4
+                                        {{$property->selling_n}}
                                     </p>
                                 </div>
                                 <div class="col-6 px-0 pt-2 border">
@@ -466,21 +414,21 @@
                                             <i class="ti mb-2 ti-phone"></i>
                                             Rental Price:
                                         </span>
-                                        312.4
+                                        {{$property->rental_price}}
                                     </p>
                                     <p class="mb-2 px-2">
                                         <span class="text-muted me-1">
                                             <i class="ti mb-2 ti-phone"></i>
                                             Rental G@:
                                         </span>
-                                        312.4
+                                        {{$property->rental_g}}
                                     </p>
                                     <p class="mb-2 px-2">
                                         <span class="text-muted me-1">
                                             <i class="ti mb-2 ti-phone"></i>
                                             Rental N@:
                                         </span>
-                                        312.4
+                                        {{$property->rental_n}}
                                     </p>
                                 </div>
                             </div>
@@ -493,7 +441,7 @@
                                     <i class="ti mb-2 ti-currency-dollar"></i>
                                     Bank:
                                 </span>&nbsp;
-                                KT 312
+                                {{$property->bank}}
                             </h6>
                         </div>
                         <div class="col-12 my-2">
@@ -502,7 +450,7 @@
                                     <i class="ti mb-2 ti-file-analytics"></i>
                                     Bank Account:
                                 </span>&nbsp;
-                                KT 312
+                                {{$property->bank_acc}}
                             </h6>
                         </div>
                         <div class="col-12 my-2">
@@ -511,7 +459,7 @@
                                     <i class="ti mb-2 ti-user"></i>
                                     Indivisual:
                                 </span>&nbsp;
-                                KT 312
+                                {{$property->individual}}
                             </h6>
                         </div>
                         <div class="col-12 my-2">
@@ -520,7 +468,7 @@
                                     <i class="ti mb-2 ti-slashes"></i>
                                     Seprate:
                                 </span>&nbsp;
-                                KT 312
+                                {{$property->separate}}
                             </h6>
                         </div>
                         <div class="col-12 my-2">
@@ -529,7 +477,7 @@
                                     <i class="ti mb-2 ti-message"></i>
                                     Remark:
                                 </span>&nbsp;
-                                KT 312
+                                {{$property->remarks}}
                             </h6>
                         </div>
                     </div>
