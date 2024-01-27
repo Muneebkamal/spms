@@ -34,11 +34,14 @@ class PropertyController extends Controller
         $photo = Photo::where('code', $code)->get();
         $options = $this->options;
 
-        return view('content.properties.property-details', compact('property','photo','options'));
+        return view('content.properties.property-details2', compact('property','photo','options'));
     }
 
     public function detail2($code){
-        return view('content.properties.property-details2');
+        $property = Property::where('code', $code)->first();
+        $photo = Photo::where('code', $code)->get();
+        $options = $this->options;
+        return view('content.properties.property-details2', compact('property','photo','options'));
     }
 
     public function delete($code){
