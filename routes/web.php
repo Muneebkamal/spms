@@ -62,7 +62,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/property-list', [PropertyController::class, 'index'])->name('property-list');
         Route::delete('/delete-property/{code}', [PropertyController::class, 'delete'])->name('delete-property');
         Route::get('/admin-search', [PropertyController::class, 'search']);
-        Route::get('/admin-ajax-search', [PropertyController::class, 'AdminAjaxSearch']);
+        Route::post('/admin-ajax-search', [PropertyController::class, 'AdminAjaxSearch']);
 
         
     });
