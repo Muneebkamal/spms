@@ -11,8 +11,8 @@
     <div class="col-12">
         <div class="card mb-4">
             <div class="card-header border-bottom pb-2 d-flex justify-content-between">
-                <h3 class="mb-0">Building Name</h3>
-                <h3 class="mb-0">Building Code</h3>
+                <h3 class="mb-0">{{$property->building}}</h3>
+                <h3 class="mb-0">{{$property->code}}</h3>
             </div>
             <div class="card-body pt-4">
                 <div class="row">

@@ -26,7 +26,7 @@ class PropertyController extends Controller
         return view('content.properties.add-property', compact('options','properties'));
     }
     public function index(){
-        $properties = Property::with('photos')->get();
+        $properties = Property::with('singlephoto')->get();
         return view('content.properties.property-list', compact('properties'));
     }
 

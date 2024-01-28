@@ -68,7 +68,7 @@
                 <div class="row g-0">
                     <div class="col-md-2">
                         @if ($property->photos->isNotEmpty())
-                            <img class="card-img card-img-left" src="{{asset('storage/properties/').'/'.$property->building_id.'/'. $property->photos->first()->image }}" height="155"
+                            <img class="card-img card-img-left" src="{{asset('storage/properties/').'/'. $property->singlephoto->image }}" height="155"
                             alt="Card image" />
                         @else
                             <img class="card-img card-img-left" src="{{asset('assets/img/default-imgs/propertyImageNotSet.jpg')}}" height="155"
