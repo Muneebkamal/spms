@@ -76,9 +76,9 @@ class PropertyController extends Controller
             $properties->where('building','LIKE',"%{$request->building_name}%");
         }
         // fetch searched data
-
-        if($properties->get()) {
-            return response()->json(['success' => true, 'properties' => $properties->get()]);
+        $properties=$properties->get();
+        if($properties) {
+            return response()->json(['success' => true, 'properties' => $properties]);
         } else {
             return response()->json(['success' => true, 'msg' => 'Code Avliable']);
         }

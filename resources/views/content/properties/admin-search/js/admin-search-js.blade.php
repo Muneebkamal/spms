@@ -12,6 +12,11 @@
 <script>
     var assetUrl = "{{ asset('/storage/properties/') }}";
     var Url = "{{ url('property/')}}";
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $(document).ready(function() {
         $("#myForm").on("submit", function(e) {
             var html = '';
@@ -21,7 +26,7 @@
             e.preventDefault();
             var formData = $(this).serialize();
             $.ajax({
-                type: 'GET',
+                type: 'POST',
                 url: '{{ url('admin-ajax-search') }}',
                 data: formData,
                 success: function(result) {
@@ -42,27 +47,27 @@
                                                 <div class='row'>
                                                     <div class='d-flex ms-3 col-12 justify-content-between border-bottom'>
                                                         <div class='flex-column py-3 d-flex'>
-                                                            <h5 class='mb-0'>${data.building}</h5>
-                                                            <h6 class='mb-0'>Code: ${data.code}</h6>
+                                                            <h5 class='mb-0'>${data.building ? data.building :''}</h5>
+                                                            <h6 class='mb-0'>Code: ${data.code ? data.code :''}</h6>
                                                         </div>
                         
                                                         <div class='border-start p-3'>
                                                             <div class='row'>
                                                                 <div class='col-6 d-flex'>
                                                                     <span class='text-muted me-2'>District:</span>
-                                                                    <p class='mb-0 me-2'>${data.district}</p>
+                                                                    <p class='mb-0 me-2'>${data.district ? data.district:''}</p>
                                                                 </div>
                                                                 <div class='col-6 d-flex'>
                                                                     <span class='text-muted me-2'>Flat:</span>
-                                                                    <p class='mb-0 me-2'>${data.flat}</p>
+                                                                    <p class='mb-0 me-2'>${data.flat ? data.flat :''}</p>
                                                                 </div>
                                                                 <div class='col-6 d-flex'>
                                                                     <span class='text-muted me-2'>Block:</span>
-                                                                    <p class='mb-0 me-2'>${data.block}</p>
+                                                                    <p class='mb-0 me-2'>${data.block ? data.block :''}</p>
                                                                 </div>
                                                                 <div class='col-6 d-flex'>
                                                                     <span class='text-muted me-2'>Floor:</span>
-                                                                    <p class='mb-0 me-2'>${data.floor}</p>
+                                                                    <p class='mb-0 me-2'>${data.floor ? data.floor :''}</p>
                                                                 </div>
                                                             </div>
                         
@@ -72,15 +77,15 @@
                                                         <div class='row me-2'>
                                                             <div class='d-flex ms-3 col-12 py-1 border-bottom'>
                                                                 <span class='text-muted me-2'>Facilities:</span>
-                                                                <p class='mb-0'>${data.facilities}</p>
+                                                                <p class='mb-0'>${data.facilities ? data.facilities :''}</p>
                                                             </div>
                                                             <div class='d-flex ms-3 col-12 py-1 border-bottom'>
                                                                 <span class='text-muted me-2'>Decoration:</span>
-                                                                <p class='mb-0'>${data.decorations}</p>
+                                                                <p class='mb-0'>${data.decorations ? data.decorations :''}</p>
                                                             </div>
                                                             <div class='d-flex ms-3 col-12 py-1'>
                                                                 <span class='text-muted me-2'>Types:</span>
-                                                                <p class='mb-0'>${data.types}</p>
+                                                                <p class='mb-0'>${data.types ? data.types :''}</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -88,25 +93,25 @@
                                                         <div class='row pt-2'>
                                                             <div class='col-6 d-flex'>
                                                                 <span class='text-muted me-2'>Gross SF:</span>
-                                                                <p class='mb-0'>${data.gross_sf}</p>
+                                                                <p class='mb-0'>${data.gross_sf ? data.gross_sf:''}</p>
                                                             </div>
                                                             <div class='col-6 d-flex'>
                                                                 <span class='text-muted me-2'>Net SF:</span>
-                                                                <p class='mb-0'>${data.net_sf}</p>
+                                                                <p class='mb-0'>${data.net_sf ? data.net_sf :''}</p>
                                                             </div>
                                                             <div class='col-6'>
                                                                 <div class='row'>
                                                                     <div class='col-12 d-flex'>
                                                                         <span class='text-muted me-2'>Selling Price:</span>
-                                                                        <p class='mb-0'>${data.selling_price}</p>
+                                                                        <p class='mb-0'>${data.selling_price ? data.selling_price:''}</p>
                                                                     </div>
                                                                     <div class='col-12 d-flex'>
                                                                         <span class='text-muted me-2'>Selling G@:</span>
-                                                                        <p class='mb-0'>${data.selling_g}</p>
+                                                                        <p class='mb-0'>${data.selling_g ? data.selling_g :''}</p>
                                                                     </div>
                                                                     <div class='col-12 d-flex'>
                                                                         <span class='text-muted me-2'>Selling N@:</span>
-                                                                        <p class='mb-0'>${data.selling_n}</p>
+                                                                        <p class='mb-0'>${data.selling_n ? data.selling_n:''}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -114,15 +119,15 @@
                                                                 <div class='row'>
                                                                     <div class='col-12 d-flex'>
                                                                         <span class='text-muted me-2'>Rental Price:</span>
-                                                                        <p class='mb-0'>${data.rental_price}</p>
+                                                                        <p class='mb-0'>${data.rental_price ? data.rental_price:''}</p>
                                                                     </div>
                                                                     <div class='col-12 d-flex'>
                                                                         <span class='text-muted me-2'>Rental G@:</span>
-                                                                        <p class='mb-0'>${data.rental_g}</p>
+                                                                        <p class='mb-0'>${data.rental_g ? data.rental_g :''}</p>
                                                                     </div>
                                                                     <div class='col-12 d-flex'>
                                                                         <span class='text-muted me-2'>Rental N@:</span>
-                                                                        <p class='mb-0'>${data.rental_n}</p>
+                                                                        <p class='mb-0'>${data.rental_n ? data.rental_n :''}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
