@@ -237,42 +237,42 @@ class PropertyController extends Controller
 
         $properties=Property::all();
         foreach ($properties as $key => $value) {
-            // dd($value->code);
+            
             $photos=Photo::where('code',$value->code)->where('saved',0)->get();
             
             foreach($photos as $photo){
+                if($photo->image != null && $photo->image != ''){
+                    
+                    $imageUrl = 'https://boshinghk.com/spms/images/'.$photo->image; //asset('storage/properties/'.$value->building_id.'/'.$photo->image);
                 
-                $imageUrl = 'https://boshinghk.com/spms/images/'.$photo->image; //asset('storage/properties/'.$value->building_id.'/'.$photo->image);
-                
-                $extension = pathinfo(parse_url($imageUrl, PHP_URL_PATH), PATHINFO_EXTENSION);
-                
-                $basename = basename($imageUrl);
-                
-                $name = explode('.'.$extension,$basename);
-                $name = $name[0];
-                // dd($name);
-                $image = file_get_contents($imageUrl);
-                
-                $target_dir = 'storage/app/properties/'.$value->code;
-    
-                if (!File::isDirectory($target_dir)) {
-                    mkdir($target_dir, 0777, true);
+                    $extension = pathinfo(parse_url($imageUrl, PHP_URL_PATH), PATHINFO_EXTENSION);
+                    
+                    $basename = basename($imageUrl);
+                    
+                    $name = explode('.'.$extension,$basename);
+                    $name = $name[0];
+                    // dd($name);
+                    $image = file_get_contents($imageUrl);
+                    
+                    $target_dir = 'storage/app/public/properties/'.$value->code;
+        
+                    if (!File::isDirectory($target_dir)) {
+                        mkdir($target_dir, 0777, true);
+                    }
+                    
+                    
+                    if(file_put_contents($target_dir.'/'.$name.'.'.$extension, $image)){
+                        $photo->saved = 1;
+                        $photo->save();
+                    }else{
+                        dd('else');
+                    }
+                    
                 }
-                
-                
-                
-                if(file_put_contents($target_dir.'/'.$name.'.'.$extension, $image)){
-                    $photo->saved = 1;
-                    $photo->save();
-                }else{
-                    dd('else');
-                }
-                
+                 
                
             }
             
-          
-
         }
 
     }
