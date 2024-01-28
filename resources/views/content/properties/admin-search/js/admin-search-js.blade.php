@@ -33,7 +33,7 @@
                                 <div class='card mb-3'>
                                     <div class='row g-0'>
                                         <div class='col-md-2' style='
-                                        background-image: url("${assetUrl + '/' + data.code + '/' + (data.singlephoto ? data.singlephoto.image : '')}");
+                                        background-image: url("${assetUrl + '/' + (data.singlephoto ? data.singlephoto.image : '')}");
                                             background-size: cover;
                                         '>
                                         </div>
