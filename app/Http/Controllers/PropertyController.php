@@ -56,151 +56,40 @@ class PropertyController extends Controller
         return view('content.properties.admin-search.admin-search',compact('options'));
     }
     public function AdminAjaxSearch(Request $request){
-        $property = Property::with('singlephoto');
+        $properties = Property::with('singlephoto');
         
         // district search
         if(!empty($request->district)){
-            $property->whereIn('district',$request->district);
+            $properties->whereIn('district',$request->district);
         }
         // facilities search
         if(!empty($request->facility)){
-            $property->whereIn('facilities',$request->facility);
+            $properties->whereIn('facilities',$request->facility);
         }
         // decorations search
         if(!empty($request->decoration)){
-            $property->whereIn('decorations',$request->decoration);
+            $properties->whereIn('decorations',$request->decoration);
         }
         // types search
         if(!empty($request->type)){
-            $property->whereIn('types',$request->type);
+            $properties->whereIn('types',$request->type);
         }
         // others search
         if(!empty($request->other)){
-            $property->whereIn('others',$request->other);
+            $properties->whereIn('others',$request->other);
         }
         // building_name search
         if(!empty($request->building_name)){
-            $property->where('building','LIKE',"%{$request->building_name}%");
+            $properties->where('building','LIKE',"%{$request->building_name}%");
         }
         // fetch searched data
 
-        $html = '';
-        foreach ($property->get() as $data) {
-            $html .= "
-            <div class='row mb-5'>
-            <div class='col-12'>
-                <div class='card mb-3'>
-                    <div class='row g-0'>
-                        <div class='col-md-2' style='
-                            background-image: url(" .asset('/storage/properties/'.$data->building_id.'/'.optional($data->singlephoto)->image) . ");
-                            background-size: cover;
-                        '>
-                        </div>
-                        <div class='col-md-10'>
-                            <div class='card-body pe-4 me-1 p-0'>
-                                <div class='row'>
-                                    <div class='d-flex ms-3 col-12 justify-content-between border-bottom'>
-                                        <div class='flex-column py-3 d-flex'>
-                                            <h5 class='mb-0'>". $data->building ."</h5>
-                                            <h6 class='mb-0'>Code: ". $data->code ."</h6>
-                                        </div>
-        
-                                        <div class='border-start p-3'>
-                                            <div class='row'>
-                                                <div class='col-6 d-flex'>
-                                                    <span class='text-muted me-2'>District:</span>
-                                                    <p class='mb-0 me-2'>". $data->district ."</p>
-                                                </div>
-                                                <div class='col-6 d-flex'>
-                                                    <span class='text-muted me-2'>Flat:</span>
-                                                    <p class='mb-0 me-2'>". $data->flat ."</p>
-                                                </div>
-                                                <div class='col-6 d-flex'>
-                                                    <span class='text-muted me-2'>Block:</span>
-                                                    <p class='mb-0 me-2'>". $data->block ."</p>
-                                                </div>
-                                                <div class='col-6 d-flex'>
-                                                    <span class='text-muted me-2'>Floor:</span>
-                                                    <p class='mb-0 me-2'>". $data->floor ."</p>
-                                                </div>
-                                            </div>
-        
-                                        </div>
-                                    </div>
-                                    <div class='col-7'>
-                                        <div class='row me-2'>
-                                            <div class='d-flex ms-3 col-12 py-1 border-bottom'>
-                                                <span class='text-muted me-2'>Facilities:</span>
-                                                <p class='mb-0'>". $data->facilities ."</p>
-                                            </div>
-                                            <div class='d-flex ms-3 col-12 py-1 border-bottom'>
-                                                <span class='text-muted me-2'>Decoration:</span>
-                                                <p class='mb-0'>". $data->decorations ."</p>
-                                            </div>
-                                            <div class='d-flex ms-3 col-12 py-1'>
-                                                <span class='text-muted me-2'>Types:</span>
-                                                <p class='mb-0'>". $data->types ."</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class='col-5 border-start'>
-                                        <div class='row pt-2'>
-                                            <div class='col-6 d-flex'>
-                                                <span class='text-muted me-2'>Gross SF:</span>
-                                                <p class='mb-0'>". $data->gross_sf ."</p>
-                                            </div>
-                                            <div class='col-6 d-flex'>
-                                                <span class='text-muted me-2'>Net SF:</span>
-                                                <p class='mb-0'>". $data->net_sf ."</p>
-                                            </div>
-                                            <div class='col-6'>
-                                                <div class='row'>
-                                                    <div class='col-12 d-flex'>
-                                                        <span class='text-muted me-2'>Selling Price:</span>
-                                                        <p class='mb-0'>". $data->selling_price ."</p>
-                                                    </div>
-                                                    <div class='col-12 d-flex'>
-                                                        <span class='text-muted me-2'>Selling G@:</span>
-                                                        <p class='mb-0'>". $data->selling_g ."</p>
-                                                    </div>
-                                                    <div class='col-12 d-flex'>
-                                                        <span class='text-muted me-2'>Selling N@:</span>
-                                                        <p class='mb-0'>". $data->selling_n ."</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class='col-6'>
-                                                <div class='row'>
-                                                    <div class='col-12 d-flex'>
-                                                        <span class='text-muted me-2'>Rental Price:</span>
-                                                        <p class='mb-0'>". $data->rental_price ."</p>
-                                                    </div>
-                                                    <div class='col-12 d-flex'>
-                                                        <span class='text-muted me-2'>Rental G@:</span>
-                                                        <p class='mb-0'>". $data->rental_g ."</p>
-                                                    </div>
-                                                    <div class='col-12 d-flex'>
-                                                        <span class='text-muted me-2'>Rental N@:</span>
-                                                        <p class='mb-0'>". $data->rental_n ."</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-        
-                                        </div>
-                                    </div>
-                                    <div class='col-12 px-3 mx-3 py-2 border-top'>
-                                       
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            ";
+        if($properties->get()) {
+            return response()->json(['success' => true, 'properties' => $properties->get()]);
+        } else {
+            return response()->json(['success' => true, 'msg' => 'Code Avliable']);
         }
-        return $html;        
+        
     }
 
     public function verifyCode($code){
