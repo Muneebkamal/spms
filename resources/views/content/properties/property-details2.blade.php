@@ -483,7 +483,19 @@
                     </div>
                 </div>
             </div>
+    
+            <div class="card-body py-0 my-2">
+                <div class="row">
+                @if($photo)
+                   @foreach($photo as $phot)
+                    <div class="col-md-4" style="background-image: url({{asset('storage/properties/').'/'.$phot->image }});background-size: cover;height:250px"></div>
+                   @endforeach
+                @endif
+                </div>
+            </div>
+
         </div>
+
     </div>
     <div class="col-12 mb-2">
         <div class="nav-align-left mt-4">
