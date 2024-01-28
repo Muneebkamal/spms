@@ -245,7 +245,7 @@ class PropertyController extends Controller
         $properties=Property::all();
         foreach ($properties as $key => $value) {
             // dd($value->code);
-            $photos=Photo::where('code',$value->code)->where('is_saved',0)->get();
+            $photos=Photo::where('code',$value->code)->where('saved',0)->get();
             
             foreach($photos as $photo){
                 
@@ -269,7 +269,7 @@ class PropertyController extends Controller
                 
                 
                 if(file_put_contents($target_dir.'/'.$name.'.'.$extension, $image)){
-                    $photo->is_saved = 1;
+                    $photo->saved = 1;
                     $photo->save();
                 }else{
                     dd('else');
