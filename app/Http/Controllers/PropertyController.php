@@ -76,13 +76,23 @@ class PropertyController extends Controller
             $properties->where('building','LIKE',"%{$request->building_name}%");
         }
         // fetch searched data
-        $properties=$properties->get();
+        $properties=$properties->paginate(10);
         if($properties) {
             return response()->json(['success' => true, 'properties' => $properties]);
         } else {
             return response()->json(['success' => true, 'msg' => 'Code Avliable']);
         }
         
+    }
+
+    public function loadMore(Request $request)
+    {
+        // dd($request->all());
+        $offset = $request->get('offset', 0);
+        $limit = 10; 
+        // dd($offset);
+        $records = Property::skip($offset)->take($limit)->get();
+        return response()->json($records);
     }
 
     public function verifyCode($code){

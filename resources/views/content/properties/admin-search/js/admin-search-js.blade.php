@@ -12,6 +12,8 @@
 <script>
     var assetUrl = "{{ asset('/storage/properties/') }}";
     var Url = "{{ url('property/')}}";
+    let offset = 0;
+    const limit = 10; 
     $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -29,9 +31,28 @@
                 type: 'POST',
                 url: '{{ url('admin-ajax-search') }}',
                 data: formData,
+
                 success: function(result) {
+                    console.log(result);
                     if (result.success === true) {
-                        $.each(result.properties, function(index, data) {
+                        offset = offset+result.properties.per_page;
+                        console.log(offset);
+                        appendSearch(result.properties.data)
+                        $(".saveCustomers_sve_btn").css('display', 'block')
+                        $(".saveCustomer_processing").css('display', 'none')
+                        $(".saveCustomer_processing").addClass('d-none')
+                        $(".saveCustomers_sve_btn").removeClass('d-none')
+                        
+                    }
+                    $(window).on('scroll', onScroll);
+                }
+
+            });
+        });
+    });
+    function appendSearch(data){
+        var html='';
+        $.each(data, function(index, data) {
                             html += `
                          <a href="${Url+ '/' + data.code}" class='row mb-5'>
                             <div class='col-12'>
@@ -145,15 +166,39 @@
                             </div>
                         </a>`;
                         });
-                        $(".saveCustomers_sve_btn").css('display', 'block')
-                        $(".saveCustomer_processing").css('display', 'none')
-                        $(".saveCustomer_processing").addClass('d-none')
-                        $(".saveCustomers_sve_btn").removeClass('d-none')
                         $('#fetchProperty').html(html);
-                    }
-                }
+    }
+</script>
 
-            });
+<script>
+// Adjust the limit based on your requirements
+
+    function loadMoreRecords() {
+        var formData = new FormData($('#myForm')[0]);
+        formData.append('offset',offset)
+        $.ajax({
+            url: "{{url('loadMore')}}",
+            type: 'GET',
+            data: {offset:offset},
+            success: function (data) {
+                if (data.length > 0) {
+                    appendSearch(data)
+                    offset += limit;
+                } else {
+                    // No more records, remove the scroll event listener
+                    $(window).off('scroll', onScroll);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+            }
         });
-    });
+    }
+
+    function onScroll() {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
+            loadMoreRecords();
+        }
+    }
+
 </script>

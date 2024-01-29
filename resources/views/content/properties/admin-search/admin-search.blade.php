@@ -171,6 +171,8 @@
             </div>
         </div>
     </form> 
-    <table class="table" id="fetchProperty"></table>
+    <div id="fetchProperty" style="height: 500px;overflow:scroll;overflow-x:hidden">
+        
+    </div>
 </div>
 @endsection
