@@ -20,6 +20,12 @@
         }
     });
     $(document).ready(function() {
+
+        $('#fetchProperty').on('scroll', function () {
+            // Call your function when scrolling occurs
+            loadMoreRecords();
+        });
+
         $("#myForm").on("submit", function(e) {
             var html = '';
             $(".saveCustomer_processing").removeClass('d-none')
@@ -51,6 +57,7 @@
         });
     });
     function appendSearch(data){
+        console.log(data)
         var html='';
         $.each(data, function(index, data) {
                             html += `
