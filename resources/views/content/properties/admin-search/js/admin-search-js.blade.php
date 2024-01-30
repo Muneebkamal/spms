@@ -11,17 +11,18 @@
 
 <script>
     var assetUrl = "{{ asset('/storage/properties/') }}";
-    var Url = "{{ url('property/')}}";
+    var Url = "{{ url('property/') }}";
     let offset = 0;
-    const limit = 10; 
+    const limit = 10;
+    var html = '';
     $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
     $(document).ready(function() {
 
-        $('#fetchProperty').on('scroll', function () {
+        $('#fetchProperty').on('scroll', function() {
             // Call your function when scrolling occurs
             loadMoreRecords();
         });
@@ -41,14 +42,14 @@
                 success: function(result) {
                     console.log(result);
                     if (result.success === true) {
-                        offset = offset+result.properties.per_page;
+                        offset = offset + result.properties.per_page;
                         console.log(offset);
                         appendSearch(result.properties.data)
                         $(".saveCustomers_sve_btn").css('display', 'block')
                         $(".saveCustomer_processing").css('display', 'none')
                         $(".saveCustomer_processing").addClass('d-none')
                         $(".saveCustomers_sve_btn").removeClass('d-none')
-                        
+
                     }
                     $(window).on('scroll', onScroll);
                 }
@@ -56,12 +57,12 @@
             });
         });
     });
-    function appendSearch(data){
+
+    function appendSearch(data) {
         console.log(data)
-        var html='';
+        
         $.each(data, function(index, data) {
-                            html += `
-                         <a href="${Url+ '/' + data.code}" class='row mb-5'>
+            html += `   <a href="${Url+ '/' + data.code}" class='row mb-5'>
                             <div class='col-12'>
                                 <div class='card mb-3'>
                                     <div class='row g-0'>
@@ -172,22 +173,24 @@
                                 </div>
                             </div>
                         </a>`;
-                        });
-                        $('#fetchProperty').html(html);
+        });
+        $('#fetchProperty').html(html);
     }
 </script>
 
 <script>
-// Adjust the limit based on your requirements
+    // Adjust the limit based on your requirements
 
     function loadMoreRecords() {
         var formData = new FormData($('#myForm')[0]);
-        formData.append('offset',offset)
+        formData.append('offset', offset)
         $.ajax({
-            url: "{{url('loadMore')}}",
+            url: "{{ url('loadMore') }}",
             type: 'GET',
-            data: {offset:offset},
-            success: function (data) {
+            data: {
+                offset: offset
+            },
+            success: function(data) {
                 if (data.length > 0) {
                     appendSearch(data)
                     offset += limit;
@@ -196,7 +199,7 @@
                     $(window).off('scroll', onScroll);
                 }
             },
-            error: function (xhr, status, error) {
+            error: function(xhr, status, error) {
                 console.error(xhr.responseText);
             }
         });
@@ -207,5 +210,4 @@
             loadMoreRecords();
         }
     }
-
 </script>
