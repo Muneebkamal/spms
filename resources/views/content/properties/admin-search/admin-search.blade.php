@@ -182,8 +182,10 @@
 </div>
 </form>
 </div>
-<div class="mt-4" id="fetchProperty">
 
-</div>
+    <div id="fetchProperty" style="height: 500px;overflow:scroll;overflow-x:hidden">
+        
+    </div>
+
 
 @endsection
