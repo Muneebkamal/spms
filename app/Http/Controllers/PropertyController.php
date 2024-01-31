@@ -87,13 +87,49 @@ class PropertyController extends Controller
 
     public function loadMore(Request $request)
     {
-        // dd($request->all());
         $offset = $request->get('offset', 0);
         $limit = 10; 
-        // dd($offset);
-        $records = Property::skip($offset)->take($limit)->get();
-        return response()->json($records);
+    
+        $properties = Property::skip($offset);
+    
+        // district search
+        if (!empty($request->district)) {
+            $properties->whereIn('district', (array)$request->district);
+        }
+    
+        // facilities search
+        if (!empty($request->facility)) {
+            $properties->whereIn('facilities', (array)$request->facility);
+        }
+    
+        // decorations search
+        if (!empty($request->decoration)) {
+            $properties->whereIn('decorations', (array)$request->decoration);
+        }
+    
+        // types search
+        if (!empty($request->type)) {
+            $properties->whereIn('types', (array)$request->type);
+        }
+    
+        // others search
+        if (!empty($request->other)) {
+            $properties->whereIn('others', (array)$request->other);
+        }
+    
+        // building_name search
+        if (!empty($request->building_name)) {
+            $properties->where(function ($query) use ($request) {
+                $query->where('building', 'LIKE', "%{$request->building_name}%");
+            });
+        }
+    
+        $result = $properties->take($limit)->get();
+    
+        return response()->json($result);
     }
+    
+    
 
     public function verifyCode($code){
         $usedCode = Property::where('code', $code)->first();
