@@ -14,21 +14,21 @@
         <div class="row">
             <div class="col-md-12 d-flex justify-content-between">
                 <div class="rent">
-                    <input type="checkbox" id="rent" name="type[]" value="Rent 放租" class="form-check-input">
+                    <input type="checkbox" id="types1" name="type[]" value="Rent 放租" class="types1 form-check-input">
                     <label>Rent 放租</label>
                 </div>
                 <div class="sales">
-                    <input type="checkbox" id="sales" name="type[]" value="Sales 放售" class="form-check-input">
+                    <input type="checkbox" id="types1" name="type[]" value="Sales 放售" class="types1 form-check-input">
                     <label>Sales 放售</label>
                 </div>
                 <div class="independent">
-                    <input type="checkbox" id="independent" name="type[]" value="Independent 獨立單位"
-                        class="form-check-input">
+                    <input type="checkbox" id="types1" name="type[]" value="Independent 獨立單位"
+                        class="types1 form-check-input">
                     <label>Independent 獨立單位</label>
                 </div>
                 <div class="sub-divided">
-                    <input type="checkbox" id="sub-divided" name="type[]" value="Subdivided 分間"
-                        class="form-check-input">
+                    <input type="checkbox" id="types1" name="type[]" value="Subdivided 分間"
+                        class="types1 form-check-input">
                     <label>Subdivided 分間</label>
                 </div>
             </div>
@@ -100,27 +100,27 @@
         <h4>{{__('Options')}}</h4>
     </div>
     <div class="col-md-6">
-        <input type="checkbox" id="new-site" name="other[]" value="New site新場" class="form-check-input">
+        <input type="checkbox" id="other" name="other[]" value="New site新場" class="form-check-input">
         <label for="">{{__('New site新場')}}</label>
     </div>
     <div class="col-md-6">
-        <input type="checkbox" id="bargain" name="other[]" value="Bargain 筍盤" class="form-check-input">
+        <input type="checkbox" id="other" name="other[]" value="Bargain 筍盤" class="form-check-input">
         <label for="">{{__('Bargain 筍盤')}}</label>
     </div>
     <div class="col-md-6 mt-1">
-        <input type="checkbox" id="discounted" name="other[]" value="Discounted 減價中" class="form-check-input">
+        <input type="checkbox" id="other" name="other[]" value="Discounted 減價中" class="form-check-input">
         <label for="">{{__('Discounted 減價中')}}</label>
     </div>
     <div class="col-md-6 mt-1">
-        <input type="checkbox" id="recommend" name="other[]" value="Recommend 推薦" class="form-check-input">
+        <input type="checkbox" id="other" name="other[]" value="Recommend 推薦" class="form-check-input">
         <label for="">{{__('Recommend 推薦')}}</label>
     </div>
     <div class="col-md-6 mt-1">
-        <input type="checkbox" id="ready-to-list" name="other[]" value="Ready to listing 就吉" class="form-check-input">
+        <input type="checkbox" id="other" name="other[]" value="Ready to listing 就吉" class="form-check-input">
         <label for="">{{__('Ready to listing 就吉')}}</label>
     </div>
     <div class="col-md-6 mt-1">
-        <input type="checkbox" id="new-released" name="other[]" value="New Released 剛吉" class="form-check-input">
+        <input type="checkbox" id="other" name="other[]" value="New Released 剛吉" class="form-check-input">
         <label for="">{{__('New Released 剛吉')}}</label>
     </div>
 </div>
