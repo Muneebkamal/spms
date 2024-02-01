@@ -12,9 +12,9 @@
 <script>
     var assetUrl = "{{ asset('/storage/properties/') }}";
 
-    var Url = "{{ url('property/')}}";
+    var Url = "{{ url('property/') }}";
     const NA = '<span class="text-muted">N\A</span>'
-    const notFoundImg = "{{asset('assets/img/default-imgs/propertyImageNotSet.jpg')}}"
+    const notFoundImg = "{{ asset('assets/img/default-imgs/propertyImageNotSet.jpg') }}"
     let offset = 0;
     const limit = 10;
     var html = '';
@@ -25,37 +25,16 @@
         }
     });
     $(document).ready(function() {
-
-        // $('#').on('scroll', function() {
-        //     // Call your function when scrolling occurs
-            
-        // });
-
-        var scrollableDiv = $('#fetchProperty');
-
-    // Attach scroll event to the element
-    scrollableDiv.scroll(function() {
-      // Calculate the scroll position
-      var scrollPosition = scrollableDiv.scrollTop() + scrollableDiv.height();
-      var totalHeight = scrollableDiv[0].scrollHeight;
-
-      // Check if the scroll position is at the bottom
-      if (scrollPosition === totalHeight) {
-        // Call your function when the scroll reaches the end
-        loadMoreRecords();
-      }
-    });
-
         $("#myForm").on("submit", function(e) {
             var html = '';
             offset = 0;
-            
+
             $(".saveCustomer_processing").removeClass('d-none')
             $(".saveCustomers_sve_btn").addClass('d-none')
             $('#fetchProperty').html('');
             e.preventDefault();
             var formData = $(this).serialize();
-        console.log(formData);
+            console.log(formData);
 
             $.ajax({
                 type: 'POST',
@@ -75,17 +54,17 @@
                         $(".saveCustomers_sve_btn").removeClass('d-none')
 
                     }
-                    $(window).on('scroll', onScroll);
                 }
 
             });
         });
+
     });
 
     function appendSearch(data) {
         console.log(data);
-    $.each(data, function(index, data) {
-                            html += `<div onclick='window.location.href = ${Url+ '/' + data.code}' class='card mb-3 d-none d-md-block'>
+        $.each(data, function(index, data) {
+            html += `<div onclick='window.location.href = ${Url+ '/' + data.code}' class='card mb-3 d-none d-md-block'>
                                     <div class='row g-0'>
                                         <div class='col-md-2' style='
                                         background-image: url("${data.singlephoto ? assetUrl + '/' + data.singlephoto.image : notFoundImg}");
@@ -272,30 +251,35 @@
                                 </div>
 
                                 `;
-                        });
-                        $('#fetchProperty').html(html);
-        
+        });
+        $('#fetchProperty').html(html);
+
     }
 </script>
 
 <script>
+    var isLoading = false;
     // Adjust the limit based on your requirements
+    $('#fetchProperty').on('scroll', onScroll);
 
     function loadMoreRecords() {
-        checkedValues=[];
+        if (isLoading) {
+            return;
+        }
+        checkedValues = [];
         $('.types1').each(function() {
-            if($(this).prop('checked')){
-                checkedValues.push( $(this).val() );
+            if ($(this).prop('checked')) {
+                checkedValues.push($(this).val());
             }
         });
-        mergearray=$.merge(checkedValues,$('#types').val())
-        checkedValuesother=[];
+        mergearray = $.merge(checkedValues, $('#types').val())
+        checkedValuesother = [];
         $('#other').each(function() {
-            if($(this).prop('checked')){
-                checkedValuesother.push( $(this).val() );
+            if ($(this).prop('checked')) {
+                checkedValuesother.push($(this).val());
             }
         });
-
+        isLoading = true;
         $.ajax({
             url: "{{ url('loadMore') }}",
             type: 'GET',
@@ -316,9 +300,11 @@
                     // No more records, remove the scroll event listener
                     $(window).off('scroll', onScroll);
                 }
+                isLoading = false;
             },
             error: function(xhr, status, error) {
                 console.error(xhr.responseText);
+                isLoading = false;
             }
         });
     }
