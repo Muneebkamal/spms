@@ -28,7 +28,7 @@ class PropertyController extends Controller
     public function index(){
         // $properties = Property::with('singlephoto')->orderByDesc('building_created_at')->get();
         $properties = Property::orderByDesc('building_created_at')->get();
-        
+
         return view('content.properties.property-list', compact('properties'));
     }
 
@@ -52,7 +52,7 @@ class PropertyController extends Controller
     }
     public function AdminAjaxSearch(Request $request){
         $properties = Property::with('singlephoto');
-        
+
         // district search
         if(!empty($request->district)){
             $properties->whereIn('district',$request->district);
@@ -84,54 +84,54 @@ class PropertyController extends Controller
         } else {
             return response()->json(['success' => true, 'msg' => 'Code Avliable']);
         }
-        
+
     }
 
     public function loadMore(Request $request)
     {
         $offset = $request->get('offset', 0);
-        $limit = 10; 
-    
+        $limit = 10;
+
         $properties = Property::skip($offset);
-    
+
         // district search
         if (!empty($request->district)) {
             $properties->whereIn('district', (array)$request->district);
         }
-    
+
         // facilities search
         if (!empty($request->facility)) {
             $properties->whereIn('facilities', (array)$request->facility);
         }
-    
+
         // decorations search
         if (!empty($request->decoration)) {
             $properties->whereIn('decorations', (array)$request->decoration);
         }
-    
+
         // types search
         if (!empty($request->type)) {
             $properties->whereIn('types', (array)$request->type);
         }
-    
+
         // others search
         if (!empty($request->other)) {
             $properties->whereIn('others', (array)$request->other);
         }
-    
+
         // building_name search
         if (!empty($request->building_name)) {
             $properties->where(function ($query) use ($request) {
                 $query->where('building', 'LIKE', "%{$request->building_name}%");
             });
         }
-    
+
         $result = $properties->take($limit)->get();
-    
+
         return response()->json($result);
     }
-    
-    
+
+
 
     public function verifyCode($code){
         $usedCode = Property::where('code', $code)->first();
@@ -243,11 +243,11 @@ class PropertyController extends Controller
         ]);
 
         $totalImages = $req->input('totalImages');
-        $newBuildingImagesPath = 'storage/properties/'.$newBuilding->building_id;
+        $newBuildingImagesPath = 'storage/properties/'.$newBuilding->code;
 
         for ($i = 0; $i < $totalImages; $i++) {
             $image = $req->file('images.' . $i);
-            $filename = uniqid('') . '_' . uniqid('') . '.' . $image->getClientOriginalExtension();
+            $filename = uniqid('') . '.' . $image->getClientOriginalExtension();
             $image->move($newBuildingImagesPath, $filename);
 
             Photo::create([
@@ -285,43 +285,43 @@ class PropertyController extends Controller
 
         $properties=Property::all();
         foreach ($properties as $key => $value) {
-            
+
             // $photos=Photo::where('code',$value->code)->where('saved',0)->get();
-            
+
             // foreach($photos as $photo){
             //     if($photo->image != null && $photo->image != ''){
-                    
+
                     // $imageUrl = 'https://boshinghk.com/spms/images/'.$photo->image; //asset('storage/properties/'.$value->building_id.'/'.$photo->image);
-                
+
                     // $extension = pathinfo(parse_url($imageUrl, PHP_URL_PATH), PATHINFO_EXTENSION);
-                    
+
                     // $basename = basename($imageUrl);
-                    
+
                     // $name = explode('.'.$extension,$basename);
                     // $name = $name[0];
                     // // dd($name);
                     // $image = file_get_contents($imageUrl);
-                    
+
                     $target_dir = 'storage/app/public/images/'.$value->code;
-        
+
                     if (!File::isDirectory($target_dir)) {
                         // mkdir($target_dir, 0777, true);
                         echo $value->code.'====<br>';
                     }
-                    
-                    
+
+
                     // if(file_put_contents($target_dir.'/'.$name.'.'.$extension, $image)){
                     //     $photo->saved = 1;
                     //     $photo->save();
                     // }else{
                     //     dd('else');
                     // }
-                    
+
             //     }
-                 
-               
+
+
             // }
-            
+
         }
 
     }
@@ -334,5 +334,5 @@ class PropertyController extends Controller
             return response()->json(['success' => false, 'msg' => 'Not Avliable']);
         }
     }
-    
+
 }

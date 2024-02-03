@@ -132,7 +132,7 @@
                                         <i class="ti mb-2 ti-map-pins"></i>
                                         Address:
                                     </span>&nbsp;
-                                    
+
                                 </h6>
                             </div>
                         </div>
@@ -233,7 +233,7 @@
                                             <i class="ti mb-2 ti-message"></i>
                                             Remark:
                                         </span>&nbsp;
-                                            
+
                                     </h6>
                                 </div>
                             </div>
@@ -483,7 +483,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="card-body py-0 my-2">
                 <div class="row">
                 @if($photo)
@@ -640,12 +640,50 @@
         </div>
     </div>
     <h2>Property Images</h2>
+    @foreach($photo as $photo)
+            <div class="col-md-4">
+                <div class="position-relative image-div shadow">
+                <input type="checkbox" name="" class="custom-image-check form-check-input m-0" id="">
+                <img src="{{asset('storage/properties/').'/'.$property->code.'/'. $photo->image }}"
+                    class="shadow-1-strong w-100 rounded open-img" alt="Boat on Calm Water"
+                    data-bs-toggle="modal" data-bs-target="#modals-transparent" />
+                <div class="inputs-div">
+                    <input type="text" name="" placeholder="Room Number" class="custom-image-input m-0" id="">
+                    <input type="text" name="" placeholder="Price" class="custom-image-input" id="">
+                    <input type="text" name="" placeholder="Size" class="custom-image-input"id="">
+                </div>
+            </div></div>
+    @endforeach
 </div>
 
 @endsection
 
 @section('styles')
 <style>
+    .custom-image-input:focus-visible{
+        border:none;
+        outline: none;
+    }
+    .custom-image-input{
+        width: 33.33%;
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        text-align: center;
+        margin-left: 5px
+    }
+    .image-div > img{
+        height: 22rem
+    }
+    .inputs-div{
+        display: flex;
+        position: absolute;
+        bottom:0px
+    }
+    .custom-image-check{
+        position: absolute;
+        top: 10px;
+        right: 10px
+    }
     #map,
     #map2 {
         width: 100%;
