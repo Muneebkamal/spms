@@ -66,6 +66,8 @@ return new class extends Migration
             $table->text('rate')->nullable();
             $table->text('land')->nullable();
             $table->text('oths')->nullable();
+
+            $table->bool('is_deleted')->default(false);
         });
     }
 
