@@ -28,7 +28,7 @@
 
         // $('#').on('scroll', function() {
         //     // Call your function when scrolling occurs
-            
+
         // });
 
         var scrollableDiv = $('#fetchProperty');
@@ -49,7 +49,7 @@
         $("#myForm").on("submit", function(e) {
             var html = '';
             offset = 0;
-            
+
             $(".saveCustomer_processing").removeClass('d-none')
             $(".saveCustomers_sve_btn").addClass('d-none')
             $('#fetchProperty').html('');
@@ -84,8 +84,9 @@
 
     function appendSearch(data) {
         console.log(data);
+        $('#resultFound').removeClass('d-none')
     $.each(data, function(index, data) {
-                            html += `<div onclick='window.location.href = ${Url+ '/' + data.code}' class='card mb-3 d-none d-md-block'>
+                            html += `<div onclick='window.location.href = ${Url+ '/' + data.code}' class='card border shadow-none mb-3 d-none d-md-block'>
                                     <div class='row g-0'>
                                         <div class='col-md-2' style='
                                         background-image: url("${data.singlephoto ? assetUrl + '/' + data.singlephoto.image : notFoundImg}");
@@ -190,7 +191,7 @@
                                     </div>
                                 </div>
 
-                                <div onclick='window.location.href = ${Url+ '/' + data.code}' class="card d-block d-md-none mb-4">
+                                <div onclick='window.location.href = ${Url+ '/' + data.code}' class="card shadow-none border d-block d-md-none mb-4">
                                     <div class="card-body p-3 pb-0">
                                         <div class="row pb-3">
 
@@ -274,7 +275,7 @@
                                 `;
                         });
                         $('#fetchProperty').html(html);
-        
+
     }
 </script>
 
