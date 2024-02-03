@@ -26,7 +26,9 @@ class PropertyController extends Controller
         return view('content.properties.add-property', compact('options','properties'));
     }
     public function index(){
-        $properties = Property::with('singlephoto')->get();
+        // $properties = Property::with('singlephoto')->orderByDesc('building_created_at')->get();
+        $properties = Property::orderByDesc('building_created_at')->get();
+        
         return view('content.properties.property-list', compact('properties'));
     }
 

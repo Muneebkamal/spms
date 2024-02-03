@@ -48,19 +48,19 @@
 @section('content')
 <div class="row">
     <div class="col-md-6">
-        <h4 class="m-3 property-list">Property List</h4>
-        <h4 class="m-3 property-table" style="display: none">Property Table</h4>
+        <h4 class="m-3 property-list">Properties</h4>
+        <!-- <h4 class="m-3 property-table" style="display: none">Property Table</h4> -->
     </div>
-    <div class="col-md-6 d-flex justify-content-end my-3 px-4">
+    <!-- <div class="col-md-6 d-flex justify-content-end my-3 px-4">
         <span class="bg-primary text-white" id="list" title="List">
             <i class="ti ti-list m-1 fs-2"></i>
         </span>
         <span id="table" title="Table">
             <i class="ti ti-border-all m-1 fs-2"></i>
         </span>
-    </div>
+    </div> -->
 </div>
-<div class="property-list">
+{{-- <div class="property-list">
     @forelse($properties as $property)
     <div class="row" data-code="{{ $property->code }}">
         <div class="col-md">
@@ -122,14 +122,14 @@
     <h2>No Property maded</h2>
     @endforelse
 
-</div>
+</div> --}}
 
 <!--/ Horizontal -->
 
 <!--Table-->
-<div class="card property-table" style="display: none">
+<div class="card property-table">
     <div class="card-datatable table-responsive pt-0">
-        <table class="table user-list-table">
+        <table class="table user-list-table stripe">
             <thead>
                 <tr>
                     <th>{{__('Code')}}</th>
@@ -143,7 +143,7 @@
                 @foreach($properties as $property)
                 <tr class="odd" data-code="{{ $property->code }}">
                     <td>
-                        <a href="{{asset('assets/img/elements/9.jpg')}}">
+                        <a href="{{ route('property-details', ['code' => $property->code]) }}">
                             {{ $property->code }}
                         </a>
                     </td>
