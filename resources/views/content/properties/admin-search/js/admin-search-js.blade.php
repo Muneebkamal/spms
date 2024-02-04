@@ -68,7 +68,7 @@
 
                         // offset = offset + result.properties.per_page;
                         // console.log(offset);
-                        appendSearch(result.properties.data)
+                        appendSearch(result.properties)
                         $(".saveCustomers_sve_btn").css('display', 'block')
                         $(".saveCustomer_processing").css('display', 'none')
                         $(".saveCustomer_processing").addClass('d-none')
