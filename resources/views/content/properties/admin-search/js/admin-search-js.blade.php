@@ -66,8 +66,8 @@
                     console.log(result);
                     if (result.success === true) {
 
-                        offset = offset + result.properties.per_page;
-                        console.log(offset);
+                        // offset = offset + result.properties.per_page;
+                        // console.log(offset);
                         appendSearch(result.properties.data)
                         $(".saveCustomers_sve_btn").css('display', 'block')
                         $(".saveCustomer_processing").css('display', 'none')
@@ -75,7 +75,7 @@
                         $(".saveCustomers_sve_btn").removeClass('d-none')
 
                     }
-                    $(window).on('scroll', onScroll);
+                    // $(window).on('scroll', onScroll);
                 }
 
             });
@@ -309,7 +309,7 @@
                     offset += limit;
                 } else {
                     // No more records, remove the scroll event listener
-                    $(window).off('scroll', onScroll);
+                    // $(window).off('scroll', onScroll);
                 }
             },
             error: function(xhr, status, error) {
