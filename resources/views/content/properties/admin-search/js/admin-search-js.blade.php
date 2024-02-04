@@ -42,7 +42,7 @@
       // Check if the scroll position is at the bottom
       if (scrollPosition === totalHeight) {
         // Call your function when the scroll reaches the end
-        loadMoreRecords();
+        // loadMoreRecords();
       }
     });
 
