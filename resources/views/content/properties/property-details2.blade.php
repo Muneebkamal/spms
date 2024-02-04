@@ -43,6 +43,7 @@
                                         District:
                                     </span>&nbsp;
                                     {{$property->district}}
+                                    <input hidden id="building_address" value="{{$property->street}}">
                                 </h6>
                             </div>
                             <div class="col-4 my-2">
