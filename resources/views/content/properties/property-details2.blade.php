@@ -485,15 +485,7 @@
                 </div>
             </div>
 
-            <div class="card-body py-0 my-2">
-                <div class="row">
-                @if($photo)
-                   @foreach($photo as $phot)
-                    <div class="col-md-4" style="background-image: url({{asset('storage/properties/').'/'.$phot->image }});background-size: cover;height:250px"></div>
-                   @endforeach
-                @endif
-                </div>
-            </div>
+
 
         </div>
 
@@ -641,11 +633,11 @@
         </div>
     </div>
     <h2>Property Images</h2>
-    @foreach($photo as $photo)
-            <div class="col-md-4">
+    @foreach($photo as $pic)
+            <div class="col-md-4 my-2">
                 <div class="position-relative image-div shadow">
                 <input type="checkbox" name="" class="custom-image-check form-check-input m-0" id="">
-                <img src="{{asset('storage/properties/').'/'.$property->code.'/'. $photo->image }}"
+                <img src="{{asset('storage/properties/').'/'.$pic->image }}"
                     class="shadow-1-strong w-100 rounded open-img" alt="Boat on Calm Water"
                     data-bs-toggle="modal" data-bs-target="#modals-transparent" />
                 <div class="inputs-div">
@@ -655,6 +647,8 @@
                 </div>
             </div></div>
     @endforeach
+    
+                
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACk1RzpwGH2o8goef4pgIP8C1-_BNDCD0&callback=initialize&v=weekly" defer></script>
@@ -803,7 +797,7 @@
         right: 10px
     }
     #map,
-    #map2 {
+    #pano {
         width: 100%;
         height: 15rem;
         background-color: gray
@@ -821,12 +815,6 @@
         position: sticky;
         top: 100px;
     }
-    #map,
-#pano {
-  float: left;
-  height: 230px;
-  width: 100%;
-}
 
 </style>
 @endsection
