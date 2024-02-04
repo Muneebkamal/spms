@@ -276,7 +276,7 @@
                 </div>
 
                 `;
-            $('#fetchProperty').html(html);
+            $('#fetchProperty').append(html);
             
         });
         
