@@ -821,6 +821,12 @@
         position: sticky;
         top: 100px;
     }
+    #map,
+#pano {
+  float: left;
+  height: 230px;
+  width: 100%;
+}
 
 </style>
 @endsection
