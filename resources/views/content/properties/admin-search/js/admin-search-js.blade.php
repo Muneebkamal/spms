@@ -85,8 +85,11 @@
     function appendSearch(data) {
         console.log(data);
         $('#resultFound').removeClass('d-none')
+        $('#search_count').html(data.length);
+        $('#search_cnt_tag').css('display','flex');
+        let html = '';
         $.each(data, function(index, data) {
-            html += `<div onclick='window.location.href = ${Url+ '/' + data.code}' class='card border shadow-none mb-3 d-none d-md-block'>
+            html = `<div onclick='window.location.href = ${Url+ '/' + data.code}' class='card border shadow-none mb-3 d-none d-md-block'>
                     <div class='row g-0'>
                         <div class='col-md-2' style='
                         background-image: url("${data.singlephoto ? assetUrl + '/' + data.singlephoto.image : notFoundImg}");
@@ -273,10 +276,10 @@
                 </div>
 
                 `;
+            $('#fetchProperty').html(html);
+            
         });
-        $('#search_count').html(data.length);
-        $('#search_cnt_tag').css('display','flex');
-        $('#fetchProperty').html(html);
+        
     }
     function loadMoreRecords() {
         checkedValues=[];
