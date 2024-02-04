@@ -79,7 +79,7 @@ class PropertyController extends Controller
         }
         // fetch searched data
         // $properties=$properties->paginate(10);
-        $properties=$properties->get();
+        $properties=$properties->orderByDesc('building_id')->get();
 
         if($properties) {
             return response()->json(['success' => true, 'properties' => $properties]);
