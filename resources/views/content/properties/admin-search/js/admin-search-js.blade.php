@@ -274,6 +274,8 @@
 
                 `;
         });
+        $('#search_count').html(data.length);
+        $('#search_cnt_tag').css('display','flex');
         $('#fetchProperty').html(html);
     }
     function loadMoreRecords() {
