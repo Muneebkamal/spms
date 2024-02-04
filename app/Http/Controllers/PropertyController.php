@@ -251,7 +251,7 @@ class PropertyController extends Controller
             $image->move($newBuildingImagesPath, $filename);
 
             Photo::create([
-                'image' => $filename,
+                'image' => $newBuilding->code.'/'.$filename,
                 'code' => $newBuilding->code,
                 'image_created_at' => now(),
                 'room_number' => '',

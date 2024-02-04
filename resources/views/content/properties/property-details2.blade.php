@@ -20,7 +20,7 @@
                         <div id="map"></div>
                     </div>
                     <div class="col-md-6">
-                        <div id="map2"></div>
+                        <div id="pano"></div>
                     </div>
                 </div>
             </div>
@@ -655,6 +655,123 @@
             </div></div>
     @endforeach
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACk1RzpwGH2o8goef4pgIP8C1-_BNDCD0&callback=initialize&v=weekly" defer></script>
+<script>
+
+    let lat = '';
+    let lng = '';
+    let loc = '';
+    
+    var map;
+    var panorama;
+        
+    function initialize() {
+        let address = $('#building_address').val(); 
+        
+    //   const map = new google.maps.Map(document.getElementById("map"), {
+    //     mapTypeId: google.maps.MapTypeId.TERRAIN,
+    //     zoom: 18,
+    //     streetViewControl: false,
+    //   });
+        
+        
+        var geocoder = new google.maps.Geocoder();
+    
+        geocoder.geocode({
+            'address': address
+        }, 
+        function(results, status) {
+            if(status == google.maps.GeocoderStatus.OK) {
+                lat = results[0].geometry.location.lat();
+                lng = results[0].geometry.location.lng();
+                loc = results[0].geometry.location;
+                
+                var mylatlng = new google.maps.LatLng(lat, lng);
+                
+                var sv = new google.maps.StreetViewService();
+
+                panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
+            
+                // set up the map.
+                map = new google.maps.Map(document.getElementById('map'), {
+                center: mylatlng,
+                zoom: 16,
+                });
+                
+                // Set the initial Street View camera to the center of the map
+                sv.getPanorama({location: mylatlng, radius: 50, source: google.maps.StreetViewSource.OUTDOOR}, processSVData);
+            
+                // Look for a nearby Street View panorama when the map is clicked.
+                // getPanoramaByLocation will return the nearest pano when the
+                // given radius is 50 meters or less.
+                map.addListener('click', function(event) {
+                sv.getPanorama({location: event.latLng, radius: 50}, processSVData);
+                });
+                
+        //      new google.maps.Marker({
+        //         position: results[0].geometry.location,
+        //         map: map
+        //      });
+        //      map.setCenter(results[0].geometry.location);
+                
+        //      const panorama = new google.maps.StreetViewPanorama(
+        //     document.getElementById("pano"),
+        //     {
+        //       position: loc,
+        //       zoom:1,
+        //       pov: {
+        //         heading: 270,
+        //         pitch: 0,
+        //       },
+        //       radius : 50,
+        //       source: google.maps.StreetViewSource.OUTDOOR
+        //     },
+        //   );
+        
+        //   map.setStreetView(panorama);
+                
+            }
+        });
+        
+        console.log("Latitude: "+lat);
+        console.log("Longitude: "+lng);
+        
+    }
+        
+    window.initialize = initialize;
+
+    function processSVData(data, status) {
+        if (status === google.maps.StreetViewStatus.OK) {
+        var marker = new google.maps.Marker({
+            position: data.location.latLng,
+            map: map,
+            title: data.location.description
+        });
+    
+        panorama.setPano(data.location.pano);
+        panorama.setPov({
+            heading: 270,
+            pitch: 0
+        });
+        panorama.setVisible(true);
+    
+        marker.addListener('click', function() {
+            var markerPanoID = data.location.pano;
+            // Set the Pano to use the passed panoID.
+            panorama.setPano(markerPanoID);
+            panorama.setPov({
+            heading: 270,
+            pitch: 0
+            });
+            panorama.setVisible(true);
+        });
+        } else {
+        console.error('Street View data not found for this location.');
+        }
+    }
+
+</script>
 
 @endsection
 
