@@ -320,7 +320,7 @@
 
     function onScroll() {
         if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
-            loadMoreRecords();
+            // loadMoreRecords();
         }
     }
 </script>
