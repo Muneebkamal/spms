@@ -189,7 +189,7 @@
         <h4 class="mb-4 pb-0" id="search_cnt_tag" style="display:none">Results Found:<strong id="search_count"></strong></h4>
         <button class="btn h-50 btn-outline-primary">See Table</button>
     </div>
-    <div id="fetchProperty" class="px-4" style="max-height: 500px;overflow-y:auto">
+    <div id="fetchProperty" class="px-4">
 
     </div>
 </div>
