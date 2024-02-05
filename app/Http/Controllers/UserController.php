@@ -121,5 +121,4 @@ class UserController extends Controller
 
         return response()->json(['success' => true, 'path' => asset('storage/user_images/' . $filename)]);
     }
-
 }

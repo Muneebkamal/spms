@@ -70,6 +70,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         // other middleware entries
         'checkRole' => \App\Http\Middleware\CheckRole::class,
+        'activity' => \App\Http\Middleware\ActivityLogMiddleware::class,
     ];
 
 }
