@@ -121,45 +121,4 @@ class UserController extends Controller
 
         return response()->json(['success' => true, 'path' => asset('storage/user_images/' . $filename)]);
     }
-    public function checkPerson()
-    {
-       
-        if (isset($_SESSION['name2'])) {
-            
-            $name = $_SESSION['name2'];
-            $code = $_GET['code'];
-            $sqlUpdate = "UPDATE last_update SET username = '$name', updated_at = CURRENT_TIMESTAMP where code = '$code' ";
-            mysqli_query($this->link, $sqlUpdate);
-
-            $sqlFind = "SELECT * from extra_view where username = '$name' AND DAY(created_at) = DAY(CURRENT_DATE()) AND MONTH(created_at) = MONTH(CURRENT_DATE())
-        AND YEAR(created_at) = YEAR(CURRENT_DATE()) order by view_id DESC";
-            $resFind = mysqli_query($this->link, $sqlFind);
-            $rowFind = mysqli_fetch_assoc($resFind);
-            $number1 = (isset($rowFind['view_count'])) ? $rowFind['view_count'] : 0;
-            $number2 = (isset($rowFind['admin_given'])) ? $rowFind['admin_given'] : 0;
-
-            if ($number1 < (40 + $number2)) {
-
-                $sqlCheck = "SELECT * from extra_view where username = '$name' AND code = '$code' AND DAY(created_at) = DAY(CURRENT_DATE()) AND MONTH(created_at) = MONTH(CURRENT_DATE())
-                AND YEAR(created_at) = YEAR(CURRENT_DATE()) order by view_id DESC";
-                $resCheck = mysqli_query($this->link, $sqlCheck);
-                
-                if (mysqli_num_rows($resCheck) > 0) {
-                    return;
-                }
-
-
-                $count = (isset($rowFind['view_count'])) ? $rowFind['view_count'] : 0;
-                $admin_count = (isset($rowFind['admin_given'])) ? $rowFind['admin_given'] : 0;
-                $count++;
-
-                $sqlView = "INSERT INTO extra_view (view_id, username, code, view_count, admin_given, created_at) VALUES (NULL, '$name', '$code', $count, $admin_count, CURRENT_TIMESTAMP)";
-                mysqli_query($this->link, $sqlView);
-            } else {
-                header('location:search-landlord.php');
-            }
-        }
-        # code...
-    }
-
 }
