@@ -154,7 +154,7 @@ class PropertyController extends Controller
     public function create(Request $req) {
         $code = $this->verifyStrings($req,'code');
         $district = $this->verifyStrings($req,'district');
-        $building_name = $this->verifyStrings($req,'building_name');
+        $building_name = $this->verifyStrings($req,'building');
         $street = $this->verifyStrings($req,'address');
         $year = $this->verifyStrings($req,'year');
         $block = $this->verifyStrings($req,'block');

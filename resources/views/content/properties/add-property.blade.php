@@ -93,11 +93,12 @@
                                 <option value=""></option>
                                 @if(!empty($properties))  
                                     @foreach($properties as $property)  
-                                    <option value="{{$property->building}}">{{$property->building}}</option>
+                                    <option value="{{$property->building_id}}">{{$property->building}}</option>
                                     @endforeach
                                 @endif
                             </select>
                         <span class="text-danger" style="display: none" id="building_name_msg"></span>
+                        <input hidden value="" name="building" id="building">
                         </div>
                         <div class="col-md-12">
                             <input type="text" id="address" name="address" class="form-control"
