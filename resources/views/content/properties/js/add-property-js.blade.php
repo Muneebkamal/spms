@@ -237,6 +237,7 @@
                     if(response.success === true){
                         $('#address').val(response.buildingData.street);
                         $('#year').val(response.buildingData.year);
+                        $('#building').val(response.buildingData.building);
                     }
                     
                 },
