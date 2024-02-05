@@ -273,6 +273,20 @@ class PropertyController extends Controller
 
         return response()->json(['success' => true]);
     }
+    public function updateContacts(Request $req) {
+        $con = $req->input("contacts");
+        $num = $req->input("numbers");
+        $id = $req->input("id");
+        for ($i = 0; $i < 3; $i++) {
+            Property::where('building_id', $id)->update([
+                'contact' . ($i + 1) => $con[$i]['contact'],
+                'number' . ($i + 1) => $num[$i]['number'],
+            ]);
+        }
+
+        $data = ['contacts' => $con[0]['contact']];
+        return response()->json($data, 200);
+    }
 
     public function verifyStrings(Request $request, $fieldName)
     {

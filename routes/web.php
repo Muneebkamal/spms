@@ -40,6 +40,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/property/{code}', [PropertyController::class, 'detail'])->name('property-details');
     Route::get('/advanced-search', [PropertyController::class, 'search']);
     Route::post('/upload-image', [PropertyController::class, 'uploadImage'])->name('upload-image');
+    Route::post('/update-contacts', [PropertyController::class, 'updateContacts'])->name('reArrangeContacts');
+
     // COMMON WORDS ROUTES
     Route::get('/common-words', [CommonWordsController::class, 'index'])->name('common-words');
     Route::post('/create-common-words', [CommonWordsController::class, 'create'])->name('create-common-words');
@@ -65,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/admin-ajax-search', [PropertyController::class, 'AdminAjaxSearch']);
         Route::get('/loadMore', [PropertyController::class, 'loadMore']);
 
-        
+
     });
 
     // --------------
