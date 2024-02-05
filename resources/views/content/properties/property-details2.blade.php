@@ -3,7 +3,47 @@
 @section('title', 'Property List')
 
 @section('script')
-<script></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+<script>
+    new Sortable(document.getElementById('drag-container'), {
+        animation: 150,
+        handle: '.draggable-row',
+        onEnd: function (evt) {
+            var contacts = [];
+            var numbers = [];
+            for (let i = 0; i < 3; i++) {
+                let num = $('.number')[i];
+                $(num).text('Number ' + (i + 1) + ':');
+
+                let con = $('.contact')[i];
+                $(con).text('Contact ' + (i + 1) + ':');
+
+                contacts.push({
+                    contact: $(con).data('val')
+                });
+                numbers.push({
+                    number: $(num).data('val')
+                });
+            }
+            rearangeLandlordContacts(contacts,numbers)
+        },
+    });
+    function rearangeLandlordContacts(conArr,numArr) {
+        console.log(conArr,numArr)
+        $.ajax({
+            url: '{{ route("reArrangeContacts") }}',
+            data: {'contacts': conArr, 'numbers': numArr , 'id': {{$property->building_id}}},
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(data) {
+                console.log(data)
+            },
+            error: function(e) {}
+        })
+    }
+</script>
 @endsection
 
 @section('content')
@@ -148,45 +188,88 @@
                     </div>
                     <div class="card-body py-0">
                         <div class="row">
-                            <div class="col-8 py-2">
-                                <div class="row">
-                                    <div class="col-6 my-2">
+                            <div class="col-8 py-2" id="drag-container">
+                                <div class="row draggable-row" draggable="true" data-id="1">
+                                    <div class="col-3 my-2">
                                         <h6 class="mb-0">
                                             <span class="text-muted">
                                                 <i class="ti mb-2 ti-phone"></i>
-                                                Contact 1:
+                                                <span class="contact" data-val="{{$property->contact1}}">Contact 1:</span>
                                             </span>
                                         </h6>
                                     </div>
-                                    <div class="col-6 my-2">
+                                    <div class="col-3 my-2">
                                         <h6 class="mb-0">
                                             {{$property->contact1}}
                                         </h6>
                                     </div>
-                                    <div class="col-6 my-2">
+                                    <div class="col-3 my-2">
                                         <h6 class="mb-0">
                                             <span class="text-muted">
                                                 <i class="ti mb-2 ti-phone"></i>
-                                                Contact 2:
+                                                <span class="number" data-val="{{$property->number1}}">Number 1:</span>
                                             </span>
                                         </h6>
                                     </div>
-                                    <div class="col-6 my-2">
+                                    <div class="col-3 my-2">
+                                        <h6 class="mb-0">
+                                            {{$property->number1}}
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="row draggable-row" draggable="true" data-id="2">
+                                    <div class="col-3 my-2">
+                                        <h6 class="mb-0">
+                                            <span class="text-muted">
+                                                <i class="ti mb-2 ti-phone"></i>
+                                                <span class="contact" data-val="{{$property->contact2}}">Contact 2:</span>
+                                            </span>
+                                        </h6>
+                                    </div>
+                                    <div class="col-3 my-2">
                                         <h6 class="mb-0">
                                             {{$property->contact2}}
                                         </h6>
                                     </div>
-                                    <div class="col-6 my-2">
+                                    <div class="col-3 my-2">
                                         <h6 class="mb-0">
                                             <span class="text-muted">
                                                 <i class="ti mb-2 ti-phone"></i>
-                                                Contact 3:
+                                                <span class="number" data-val="{{$property->number2}}">Number 2:</span>
                                             </span>
                                         </h6>
                                     </div>
-                                    <div class="col-6 my-2">
+                                    <div class="col-3 my-2">
+                                        <h6 class="mb-0">
+                                            {{$property->number2}}
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="row draggable-row" draggable="true" data-id="3">
+                                    <div class="col-3 my-2">
+                                        <h6 class="mb-0">
+                                            <span class="text-muted">
+                                                <i class="ti mb-2 ti-phone"></i>
+                                                <span class="contact" data-val="{{$property->contact3}}">Contact 3:</span>
+                                            </span>
+                                        </h6>
+                                    </div>
+                                    <div class="col-3 my-2">
                                         <h6 class="mb-0">
                                             {{$property->contact3}}
+                                        </h6>
+                                    </div>
+                                    <div class="col-3 my-2">
+                                        <h6 class="mb-0">
+                                            <span class="text-muted">
+                                                <i class="ti mb-2 ti-phone"></i>
+                                                <span class="number" data-val="{{$property->number3}}">Number 3:</span>
+                                            </span>
+                                        </h6>
+                                    </div>
+                                    <div class="col-3 my-2">
+                                        <h6 class="mb-0">
+                                            {{$property->number3}}
                                         </h6>
                                     </div>
                                 </div>
@@ -647,8 +730,8 @@
                 </div>
             </div></div>
     @endforeach
-    
-                
+
+
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACk1RzpwGH2o8goef4pgIP8C1-_BNDCD0&callback=initialize&v=weekly" defer></script>
@@ -657,59 +740,59 @@
     let lat = '';
     let lng = '';
     let loc = '';
-    
+
     var map;
     var panorama;
-        
+
     function initialize() {
-        let address = $('#building_address').val(); 
-        
+        let address = $('#building_address').val();
+
     //   const map = new google.maps.Map(document.getElementById("map"), {
     //     mapTypeId: google.maps.MapTypeId.TERRAIN,
     //     zoom: 18,
     //     streetViewControl: false,
     //   });
-        
-        
+
+
         var geocoder = new google.maps.Geocoder();
-    
+
         geocoder.geocode({
             'address': address
-        }, 
+        },
         function(results, status) {
             if(status == google.maps.GeocoderStatus.OK) {
                 lat = results[0].geometry.location.lat();
                 lng = results[0].geometry.location.lng();
                 loc = results[0].geometry.location;
-                
+
                 var mylatlng = new google.maps.LatLng(lat, lng);
-                
+
                 var sv = new google.maps.StreetViewService();
 
                 panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
-            
+
                 // set up the map.
                 map = new google.maps.Map(document.getElementById('map'), {
                 center: mylatlng,
                 zoom: 16,
                 });
-                
+
                 // Set the initial Street View camera to the center of the map
                 sv.getPanorama({location: mylatlng, radius: 50, source: google.maps.StreetViewSource.OUTDOOR}, processSVData);
-            
+
                 // Look for a nearby Street View panorama when the map is clicked.
                 // getPanoramaByLocation will return the nearest pano when the
                 // given radius is 50 meters or less.
                 map.addListener('click', function(event) {
                 sv.getPanorama({location: event.latLng, radius: 50}, processSVData);
                 });
-                
+
         //      new google.maps.Marker({
         //         position: results[0].geometry.location,
         //         map: map
         //      });
         //      map.setCenter(results[0].geometry.location);
-                
+
         //      const panorama = new google.maps.StreetViewPanorama(
         //     document.getElementById("pano"),
         //     {
@@ -723,17 +806,17 @@
         //       source: google.maps.StreetViewSource.OUTDOOR
         //     },
         //   );
-        
+
         //   map.setStreetView(panorama);
-                
+
             }
         });
-        
+
         console.log("Latitude: "+lat);
         console.log("Longitude: "+lng);
-        
+
     }
-        
+
     window.initialize = initialize;
 
     function processSVData(data, status) {
@@ -743,14 +826,14 @@
             map: map,
             title: data.location.description
         });
-    
+
         panorama.setPano(data.location.pano);
         panorama.setPov({
             heading: 270,
             pitch: 0
         });
         panorama.setVisible(true);
-    
+
         marker.addListener('click', function() {
             var markerPanoID = data.location.pano;
             // Set the Pano to use the passed panoID.
