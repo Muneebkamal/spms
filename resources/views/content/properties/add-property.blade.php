@@ -93,7 +93,7 @@
                                 <option value=""></option>
                                 @if(!empty($properties))  
                                     @foreach($properties as $property)  
-                                    <option value="{{$property->building_id}}">{{$property->building}}</option>
+                                    <option value="{{$property->building}}">{{$property->building}}</option>
                                     @endforeach
                                 @endif
                             </select>
