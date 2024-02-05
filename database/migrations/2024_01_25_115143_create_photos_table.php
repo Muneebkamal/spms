@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('image_resized');
             $table->string('size');
             $table->string('price');
-            $table->bool('is_deleted')->default(false);
+            $table->boolean('is_deleted')->default(false);
 
         });
     }
