@@ -2,6 +2,11 @@
 
 @section('title', 'Property List')
 
+@include('content.models.edit-building')
+@include('content.models.edit-landlord')
+@include('content.models.edit-ftod')
+@include('content.models.edit-price')
+
 @section('script')
 <script></script>
 @endsection
@@ -32,7 +37,7 @@
                 <div class="card">
                     <div class="card-header border-bottom pb-3 d-flex justify-content-between">
                         <h3 class="mb-0">Building Details</h3>
-                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-building">Edit</button>
                     </div>
                     <div class="card-body pt-3">
                         <div class="row">
@@ -144,7 +149,7 @@
                 <div class="card">
                     <div class="card-header border-bottom pb-3 d-flex justify-content-between">
                         <h3 class="mb-0">Landlord Details</h3>
-                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-landlord">Edit</button>
                     </div>
                     <div class="card-body py-0">
                         <div class="row">
@@ -246,7 +251,7 @@
                 <div class="card">
                     <div class="card-header border-bottom pb-3 d-flex justify-content-between">
                         <h3 class="mb-0">FTOD</h3>
-                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#edit-ftod">Edit</button>
                     </div>
                     <div class="card-body p-0">
                         <div class="row px-3">
@@ -358,8 +363,9 @@
     </div>
     <div class="col-12">
         <div class="card mt-4">
-            <div class="card-header border-bottom pb-2">
+            <div class="card-header border-bottom pb-2  d-flex justify-content-between">
                 <h3 class="mb-0">Price & Size:</h3>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-price">Edit</button>
             </div>
             <div class="card-body py-0">
                 <div class="row">
