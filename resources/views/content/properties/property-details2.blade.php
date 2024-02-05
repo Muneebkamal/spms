@@ -2,10 +2,10 @@
 
 @section('title', 'Property List')
 
-@include('content.models.edit-building')
-@include('content.models.edit-landlord')
-@include('content.models.edit-ftod')
-@include('content.models.edit-price')
+@include('content.modals.edit-building')
+@include('content.modals.edit-landlord')
+@include('content.modals.edit-ftod')
+@include('content.modals.edit-price')
 
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
