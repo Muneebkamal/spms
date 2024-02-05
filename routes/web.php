@@ -16,7 +16,7 @@ Route::get('/FileSave', [PropertyController::class, 'FileSave']);
 // --------------
 // AUTHENCATED ROUTES
 // --------------
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','activity'])->group(function () {
     // --------------
     // USER PROFILE ROUTES
     // --------------
