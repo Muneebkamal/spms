@@ -82,204 +82,257 @@
         });
     });
 
-    function appendSearch(data) {
-        console.log(data);
-        $('#resultFound').removeClass('d-none')
-        $('#search_count').html(data.length);
-        $('#search_cnt_tag').css('display','flex');
-        let html = '';
-        $.each(data, function(index, data) {
-            html = `
-                <div  onclick='window.location.href = ${Url+ '/' + data.code}' class='card searched-card border shadow-none mb-3 d-none d-md-block'>
-                    <div class='row g-0'>
-                        <div class='col-md-2' style='
-                        background-image: url("${data.singlephoto ? assetUrl + '/' + data.singlephoto.image : notFoundImg}");
-                            background-size: cover;
-                        '>
-                        </div>
-                        <div class='col-md-10'>
-                            <div class='card-body pe-4 me-1 p-0'>
-                                <div class='row'>
-                                    <div class='flex-column col-7 pt-3 d-flex pe-0'>
-                                        <h5 class='mb-1 ps-1 ms-2'>${data.building ? data.building : NA }</h5>
-                                        <h6 class='mb-0 border-bottom ps-2 ms-1 pb-3'>Code: ${data.code ? data.code : NA }</h6>
+    function makeTable(data) {
+        var resultsTable = $('#resultsTable').DataTable({
+            data: data,
+            columns: [
+                { data: null, render: function () { return '<input type="checkbox">'; } },
+                { data: 'code' || '--' },
+                { data: 'floor' || '--' },
+                { data: 'flat' || '--' },
+                { data: 'block' || '--' },
+                { data: 'gross_sf' || '--' },
+                { data: 'net_sf' || '--' },
+                { data: 'rental_price' || '' },
+                { data: 'rental_g' || '' },
+                { data: 'rental_n' || '' },
+                { data: 'selling_price' || '' },
+                { data: 'selling_g' || '' },
+                { data: 'selling_n' || '' },
+                { data: 'district' || '' },
+                { data: 'oths' || '' }
+            ],
+        });
+    }
+
+
+$('.toggleTableView').on('click', function() {
+    $('#fetchProperty').toggle();
+    $('#fetchPropertyTable').toggle();
+    $('.toggleTableView').toggle();
+});
+
+function appendSearch(data) {
+    console.log(data);
+    $('#resultFound').removeClass('d-none');
+    $('#search_count').html(data.length);
+    $('#search_cnt_tag').css('display','flex');
+    let html = '';
+    let rows = '';
+
+    $.each(data, function(index, data) {
+        html += `
+            <div  onclick='window.location.href = ${Url+ '/' + data.code}' class='card searched-card border shadow-none mb-3 d-none d-md-block'>
+                <div class='row g-0'>
+                    <div class='col-md-2' style='
+                    background-image: url("${data.singlephoto ? assetUrl + '/' + data.singlephoto.image : notFoundImg}");
+                        background-size: cover;
+                    '>
+                    </div>
+                    <div class='col-md-10'>
+                        <div class='card-body pe-4 me-1 p-0'>
+                            <div class='row'>
+                                <div class='flex-column col-7 pt-3 d-flex pe-0'>
+                                    <h5 class='mb-1 ps-1 ms-2'>${data.building ? data.building : NA }</h5>
+                                    <h6 class='mb-0 border-bottom ps-2 ms-1 pb-3'>Code: ${data.code ? data.code : NA }</h6>
+                                </div>
+
+                                <div class='border-start col-5 p-3'>
+                                    <div class='row'>
+                                        <div class='col-md-6 d-flex'>
+                                            <span class='text-muted me-2'>District:</span>
+                                            <p class='mb-0 me-2'>${data.district ? data.district: NA }</p>
+                                        </div>
+                                        <div class='col-md-6 d-flex'>
+                                            <span class='text-muted me-2'>Flat:</span>
+                                            <p class='mb-0 me-2'>${data.flat ? data.flat : NA }</p>
+                                        </div>
+                                        <div class='col-md-6 d-flex'>
+                                            <span class='text-muted me-2'>Block:</span>
+                                            <p class='mb-0 me-2'>${data.block ? data.block : NA }</p>
+                                        </div>
+                                        <div class='col-md-6 d-flex'>
+                                            <span class='text-muted me-2'>Floor:</span>
+                                            <p class='mb-0 me-2'>${data.floor ? data.floor : NA }</p>
+                                        </div>
                                     </div>
 
-                                    <div class='border-start col-5 p-3'>
-                                        <div class='row'>
-                                            <div class='col-md-6 d-flex'>
-                                                <span class='text-muted me-2'>District:</span>
-                                                <p class='mb-0 me-2'>${data.district ? data.district: NA }</p>
-                                            </div>
-                                            <div class='col-md-6 d-flex'>
-                                                <span class='text-muted me-2'>Flat:</span>
-                                                <p class='mb-0 me-2'>${data.flat ? data.flat : NA }</p>
-                                            </div>
-                                            <div class='col-md-6 d-flex'>
-                                                <span class='text-muted me-2'>Block:</span>
-                                                <p class='mb-0 me-2'>${data.block ? data.block : NA }</p>
-                                            </div>
-                                            <div class='col-md-6 d-flex'>
-                                                <span class='text-muted me-2'>Floor:</span>
-                                                <p class='mb-0 me-2'>${data.floor ? data.floor : NA }</p>
-                                            </div>
+                                </div>
+                                <div class='col-md-7'>
+                                    <div class='row me-2'>
+                                        <div class='d-flex ms-3 col-12 py-1 border-bottom'>
+                                            <span class='text-muted me-2'>Facilities:</span>
+                                            <p class='mb-0'>${data.facilities ? data.facilities : NA }</p>
                                         </div>
-
-                                    </div>
-                                    <div class='col-md-7'>
-                                        <div class='row me-2'>
-                                            <div class='d-flex ms-3 col-12 py-1 border-bottom'>
-                                                <span class='text-muted me-2'>Facilities:</span>
-                                                <p class='mb-0'>${data.facilities ? data.facilities : NA }</p>
-                                            </div>
-                                            <div class='d-flex ms-3 col-12 py-1 border-bottom'>
-                                                <span class='text-muted me-2'>Decoration:</span>
-                                                <p class='mb-0'>${data.decorations ? data.decorations : NA }</p>
-                                            </div>
-                                            <div class='d-flex ms-3 col-12 py-1'>
-                                                <span class='text-muted me-2'>Types:</span>
-                                                <p class='mb-0'>${data.types ? data.types : NA }</p>
-                                            </div>
+                                        <div class='d-flex ms-3 col-12 py-1 border-bottom'>
+                                            <span class='text-muted me-2'>Decoration:</span>
+                                            <p class='mb-0'>${data.decorations ? data.decorations : NA }</p>
+                                        </div>
+                                        <div class='d-flex ms-3 col-12 py-1'>
+                                            <span class='text-muted me-2'>Types:</span>
+                                            <p class='mb-0'>${data.types ? data.types : NA }</p>
                                         </div>
                                     </div>
-                                    <div class='col-md-5 border-top border-start'>
-                                        <div class='row pt-2'>
-                                            <div class='col-6 d-flex'>
-                                                <span class='text-muted me-2'>Gross SF:</span>
-                                                <p class='mb-0'>${data.gross_sf ? data.gross_sf: NA }</p>
-                                            </div>
-                                            <div class='col-6 d-flex'>
-                                                <span class='text-muted me-2'>Net SF:</span>
-                                                <p class='mb-0'>${data.net_sf ? data.net_sf : NA }</p>
-                                            </div>
-                                            <div class='col-6'>
-                                                <div class='row'>
-                                                    <div class='col-12 d-flex'>
-                                                        <span class='text-muted me-2'>Selling Price:</span>
-                                                        <p class='mb-0'>${data.selling_price ? data.selling_price: NA }</p>
-                                                    </div>
-                                                    <div class='col-12 d-flex'>
-                                                        <span class='text-muted me-2'>Selling G@:</span>
-                                                        <p class='mb-0'>${data.selling_g ? data.selling_g : NA }</p>
-                                                    </div>
-                                                    <div class='col-12 d-flex'>
-                                                        <span class='text-muted me-2'>Selling N@:</span>
-                                                        <p class='mb-0'>${data.selling_n ? data.selling_n: NA }</p>
-                                                    </div>
+                                </div>
+                                <div class='col-md-5 border-top border-start'>
+                                    <div class='row pt-2'>
+                                        <div class='col-6 d-flex'>
+                                            <span class='text-muted me-2'>Gross SF:</span>
+                                            <p class='mb-0'>${data.gross_sf ? data.gross_sf: NA }</p>
+                                        </div>
+                                        <div class='col-6 d-flex'>
+                                            <span class='text-muted me-2'>Net SF:</span>
+                                            <p class='mb-0'>${data.net_sf ? data.net_sf : NA }</p>
+                                        </div>
+                                        <div class='col-6'>
+                                            <div class='row'>
+                                                <div class='col-12 d-flex'>
+                                                    <span class='text-muted me-2'>Selling Price:</span>
+                                                    <p class='mb-0'>${data.selling_price ? data.selling_price: NA }</p>
+                                                </div>
+                                                <div class='col-12 d-flex'>
+                                                    <span class='text-muted me-2'>Selling G@:</span>
+                                                    <p class='mb-0'>${data.selling_g ? data.selling_g : NA }</p>
+                                                </div>
+                                                <div class='col-12 d-flex'>
+                                                    <span class='text-muted me-2'>Selling N@:</span>
+                                                    <p class='mb-0'>${data.selling_n ? data.selling_n: NA }</p>
                                                 </div>
                                             </div>
-                                            <div class='col-6'>
-                                                <div class='row'>
-                                                    <div class='col-12 d-flex'>
-                                                        <span class='text-muted me-2'>Rental Price:</span>
-                                                        <p class='mb-0'>${data.rental_price ? data.rental_price: NA }</p>
-                                                    </div>
-                                                    <div class='col-12 d-flex'>
-                                                        <span class='text-muted me-2'>Rental G@:</span>
-                                                        <p class='mb-0'>${data.rental_g ? data.rental_g : NA }</p>
-                                                    </div>
-                                                    <div class='col-12 d-flex'>
-                                                        <span class='text-muted me-2'>Rental N@:</span>
-                                                        <p class='mb-0'>${data.rental_n ? data.rental_n : NA }</p>
-                                                    </div>
+                                        </div>
+                                        <div class='col-6'>
+                                            <div class='row'>
+                                                <div class='col-12 d-flex'>
+                                                    <span class='text-muted me-2'>Rental Price:</span>
+                                                    <p class='mb-0'>${data.rental_price ? data.rental_price: NA }</p>
+                                                </div>
+                                                <div class='col-12 d-flex'>
+                                                    <span class='text-muted me-2'>Rental G@:</span>
+                                                    <p class='mb-0'>${data.rental_g ? data.rental_g : NA }</p>
+                                                </div>
+                                                <div class='col-12 d-flex'>
+                                                    <span class='text-muted me-2'>Rental N@:</span>
+                                                    <p class='mb-0'>${data.rental_n ? data.rental_n : NA }</p>
                                                 </div>
                                             </div>
-
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div onclick='window.location.href = ${Url+ '/' + data.code}' class="card searched-card shadow-none border d-block d-md-none mb-4">
-                    <div class="card-body p-3 pb-0">
-                        <div class="row pb-3">
+            <div onclick='window.location.href = ${Url+ '/' + data.code}' class="card searched-card shadow-none border d-block d-md-none mb-4">
+                <div class="card-body p-3 pb-0">
+                    <div class="row pb-3">
 
-                            <div class="col-8 d-flex flex-column pb-3 mb-2 border-bottom">
-                                <h3 class='mb-0'>${data.building ? data.building : NA }</h3>
-                                <h6 class='mb-0'>Code: ${data.code ? data.code : NA }</h6>
-                            </div>
-                            <div class='col-4 border-bottom d-flex justify-content-end mb-2 pb-1'>
-                                <img width="80" height='80' src="${data.singlephoto ? assetUrl + '/' + data.singlephoto.image : notFoundImg}">
-                            </div>
-                            <div class='col-12 d-flex'>
-                                <span class='text-muted me-2'>District:</span>
-                                <p class='mb-0 me-2'>${data.district ? data.district: NA }</p>
-                            </div>
-                            <div class='col-12 d-flex'>
-                                <span class='text-muted me-2'>Flat:</span>
-                                <p class='mb-0 me-2'>${data.flat ? data.flat : NA }</p>
-                            </div>
-                            <div class='col-12 d-flex'>
-                                <span class='text-muted me-2'>Block:</span>
-                                <p class='mb-0 me-2'>${data.block ? data.block : NA }</p>
-                            </div>
-                            <div class='col-12 d-flex'>
-                                <span class='text-muted me-2'>Floor:</span>
-                                <p class='mb-0 me-2'>${data.floor ? data.floor : NA }</p>
-                            </div>
-                            <div class='col-12 d-flex col-12 py-1 border-top border-bottom'>
-                                <span class='text-muted me-2'>Facilities:</span>
-                                <p class='mb-0'>${data.facilities ? data.facilities : NA }</p>
-                            </div>
-                            <div class='col-12 d-flex col-12 py-1 border-bottom'>
-                                <span class='text-muted me-2'>Decoration:</span>
-                                <p class='mb-0'>${data.decorations ? data.decorations : NA }</p>
-                            </div>
-                            <div class='col-12 d-flex col-12 py-1'>
-                                <span class='text-muted me-2'>Types:</span>
-                                <p class='mb-0'>${data.types ? data.types : NA }</p>
-                            </div>
+                        <div class="col-8 d-flex flex-column pb-3 mb-2 border-bottom">
+                            <h3 class='mb-0'>${data.building ? data.building : NA }</h3>
+                            <h6 class='mb-0'>Code: ${data.code ? data.code : NA }</h6>
+                        </div>
+                        <div class='col-4 border-bottom d-flex justify-content-end mb-2 pb-1'>
+                            <img width="80" height='80' src="${data.singlephoto ? assetUrl + '/' + data.singlephoto.image : notFoundImg}">
+                        </div>
+                        <div class='col-12 d-flex'>
+                            <span class='text-muted me-2'>District:</span>
+                            <p class='mb-0 me-2'>${data.district ? data.district: NA }</p>
+                        </div>
+                        <div class='col-12 d-flex'>
+                            <span class='text-muted me-2'>Flat:</span>
+                            <p class='mb-0 me-2'>${data.flat ? data.flat : NA }</p>
+                        </div>
+                        <div class='col-12 d-flex'>
+                            <span class='text-muted me-2'>Block:</span>
+                            <p class='mb-0 me-2'>${data.block ? data.block : NA }</p>
+                        </div>
+                        <div class='col-12 d-flex'>
+                            <span class='text-muted me-2'>Floor:</span>
+                            <p class='mb-0 me-2'>${data.floor ? data.floor : NA }</p>
+                        </div>
+                        <div class='col-12 d-flex col-12 py-1 border-top border-bottom'>
+                            <span class='text-muted me-2'>Facilities:</span>
+                            <p class='mb-0'>${data.facilities ? data.facilities : NA }</p>
+                        </div>
+                        <div class='col-12 d-flex col-12 py-1 border-bottom'>
+                            <span class='text-muted me-2'>Decoration:</span>
+                            <p class='mb-0'>${data.decorations ? data.decorations : NA }</p>
+                        </div>
+                        <div class='col-12 d-flex col-12 py-1'>
+                            <span class='text-muted me-2'>Types:</span>
+                            <p class='mb-0'>${data.types ? data.types : NA }</p>
+                        </div>
 
 
-                            <div class='col-12 d-flex border-top'>
-                                <span class='text-muted me-2'>Gross SF:</span>
-                                <p class='mb-0'>${data.gross_sf ? data.gross_sf: NA }</p>
-                            </div>
-                            <div class='col-12 d-flex'>
-                                <span class='text-muted me-2'>Net SF:</span>
-                                <p class='mb-0'>${data.net_sf ? data.net_sf : NA }</p>
-                            </div>
+                        <div class='col-12 d-flex border-top'>
+                            <span class='text-muted me-2'>Gross SF:</span>
+                            <p class='mb-0'>${data.gross_sf ? data.gross_sf: NA }</p>
+                        </div>
+                        <div class='col-12 d-flex'>
+                            <span class='text-muted me-2'>Net SF:</span>
+                            <p class='mb-0'>${data.net_sf ? data.net_sf : NA }</p>
+                        </div>
 
-                            <div class='col-12 d-flex'>
-                                <span class='text-muted me-2'>Selling Price:</span>
-                                <p class='mb-0'>${data.selling_price ? data.selling_price: NA }</p>
-                            </div>
-                            <div class='col-12 d-flex'>
-                                <span class='text-muted me-2'>Selling G@:</span>
-                                <p class='mb-0'>${data.selling_g ? data.selling_g : NA }</p>
-                            </div>
-                            <div class='col-12 d-flex'>
-                                <span class='text-muted me-2'>Selling N@:</span>
-                                <p class='mb-0'>${data.selling_n ? data.selling_n: NA }</p>
-                            </div>
+                        <div class='col-12 d-flex'>
+                            <span class='text-muted me-2'>Selling Price:</span>
+                            <p class='mb-0'>${data.selling_price ? data.selling_price: NA }</p>
+                        </div>
+                        <div class='col-12 d-flex'>
+                            <span class='text-muted me-2'>Selling G@:</span>
+                            <p class='mb-0'>${data.selling_g ? data.selling_g : NA }</p>
+                        </div>
+                        <div class='col-12 d-flex'>
+                            <span class='text-muted me-2'>Selling N@:</span>
+                            <p class='mb-0'>${data.selling_n ? data.selling_n: NA }</p>
+                        </div>
 
-                            <div class='col-12 d-flex'>
-                                <span class='text-muted me-2'>Rental Price:</span>
-                                <p class='mb-0'>${data.rental_price ? data.rental_price: NA }</p>
-                            </div>
-                            <div class='col-12 d-flex'>
-                                <span class='text-muted me-2'>Rental G@:</span>
-                                <p class='mb-0'>${data.rental_g ? data.rental_g : NA }</p>
-                            </div>
-                            <div class='col-12 d-flex'>
-                                <span class='text-muted me-2'>Rental N@:</span>
-                                <p class='mb-0'>${data.rental_n ? data.rental_n : NA }</p>
-                            </div>
-
+                        <div class='col-12 d-flex'>
+                            <span class='text-muted me-2'>Rental Price:</span>
+                            <p class='mb-0'>${data.rental_price ? data.rental_price: NA }</p>
+                        </div>
+                        <div class='col-12 d-flex'>
+                            <span class='text-muted me-2'>Rental G@:</span>
+                            <p class='mb-0'>${data.rental_g ? data.rental_g : NA }</p>
+                        </div>
+                        <div class='col-12 d-flex'>
+                            <span class='text-muted me-2'>Rental N@:</span>
+                            <p class='mb-0'>${data.rental_n ? data.rental_n : NA }</p>
                         </div>
 
                     </div>
+
                 </div>
+            </div>
+        `;
 
-                `;
-            $('#fetchProperty').append(html);
+        {{-- rows += `
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>${data.code ? data.code : NA }</td>
+                <td>${data.floor ? data.floor : NA }</td>
+                <td>${data.flat ? data.flat : NA }</td>
+                <td>${data.block ? data.block : NA }</td>
+                <td>${data.gross_sf ? data.gross_sf : 0 }</td>
+                <td>${data.net_sf ? data.net_sf : 0 }</td>
+                <td>${data.rental_price ? data.rental_price : 0 }</td>
+                <td>${data.rental_g ? data.rental_g : 0 }</td>
+                <td>${data.rental_n ? data.rental_n : 0 }</td>
+                <td>${data.selling_price ? data.selling_price : 0 }</td>
+                <td>${data.selling_g ? data.selling_g : 0 }</td>
+                <td>${data.selling_n ? data.selling_n : 0 }</td>
+                <td>${data.district ? data.district : NA }</td>
+                <td>${data.oths ? data.oths : NA }</td>
+            </tr>
+        `; --}}
+    });
+    makeTable(data)
+    $('#fetchProperty').append(html);
+    {{-- resultsTable.rows.add($(rows)).draw(); --}}
+}
 
-        });
 
-    }
     function loadMoreRecords() {
         checkedValues=[];
         $('.types1').each(function() {
