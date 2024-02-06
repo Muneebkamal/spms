@@ -40,6 +40,13 @@ class PropertyController extends Controller
         return view('content.properties.property-details2', compact('property','photo','options'));
     }
 
+    public function detail2($code){
+        $property = Property::where('code', $code)->first();
+        $photo = Photo::where('code', $code)->get();
+        $options = $this->options;
+        return view('content.properties.property-details2', compact('property','photo','options'));
+    }
+
     public function delete($code){
         $property = Property::where('code', $code)->first();
         if($property) {$property->delete();}
@@ -147,7 +154,7 @@ class PropertyController extends Controller
     public function create(Request $req) {
         $code = $this->verifyStrings($req,'code');
         $district = $this->verifyStrings($req,'district');
-        $building_name = $this->verifyStrings($req,'building_name');
+        $building_name = $this->verifyStrings($req,'building');
         $street = $this->verifyStrings($req,'address');
         $year = $this->verifyStrings($req,'year');
         $block = $this->verifyStrings($req,'block');
@@ -245,7 +252,12 @@ class PropertyController extends Controller
         ]);
 
         $totalImages = $req->input('totalImages');
-        $newBuildingImagesPath = 'storage/properties/'.$newBuilding->code;
+        $newBuildingImagesPath = 'storage/app/public/properties/'.$newBuilding->code;
+
+        if (!File::isDirectory($newBuildingImagesPath)) {
+            mkdir($newBuildingImagesPath, 0777, true);
+        }
+
 
         for ($i = 0; $i < $totalImages; $i++) {
             $image = $req->file('images.' . $i);

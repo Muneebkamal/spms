@@ -61,6 +61,7 @@ Route::middleware(['auth','activity'])->group(function () {
         Route::get('/user-photo-permission', [UserController::class, 'togglePhotoPermission'])->name('photo-permission');
         Route::get('/user-contact-permission', [UserController::class, 'toggleContactPermission'])->name('contact-permission');
         Route::get('/all-views', [UserController::class, 'allViews']);
+        Route::get('/get-view-data', [UserController::class, 'getViews']);
         Route::get('/property-list', [PropertyController::class, 'index'])->name('property-list');
         Route::delete('/delete-property/{code}', [PropertyController::class, 'delete'])->name('delete-property');
         Route::get('/admin-search', [PropertyController::class, 'search']);

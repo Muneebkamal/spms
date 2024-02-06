@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActivityLog;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -71,7 +74,20 @@ class UserController extends Controller
     }
 
     public function allViews(){
-        return view('content.all-views.all-views');
+        $logs =  ActivityLog::select('user_id', DB::raw('COUNT(*) as count'))
+        ->groupBy('user_id')
+        ->whereDate('created_at', Carbon::today())->get();
+        foreach($logs as $log){
+            $user_data =  ActivityLog::where('user_id',$log->user_id)->latest('created_at')->first();
+            $log->user_data = $user_data;
+        }
+        
+        return view('content.all-views.all-views',get_defined_vars());
+    }
+    public function getViews(Request $request){
+        $data =  ActivityLog::where('user_id', $request->user_id)
+        ->whereDate('created_at', Carbon::today())->latest('created_at')->get();
+        return response()->json($data);
     }
 
     public function togglePhotoPermission(Request $request)
