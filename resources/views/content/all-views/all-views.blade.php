@@ -5,6 +5,7 @@
 @include('content.modals.view-modal')
 
 @section('script')
+@include('content.all-views.js.all-viewsjs')
 <script>
     $('#view-table').dataTable();
 </script>
@@ -33,30 +34,18 @@
                     </tr>
                     </thead>
                     <tbody>
+                        @foreach ($logs as $log)
                         <tr>
-                            <td>Someone</td>
-                            <td>jdh</td>
-                            <td>0</td>
-                            <td>6</td>
-                            <td>2024-02-05 07:23:00</td>
-                            <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view-modal">View Detail</button></td>
+                    
+                            <td>{{ $log->user_data->user_name }}</td>
+                            <td>{{ $log->code }}</td>
+                            <td>--</td>
+                            <td>{{ $log->count }}</td>
+                            <td>{{  $log->user_data->created_at }}</td>
+                            <td><button onclick="getViewData({{ $log->user_id}})" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view-modal" data-view="{{ $log->user_id}}">View Detail</button></td>
                         </tr> 
-                        <tr>
-                            <td>Someone</td>
-                            <td>jdh</td>
-                            <td>0</td>
-                            <td>6</td>
-                            <td>2024-02-05 07:23:00</td>
-                            <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view-modal">View Detail</button></td>
-                        </tr> 
-                        <tr>
-                            <td>Someone</td>
-                            <td>jdh</td>
-                            <td>0</td>
-                            <td>6</td>
-                            <td>2024-02-05 07:23:00</td>
-                            <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view-modal">View Detail</button></td>
-                        </tr> 
+                        @endforeach
+                        
                     </tbody>
                 </table>
                 </div>
