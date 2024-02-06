@@ -44,7 +44,7 @@
                         placeholder="{{__('Enter Building Name or Keyword')}}">
                 </div>
                 <div class="col-md-4">
-                    <select id="all-keywords" name="district[]" class="form-select select2" multiple>
+                    <select id="all-keywords" name="district[]" class="form-select select2">
                         @foreach($options as $type)
                         @if($type->opt_type == 'district')
                         <option value="{{$type->code}}"

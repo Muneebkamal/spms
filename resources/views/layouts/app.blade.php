@@ -140,7 +140,13 @@ $user = \auth()->user()
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('.select2').select2();
+            $(".select2").select2({
+                closeOnSelect : false,
+                placeholder : "Placeholder",
+                allowHtml: true,
+                allowClear: true,
+                tags: true // создает новые опции на лету
+            });
         });
     </script>
     @yield('script')
