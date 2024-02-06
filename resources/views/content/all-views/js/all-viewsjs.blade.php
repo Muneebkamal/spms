@@ -26,7 +26,7 @@
                                     // console.log(full);
                                     var code = full.code !=null?full.code:'';
                                     return `  <a href="${full.url}">${full.url}</a>
-                                        <p>${code}</p>`;
+                                        <p><strong>Building Code: </strong> ${code}</p>`;
                                 }
                             },
                             {
